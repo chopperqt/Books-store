@@ -19,16 +19,31 @@ const userStore = {
       surname: 'Test',
       age: '21',
       bDate: '29.08.1999'
+    },
+    {
+      name: 'Chopper',
+      surname: 'XX',
+      age: '10',
+      bDate: '29.08.1909'
     }
   ]
 }
 
+const FETCH_DATA = 'FETCH_DATA';
+
 function playlist(state = userStore,action) {
-  if (action.type === 'ADD_TRACK') {
-    return [
-      ...state,
-      action.payload
-    ]
+
+  switch (action.type) {
+    case FETCH_DATA:
+      fetch('https://jsonplaceholder.typicode.com/todos/1')
+        .then(response => response.json())
+        .then(json => console.log(json))
+      return [
+        ...state,
+        action.payload
+      ]
+    default:
+      return state;
   }
   return state;
 }
