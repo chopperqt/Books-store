@@ -1,5 +1,12 @@
-import {combineRedicer } from 'react-redux';
+import {combineReducers} from 'redux';
 
-export default combineRedicer({
+//reducers
+import { postReducer } from './Posts/reducer';
 
+
+
+
+
+export const rootReducer =  combineReducers({
+    posts: postReducer
 });

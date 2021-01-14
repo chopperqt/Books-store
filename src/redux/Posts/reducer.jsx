@@ -1,29 +1,29 @@
 const initialState = {
     posts: [
         {
-            name: 'Ilya',
-            surname: "Tsvetkov"
-        },
-        {
-            name: 'Kolya',
-            surname: 'Ivanov'
+            name: 'test'
         }
     ]
 }
 
 
-export default function(
+
+export const  postReducer = (
     state = initialState,
     {type, payload}
-) {
+) => {
     switch (type) {
         case 'LOAD_FROM_DATA':
             return {
                 ...state,
-                posts: payload.data
             }
-    
+        case 'ADD_ITEM_TO_DATA':
+            console.log(payload)
+            return {
+                ...state,
+                posts: [...state.posts,payload]
+            }
         default:
-            break;
+            return state;
     }
 }
