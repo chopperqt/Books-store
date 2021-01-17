@@ -26,7 +26,7 @@ const Dashboard = () => {
 
     return (
         <div className="dashboard" style={styless}>
-            <i class="bi bi-cart-plus"></i>
+            <i className="bi bi-cart-plus"></i>
             Dashboard <br/>
             {menuWidth}
         </div>

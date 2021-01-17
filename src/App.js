@@ -9,7 +9,8 @@ import './App.css';
 import {
   Header,
   Dashboard,
-  Wrapper
+  Wrapper,
+  BooksList
 } from './components/'
 
 
@@ -52,6 +53,7 @@ const App = () => {
               <div key={uuid()} >{item.name}</div>
             )) : 'Пока что ничего нет'}
           </div>
+          <BooksList />
         </div>
       </Wrapper>
       

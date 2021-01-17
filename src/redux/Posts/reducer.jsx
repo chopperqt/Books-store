@@ -16,7 +16,6 @@ export const  postReducer = (
                 ...state,
             }
         case 'ADD_ITEM_TO_DATA':
-            console.log(payload)
             return {
                 ...state,
                 posts: [...state.posts,payload]

@@ -42,7 +42,7 @@ const AnimateButton = ({menuWidth}) => {
     }
 
     return (
-        <i class={'bi '+className}></i>
+        <i className={'bi '+className}></i>
     )
 }
 
