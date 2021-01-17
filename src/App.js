@@ -4,9 +4,12 @@ import {useDispatch, useSelector} from 'react-redux';
 import LoadDataActions from './redux/Posts/actions';
 import {v4 as uuid} from 'uuid';
 
+import './App.css';
+
 import {
   Header,
-  Dashboard
+  Dashboard,
+  Wrapper
 } from './components/'
 
 
@@ -40,13 +43,18 @@ const App = () => {
     <div className="App">
       <Header />
       <Dashboard />
-      <input type="test" name="add" onChange={handleInput} />
-      <button type="button" onClick={addDataItem}>Add</button>
-      <div>
-        {posts.length ? posts.map(item => (
-          <div key={uuid()} >{item.name}</div>
-        )) : 'Пока что ничего нет'}
-      </div>
+      <Wrapper>
+        <div>
+          <input type="test" name="add" onChange={handleInput} />
+          <button type="button" onClick={addDataItem}>Add</button>
+          <div>
+            {posts.length ? posts.map(item => (
+              <div key={uuid()} >{item.name}</div>
+            )) : 'Пока что ничего нет'}
+          </div>
+        </div>
+      </Wrapper>
+      
     </div>
   );
 }

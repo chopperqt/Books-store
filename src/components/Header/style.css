@@ -10,3 +10,15 @@ header {
     position: fixed;
     border-bottom: 1px solid #000;
 }
+.splitMenuBtn { 
+    border: none;
+    background: transparent;
+    outline: none !important;
+}
+.splitMenuBtn:hover i {
+    color: rgb(0, 152, 179);
+}
+
+.splitMenuBtn i { 
+    font-size: 24px;
+}

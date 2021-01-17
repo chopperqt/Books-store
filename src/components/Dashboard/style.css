@@ -1,13 +1,17 @@
+body {
+    height: 2000px;
+}
 .dashboard {
     position: fixed;
     left: 0;
-    top: 80px;
+    bottom: 0;
     width: 90px;
-    height: 100%;
+    height: calc(100% - 80px);
     border-right: 1px solid #000;
     border-radius: 0 5px 5px 0;
     -webkit-border-radius: 0 5px 5px 0;
     -moz-border-radius: 0 5px 5px 0;
     -ms-border-radius: 0 5px 5px 0;
     -o-border-radius: 0 5px 5px 0;
+    overflow: hidden;
 }
