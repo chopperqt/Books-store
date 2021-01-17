@@ -1,0 +1,13 @@
+.dashboard {
+    position: fixed;
+    left: 0;
+    top: 80px;
+    width: 90px;
+    height: 100%;
+    border-right: 1px solid #000;
+    border-radius: 0 5px 5px 0;
+    -webkit-border-radius: 0 5px 5px 0;
+    -moz-border-radius: 0 5px 5px 0;
+    -ms-border-radius: 0 5px 5px 0;
+    -o-border-radius: 0 5px 5px 0;
+}

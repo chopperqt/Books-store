@@ -1,0 +1,12 @@
+.App {
+    width: 100%;
+}
+header {
+    top: 0;
+    left:  0;
+    width: 100%;
+    background: #fff;
+    height: 80px;
+    position: fixed;
+    border-bottom: 1px solid #000;
+}
