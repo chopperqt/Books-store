@@ -22,3 +22,31 @@ header {
 .splitMenuBtn i { 
     font-size: 24px;
 }
+.fillSizeBtn {
+    border: none;
+    background: transparent;
+    outline: none !important;
+}
+.fillSizeBtn:active {
+    transition: 0.15ms;
+    transform: scale(1.03,1.03);
+    -webkit-transform: scale(1.03,1.03);
+    -moz-transform: scale(1.03,1.03);
+    -ms-transform: scale(1.03,1.03);
+    -o-transform: scale(1.03,1.03);
+    -webkit-transition: 0.15ms;
+    -moz-transition: 0.15ms;
+    -ms-transition: 0.15ms;
+    -o-transition: 0.15ms;
+}
+.fillSizeBtn:hover i {
+    color: rgb(0, 152, 179);
+}
+.fillSizeBtn i {
+    font-size: 24px;
+    transform: scale(1,1);
+    -webkit-transform: scale(1,1);
+    -moz-transform: scale(1,1);
+    -ms-transform: scale(1,1);
+    -o-transform: scale(1,1);
+}
