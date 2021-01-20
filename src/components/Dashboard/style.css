@@ -7,7 +7,10 @@ body {
     bottom: 0;
     width: 90px;
     height: calc(100% - 80px);
-    border-right: 1px solid #000;
+    border-right: 1px solid rgba(0,0,0,.125);
+    box-shadow: 6px 0px 10px -3px rgba(0,0,0,0.49);
+    -webkit-box-shadow: 6px 0px 10px -3px rgba(0,0,0,0.49);
+    -moz-box-shadow: 6px 0px 10px -3px rgba(0,0,0,0.49);
     border-radius: 0 5px 5px 0;
     -webkit-border-radius: 0 5px 5px 0;
     -moz-border-radius: 0 5px 5px 0;
