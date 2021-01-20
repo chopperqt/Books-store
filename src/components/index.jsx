@@ -2,10 +2,16 @@ import Header from './Header';
 import Dashboard from './Dashboard';
 import Wrapper from './Wrapper';
 import BooksList from './BooksList';
+import BookItem from './BookItem';
+import BooksItems from './BooksItems';
+import BookProfile from './BookProfile';
 
 export {
     Wrapper,
     Header,
     Dashboard,
-    BooksList
+    BooksList,
+    BookItem,
+    BooksItems,
+    BookProfile
 }

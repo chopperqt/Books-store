@@ -1,0 +1,9 @@
+.card {
+    padding: 0 !important;
+}
+.itemButtons {
+    padding: 0 !important;
+}
+.itemButtons button {
+    margin-left: 10px;
+}

@@ -2,6 +2,15 @@ import React , {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
 import LoadDataActions from './redux/Posts/actions';
+import actions from './redux/Books/actions';
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from 'react-router-dom';
+
 import {v4 as uuid} from 'uuid';
 
 import './App.css';
@@ -10,7 +19,10 @@ import {
   Header,
   Dashboard,
   Wrapper,
-  BooksList
+  BooksList,
+  BookItem,
+  BooksItems,
+  BookProfile
 } from './components/'
 
 
@@ -22,6 +34,9 @@ const App = () => {
     loadFromDataPosts,
     addItemToData,
   } = LoadDataActions;
+  const {
+    actionMoreBooksData
+  } = actions
   
   useEffect(() => {
     dispatch(loadFromDataPosts())
@@ -40,23 +55,35 @@ const App = () => {
     }))
   }
 
+  function loadMoreBooks() {
+    dispatch(actionMoreBooksData())
+  }
+
   return (
     <div className="App">
-      <Header />
-      <Dashboard />
-      <Wrapper>
-        <div>
-          <input type="test" name="add" onChange={handleInput} />
-          <button type="button" onClick={addDataItem}>Add</button>
-          <div>
-            {posts.length ? posts.map(item => (
-              <div key={uuid()} >{item.name}</div>
-            )) : 'Пока что ничего нет'}
-          </div>
-          <BooksList />
-        </div>
-      </Wrapper>
-      
+      <Router>
+        <Header />
+        <Dashboard />
+        <Wrapper>
+          <Switch>
+            <Route path="/books">
+              <BooksItems data={posts} />
+              <div className="col-md-12 d-flex justify-content-md-center">
+                <button onClick={loadMoreBooks} className="btn btn-primary">Загрузить ещё</button>
+              </div>
+            </Route>
+            <Route path="/book/:id">
+              <BookProfile />
+            </Route>
+            <Route path="/">
+              <div>
+               <input type="test" name="add" onChange={handleInput} />
+                <button type="button" onClick={addDataItem}>Add</button>
+              </div>
+            </Route>
+          </Switch>
+        </Wrapper>
+      </Router>
     </div>
   );
 }
