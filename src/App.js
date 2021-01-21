@@ -8,7 +8,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  NavLink
 } from 'react-router-dom';
 
 import {v4 as uuid} from 'uuid';
@@ -67,6 +68,12 @@ const App = () => {
         <Wrapper>
           <Switch>
             <Route path="/books">
+              <nav aria-label="breadcrumb" style={{marginTop: '20px',marginBottom: '0 !important'}}>
+                  <ol class="breadcrumb mb-0">
+                      <li class="breadcrumb-item"><NavLink to="/">Home</NavLink></li>
+                      <li class="breadcrumb-item active" aria-current="page">Books</li>
+                  </ol>
+              </nav>
               <BooksItems data={posts} />
               <div className="col-md-12 d-flex justify-content-md-center">
                 <button onClick={loadMoreBooks} className="btn btn-primary">Загрузить ещё</button>

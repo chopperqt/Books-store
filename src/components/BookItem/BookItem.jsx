@@ -38,7 +38,7 @@ const BookItem = ({data}) => {
     },[])
 
     return (
-        <div className="col mt-5">
+        <div className="col mt-3">
             <div className="card h-100 w-100">
                 <img src="http://placehold.it/400x300" className="card-img-top" alt="Some image"/>
                 <div className="card-body">
