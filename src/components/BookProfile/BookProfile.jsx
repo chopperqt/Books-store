@@ -1,20 +1,32 @@
 import './style.css';
 
 import {useParams} from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {NavLink} from 'react-router-dom';
+import actionsBooks from '../../redux/Books/actions';
+import { useEffect } from 'react';
 
 const BookProfile = () => {
     const books = useSelector(state => state.books.booksItems)
     const {id} = useParams();
 
     const filterBooks = books.filter(item => item._id === id);
+    const dispath = useDispatch();
 
     //data
     let name = filterBooks[0].book_name;
     let description = filterBooks[0].book_descriprion;
     let country = filterBooks[0].book_county;
-    let picture = filterBooks[0].book_picture
+    let picture = filterBooks[0].book_picture;
+
+    const {
+        actionSearchBookData
+    } = actionsBooks
+    
+    useEffect(() => {
+        dispath(actionSearchBookData())
+    }, [])
+
     return (
         <div className="col p-5">
             <nav aria-label="breadcrumb">

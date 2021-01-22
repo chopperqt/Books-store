@@ -3,12 +3,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import actionsMenu from '../../redux/Menu/actions';
 import { useEffect, useState } from 'react';
 import actionsHeader from '../../redux/Header/actions';
+import actionsBooks from '../../redux/Books/actions';
 
 
 const Header = () => {
 
     const menuWidth = useSelector(state => state.menu.menuType);
     const [fullScreen,setFullscreen] = useState(false);
+    const [searchValue, setSearchValue] = useState('');
 
     const dispath = useDispatch();
 
@@ -18,9 +20,17 @@ const Header = () => {
     const {
         actionHeaderFullScreen,
     } = actionsHeader;
+    const {
+        actionSearchBookData
+    } = actionsBooks
 
     function actionMenu() {
         dispath(actionOpenFullMenu(menuWidth));
+    }
+
+    const searching = () => {
+        console.log(searchValue)
+        dispath(actionSearchBookData(searchValue))
     }
 
     useEffect(() => {
@@ -32,9 +42,9 @@ const Header = () => {
             }
         })
 
-        return (() => {
-            document.removeEventListener('fullscreenchange')
-        })
+        // return (() => {
+        //     document.removeEventListener('fullscreenchange')
+        // })
     }, [])
 
 
@@ -49,14 +59,20 @@ const Header = () => {
 
     return (
         <header>
-            <div className="col-md-12 h-100 d-flex align-items-md-center">
-                <div className="row" style={{marginLeft: '5px'}}>
+            <div className="col-md-12 h-100 d-flex align-items-md-center d-flex justify-content-around">
+                <div className="col-md-8">
                     <button onClick={actionMenu} className="splitMenuBtn">
                         <AnimateButton menuWidth={menuWidth} />
                     </button>
                     <button onClick={actionFullScreen} data-toggle-fullscreen="false"  className="fillSizeBtn">
                         <i className="bi bi-arrows-fullscreen"></i>
                     </button>
+                    </div>
+                <div className="col-md-2">
+                    <div className="input-group">
+                        <input onChange={e => setSearchValue(e.target.value)} type="text" className="form-control" aria-label="Recipient's username" aria-describedby="button-addon2" />
+                        <button onClick={searching} className="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+                    </div>
                 </div>
             </div>
         </header>
