@@ -4,6 +4,7 @@ import actionsMenu from '../../redux/Menu/actions';
 import { useEffect, useState } from 'react';
 import actionsHeader from '../../redux/Header/actions';
 import actionsBooks from '../../redux/Books/actions';
+import {Button,Popover, PopoverHeader, PopoverBody} from 'reactstrap';
 
 
 const Header = () => {
@@ -11,6 +12,12 @@ const Header = () => {
     const menuWidth = useSelector(state => state.menu.menuType);
     const [fullScreen,setFullscreen] = useState(false);
     const [searchValue, setSearchValue] = useState('');
+    const [popoverOpen, setPopoverOpen] = useState(false);
+    const [popup, setPopup] = useState(false)
+
+    const toggle = () => {
+        setPopup(prev => !prev);
+    }
 
     const dispath = useDispatch();
 
@@ -45,6 +52,7 @@ const Header = () => {
         // return (() => {
         //     document.removeEventListener('fullscreenchange')
         // })
+
     }, [])
 
 
@@ -64,10 +72,20 @@ const Header = () => {
                     <button onClick={actionMenu} className="splitMenuBtn">
                         <AnimateButton menuWidth={menuWidth} />
                     </button>
-                    <button onClick={actionFullScreen} data-toggle-fullscreen="false"  className="fillSizeBtn">
+                    <button  onClick={actionFullScreen} data-toggle-fullscreen="false"  className="fillSizeBtn">
                         <i className="bi bi-arrows-fullscreen"></i>
                     </button>
-                    </div>
+                    <span className="popup-item">
+                        <button onClick={toggle} className="fillSizeBtn">
+                            <i className="bi bi-cart-plus"></i>
+                        </button>
+                        <div className="popup-div" style={popup ? {display: 'block'} : {display: 'none'}}>
+                            <div className="delta"></div>
+                            <PopoverHeader>Cart</PopoverHeader>
+                            <PopoverBody>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</PopoverBody>
+                        </div>
+                    </span>
+                </div>
                 <div className="col-md-2">
                     <div className="input-group">
                         <input onChange={e => setSearchValue(e.target.value)} type="text" className="form-control" aria-label="Recipient's username" aria-describedby="button-addon2" />

@@ -1,7 +1,8 @@
 import React,{Suspense,lazy} from 'react';
 import { useSelector } from 'react-redux';
 import {NavLink} from 'react-router-dom';
-const BookItem = React.lazy(() => import('../../components/BookItem')) 
+const BookItem = React.lazy(() => import('../../components/BookItem'));
+const SearchItem = React.lazy(() => import('../../components/SearchItem'));
 
 
 
@@ -19,7 +20,7 @@ const BooksItems = ({data}) => {
             
             <Suspense fallback={<div>Загрузка...</div>}>
                 {
-                    searchBook.length ? searchBook.map(item => (<BookItem data={item} />)) : books.map(item => (
+                    searchBook.length ? searchBook.map(item => (<SearchItem data={item} />)) : books.map(item => (
                         <BookItem data={item} />
                     ))
                 }

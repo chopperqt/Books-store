@@ -5,6 +5,7 @@ import BooksList from './BooksList';
 import BookItem from './BookItem';
 import BooksItems from './BooksItems';
 import BookProfile from './BookProfile';
+import SearchItem from './SearchItem';
 
 export {
     Wrapper,
@@ -13,5 +14,6 @@ export {
     BooksList,
     BookItem,
     BooksItems,
-    BookProfile
+    BookProfile,
+    SearchItem,
 }

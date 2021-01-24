@@ -1,0 +1,18 @@
+Сущность Book
+
+1. _id              int             Уникальный номер
+2. book_name        String          Название 
+3. book_data        Data            Год выпуска
+3. book_authors     Array           Авторы
+4. book_price       Number          Цена
+5. book_rating      Number          Рейтин
+6. book_comments    Array           Комментарии
+7. book_sells       int             Кол-во продаж
+8. book_books       int             Кол-во книг которые остались
+9. book_description String          Описание
+10.book_picture     String          Картинка
+11.book_discount    int             Скинда
+12.book_bestseller  bool            Бестселер да/нет
+13.book_pages       int             Кол-во страниц
+14.book_genres      Array           Жанры
+15.book_age_limit   int             Возрастное ограничение

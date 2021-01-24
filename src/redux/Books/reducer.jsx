@@ -34,7 +34,7 @@ export const booksStore = (
                 limit: state.limit + payload
             }
         case SEARCH_BOOK_DATA:
-            if (payload.length) {
+            if (payload) {
                 return {
                     ...state,
                     searchBook: state.booksItems.filter(item => item.book_name.toLowerCase().includes(payload.toLowerCase()))
