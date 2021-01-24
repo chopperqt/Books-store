@@ -23,12 +23,16 @@ import {
   BooksList,
   BookItem,
   BooksItems,
-  BookProfile
+  BookProfile,
+  CartsItems
 } from './components/'
 
 
 const App = () => {
   const [inputText, setInputText] = useState('');
+  const posts = useSelector(state => state.posts.posts);
+  const booksStore = useSelector(state => state.books.booksItems);
+  const limit = useSelector(state => state.books.limit);
 
   const dispatch = useDispatch();
   const {
@@ -42,7 +46,7 @@ const App = () => {
   useEffect(() => {
     dispatch(loadFromDataPosts())
   }, [dispatch])
-  const posts = useSelector(state => state.posts.posts);
+  
 
   function handleInput(e) {
     setInputText(prev => prev = e.target.value)
@@ -75,12 +79,21 @@ const App = () => {
                   </ol>
               </nav>
               <BooksItems data={posts} />
-              <div className="col-md-12 d-flex justify-content-md-center">
-                <button onClick={loadMoreBooks} className="btn btn-primary">Загрузить ещё</button>
+              <div className="col-md-12 d-flex justify-content-md-center mt-4">
+                {(limit >= booksStore.length) ? null : <button onClick={loadMoreBooks} className="btn btn-primary">Загрузить ещё</button>}
               </div>
             </Route>
             <Route path="/book/:id">
               <BookProfile />
+            </Route>
+            <Route path="/cart">
+              <nav aria-label="breadcrumb" style={{marginTop: '20px',marginBottom: '0 !important'}}>
+                  <ol class="breadcrumb mb-0">
+                      <li class="breadcrumb-item"><NavLink to="/">Home</NavLink></li>
+                      <li class="breadcrumb-item active" aria-current="page">Cart</li>
+                  </ol>
+              </nav>
+              <CartsItems />
             </Route>
             <Route path="/">
               <div>

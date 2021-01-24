@@ -4,6 +4,7 @@ import actionsMenu from '../../redux/Menu/actions';
 import { useEffect, useState } from 'react';
 import actionsHeader from '../../redux/Header/actions';
 import actionsBooks from '../../redux/Books/actions';
+import actionsCart from '../../redux/Cart/actions';
 import {Button,Popover, PopoverHeader, PopoverBody} from 'reactstrap';
 
 
@@ -11,7 +12,7 @@ const Header = () => {
 
     const menuWidth = useSelector(state => state.menu.menuType);
     const cartStore = useSelector(state => state.cart.cart);
-    const bookStore = useSelector(state => state.books.booksItems);
+    const cartLength = cartStore.length;
     const [fullScreen,setFullscreen] = useState(false);
     const [searchValue, setSearchValue] = useState('');
     const [popoverOpen, setPopoverOpen] = useState(false);
@@ -33,6 +34,9 @@ const Header = () => {
     const {
         actionSearchBookData
     } = actionsBooks
+    const {
+        actionRemoveBookFromCart
+    } = actionsCart
 
     function actionMenu() {
         dispath(actionOpenFullMenu(menuWidth));
@@ -71,6 +75,10 @@ const Header = () => {
         }
     }
 
+    function removeFromCart(id) {
+        dispath(actionRemoveBookFromCart(id))
+    }
+
     return (
         <header>
             <div className="col-md-12 h-100 d-flex align-items-md-center d-flex justify-content-around">
@@ -83,12 +91,22 @@ const Header = () => {
                     </button>
                     <span className="popup-item">
                         <button onClick={toggle} className="fillSizeBtn">
-                            <i className="bi bi-cart-plus"></i>
+                            {cartLength ? <span className="cartLength badge bg-danger cartL">{cartLength}</span> : null}
+                            <i className="bi bi-cart"></i>
                         </button>
                         <div className="popup-div" style={popup ? {display: 'block'} : {display: 'none'}}>
                             <div className="delta"></div>
-                            <PopoverHeader>Cart</PopoverHeader>
-                            <PopoverBody></PopoverBody>
+                            <PopoverHeader className="d-flex" style={{justifyContent: 'space-between'}}>Cart <i onClick={toggle} className="bi bi-x-circle rever"></i></PopoverHeader>
+                            <PopoverBody>{cartStore.map(item => (
+                                <div key={item._id} className="col d-flex">
+                                    <img src={item.book_picture} alt=""/>
+                                    <div className="row" style={{marginLeft: '2px'}}>
+                                        <h5>{item.book_name}</h5>
+                                        <p>{item.book_price}</p>
+                                    </div>
+                                    <i onClick={() => removeFromCart(item._id)}  className="bi bi-x-circle"></i>
+                                </div>
+                            ))}</PopoverBody>
                         </div>
                     </span>
                 </div>

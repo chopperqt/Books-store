@@ -23,7 +23,7 @@ export const cartReducer = (
         case ACTION_REMOVE_BOOK_FROM_CART:
             return {
                 ...state,
-                cart: state.cart.filter(item => item !== payload)
+                cart: state.cart.filter(item => item._id !== payload)
             }
         default:
             return {

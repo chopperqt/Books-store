@@ -20,7 +20,7 @@ const SearchItem = ({data}) => {
 
   function actionBtn() {
     if (color) {
-      dispath(actionAddBookToCart(data._id))
+      dispath(actionAddBookToCart(data))
     }else {
       dispath(actionRemoveBookFromCart(data._id))
     }
@@ -28,7 +28,7 @@ const SearchItem = ({data}) => {
     setText(prev => !prev)
   }
   useEffect(() => {
-    let filterCart = cart.filter(item => item === data._id);
+    let filterCart = cart.filter(item => item._id === data._id);
 
     if (filterCart.length) {
       setColor(prev => !prev);
