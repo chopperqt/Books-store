@@ -9,7 +9,7 @@ import './style.css';
 const SearchItem = ({data}) => {
   const cart = useSelector(state => state.cart.cart)
   const dispath = useDispatch();
-  const short = data.book_descriprion.slice(0,120);
+  const short = data.book_description.slice(0,120);
   const [color, setColor] = useState(true);
   const [text, setText] = useState(true);
 

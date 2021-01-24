@@ -89,3 +89,9 @@ header {
     border: 10px solid transparent;
     border-bottom: 10px solid #f0f0f0;
 }
+.delta:before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+}

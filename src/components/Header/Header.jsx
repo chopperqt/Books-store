@@ -10,6 +10,8 @@ import {Button,Popover, PopoverHeader, PopoverBody} from 'reactstrap';
 const Header = () => {
 
     const menuWidth = useSelector(state => state.menu.menuType);
+    const cartStore = useSelector(state => state.cart.cart);
+    const bookStore = useSelector(state => state.books.booksItems);
     const [fullScreen,setFullscreen] = useState(false);
     const [searchValue, setSearchValue] = useState('');
     const [popoverOpen, setPopoverOpen] = useState(false);
@@ -20,7 +22,8 @@ const Header = () => {
     }
 
     const dispath = useDispatch();
-
+    
+    //actions
     const {
         actionOpenFullMenu
     } = actionsMenu;
@@ -39,6 +42,9 @@ const Header = () => {
         console.log(searchValue)
         dispath(actionSearchBookData(searchValue))
     }
+
+
+
 
     useEffect(() => {
         document.addEventListener('fullscreenchange', event => {
@@ -82,7 +88,7 @@ const Header = () => {
                         <div className="popup-div" style={popup ? {display: 'block'} : {display: 'none'}}>
                             <div className="delta"></div>
                             <PopoverHeader>Cart</PopoverHeader>
-                            <PopoverBody>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</PopoverBody>
+                            <PopoverBody></PopoverBody>
                         </div>
                     </span>
                 </div>

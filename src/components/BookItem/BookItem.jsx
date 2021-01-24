@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 const BookItem = ({data}) => {
     const dispath = useDispatch();
     const cart = useSelector(state => state.cart.cart);
-    const short = data.book_descriprion.slice(0,120);
+    const short = data.book_description.slice(0,120);
     const [text, setText] = useState(true)
     const [color, setColor] = useState(true);
 
@@ -19,7 +19,7 @@ const BookItem = ({data}) => {
     function actionBtn(event) {
 
         if (color) {
-            dispath(actionAddBookToCart(data._id))   
+            dispath(actionAddBookToCart(data))   
         }else {
             dispath(actionRemoveBookFromCart(data._id))
         }
@@ -29,7 +29,7 @@ const BookItem = ({data}) => {
     }
 
     useEffect(() => {
-        let filterCart = cart.filter(item => item === data._id)
+        let filterCart = cart.filter(item => item._id === data._id)
         
         if (filterCart.length) {
             setColor(prev => !prev);
