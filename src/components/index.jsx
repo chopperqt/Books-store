@@ -8,6 +8,7 @@ import BookProfile from './BookProfile';
 import SearchItem from './SearchItem';
 import CartsItems from './CartsItems';
 import CommentItem from './CommentItem';
+import AuthorsItems from './AuthorsItems';
 
 export {
     Wrapper,
@@ -19,5 +20,6 @@ export {
     BookProfile,
     SearchItem,
     CartsItems,
-    CommentItem
+    CommentItem,
+    AuthorsItems
 }

@@ -24,7 +24,8 @@ import {
   BookItem,
   BooksItems,
   BookProfile,
-  CartsItems
+  CartsItems,
+  AuthorsItems
 } from './components/'
 
 
@@ -88,20 +89,21 @@ const App = () => {
             </Route>
             <Route path="/cart">
               <nav aria-label="breadcrumb" style={{marginTop: '20px',marginBottom: '0 !important'}}>
-                  <ol class="breadcrumb mb-0">
-                      <li class="breadcrumb-item"><NavLink to="/">Home</NavLink></li>
-                      <li class="breadcrumb-item active" aria-current="page">Cart</li>
+                  <ol className="breadcrumb mb-0">
+                      <li className="breadcrumb-item"><NavLink to="/">Home</NavLink></li>
+                      <li className="breadcrumb-item active" aria-current="page">Cart</li>
                   </ol>
               </nav>
               <CartsItems />
             </Route>
             <Route path="/authors">
             <nav aria-label="breadcrumb" style={{marginTop: '20px',marginBottom: '0 !important'}}>
-                  <ol class="breadcrumb mb-0">
-                      <li class="breadcrumb-item"><NavLink to="/">Home</NavLink></li>
-                      <li class="breadcrumb-item active" aria-current="page">Authors</li>
+                  <ol className="breadcrumb mb-0">
+                      <li className="breadcrumb-item"><NavLink to="/">Home</NavLink></li>
+                      <li className="breadcrumb-item active" aria-current="page">Authors</li>
                   </ol>
               </nav>
+              <AuthorsItems />
             </Route>
             <Route path="/">
               <div>
