@@ -14,6 +14,7 @@ const Dashboard = () => {
     const menuWidth = useSelector(state => state.menu.menuType);
     const cartLength = useSelector(state => state.cart.cart.length);
     const books = useSelector(state => state.books.booksItems.length)
+    const authors = useSelector(state => state.authors.authors.length)
 
     const styless = {
         width: menuWidth === 1 ? '0px' : menuWidth === 2 ? '90px' : '150px',
@@ -39,6 +40,11 @@ const Dashboard = () => {
                 <i className="bi bi-book" style={{fontSize: '40px'}}></i>
                 <p className="fs-6">Books</p>
                 {books ? <span className="bookLength badge bg-primary">{books}</span> : null}
+            </NavLink>
+            <NavLink to="/authors" className="w-100 d-grid justify-content-md-center linking">
+                <i className="bi bi-people" style={{fontSize: '40px'}}></i>
+                <p className="fs-6">Authors</p>
+                {authors ? <span className="bookLength badge bg-primary">{authors}</span>: null}
             </NavLink>
         </div>
     );

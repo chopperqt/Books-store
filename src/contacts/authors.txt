@@ -1,0 +1,16 @@
+Сущность Authors
+
+1. _id                  int             Уникальный номер
+2. author_firstname     String          Имя
+3. author_lastname      String          Фамилия
+4. author_bdate         Data            Дата рождения
+5. author_books         Array           Книги
+6. author_age           int             Возраст (по хорошему сделать там что бы он высчитывался от даты рождения тогда не надо будет его обновлять в бд)
+7. author_country       String          Страна
+8. author_rating        Number          Рейтин
+9. author_comments      Array           Комментарии
+10.author_description   String          Описание
+11.author_picture       String          Картинка
+12.author_email         String          Имеил автора
+13.author_address       String          Адресс
+14.author_phone         Number/Str      Номер телефона

@@ -46,6 +46,7 @@ header {
 }
 .popup-item {
     position: relative;
+    margin-right: 10px;
 }
 .popup-div {
     display: none;
@@ -67,6 +68,7 @@ header {
 .popup-div img {
     width: 50px;
     height: 60px;
+    position: relative;
 }
 .delta {
     position: relative;
@@ -91,18 +93,35 @@ header {
     bottom: 20px;
 }
 .cartL {
-    top: -5px !important;
+    top: 2px !important;
     font-size: 10px;
 }
 .cartL:active {
     top: -5px !important;
 }
 .cartL:focus {
-    top: -5px !important;
-}
-.rever {
-    
+    top: -10px !important;
 }
 .rever:hover {
     color: #0d6efd;
+}
+.miniCart {
+    margin-top: 5px;
+    align-items: center;
+}
+.miniCart h5 {
+    margin-bottom: 0 !important;
+}
+.miniCart p {
+    margin-bottom: 0 !important;
+}
+.miniCart div {
+    padding-left: 10px;
+}
+.input-group {
+    width: 350px;
+    justify-content: flex-end;
+}
+.input-group input {
+    max-width: 300px;
 }

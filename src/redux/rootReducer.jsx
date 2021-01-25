@@ -6,6 +6,7 @@ import { menuReducer } from './Menu/reducer';
 import { booksStore } from './Books/reducer';
 import { headerReducer } from './Header/reducer';
 import { cartReducer } from './Cart/reducer';
+import { authorsReducer } from './Authors/reducer';
 
 
 export const rootReducer =  combineReducers({
@@ -14,4 +15,5 @@ export const rootReducer =  combineReducers({
     books: booksStore,
     header: headerReducer,
     cart: cartReducer,
+    authors: authorsReducer,
 });

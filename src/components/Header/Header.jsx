@@ -6,6 +6,7 @@ import actionsHeader from '../../redux/Header/actions';
 import actionsBooks from '../../redux/Books/actions';
 import actionsCart from '../../redux/Cart/actions';
 import {Button,Popover, PopoverHeader, PopoverBody} from 'reactstrap';
+import { NavLink } from 'react-router-dom';
 
 
 const Header = () => {
@@ -82,10 +83,14 @@ const Header = () => {
     return (
         <header>
             <div className="col-md-12 h-100 d-flex align-items-md-center d-flex justify-content-around">
-                <div className="col-md-8">
+                <div className="col-md-6">
                     <button onClick={actionMenu} className="splitMenuBtn">
                         <AnimateButton menuWidth={menuWidth} />
                     </button>
+                    
+                    
+                </div>
+                <div className="col-md-4 d-flex justify-content-end">
                     <button  onClick={actionFullScreen} data-toggle-fullscreen="false"  className="fillSizeBtn">
                         <i className="bi bi-arrows-fullscreen"></i>
                     </button>
@@ -96,21 +101,21 @@ const Header = () => {
                         </button>
                         <div className="popup-div" style={popup ? {display: 'block'} : {display: 'none'}}>
                             <div className="delta"></div>
-                            <PopoverHeader className="d-flex" style={{justifyContent: 'space-between'}}>Cart <i onClick={toggle} className="bi bi-x-circle rever"></i></PopoverHeader>
-                            <PopoverBody>{cartStore.map(item => (
-                                <div key={item._id} className="col d-flex">
-                                    <img src={item.book_picture} alt=""/>
-                                    <div className="row" style={{marginLeft: '2px'}}>
-                                        <h5>{item.book_name}</h5>
+                            <PopoverHeader className="d-flex" style={{justifyContent: 'space-between',position: 'fixed',zIndex: '99',width: '298px'}}>Cart <i onClick={toggle} className="bi bi-x-circle rever"></i></PopoverHeader>
+                            <PopoverBody style={{marginTop: "20px"}}>{cartStore.map(item => (
+                                <div key={item._id} className="col-md-12 d-flex miniCart">
+                                    <img src={item.book_picture} alt="" className="col-md-3"/>
+                                    <div className="col-md-8" style={{marginLeft: '2px'}}>
+                                        <NavLink to={'/book/'+item._id}>
+                                            <h5>{item.book_name}</h5>
+                                        </NavLink>
                                         <p>{item.book_price}</p>
                                     </div>
-                                    <i onClick={() => removeFromCart(item._id)}  className="bi bi-x-circle"></i>
+                                    <i onClick={() => removeFromCart(item._id)}  className="bi bi-x-circle col-md-1"></i>
                                 </div>
                             ))}</PopoverBody>
                         </div>
                     </span>
-                </div>
-                <div className="col-md-2">
                     <div className="input-group">
                         <input onChange={e => setSearchValue(e.target.value)} type="text" className="form-control" aria-label="Recipient's username" aria-describedby="button-addon2" />
                         <button onClick={searching} className="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>

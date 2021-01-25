@@ -95,6 +95,14 @@ const App = () => {
               </nav>
               <CartsItems />
             </Route>
+            <Route path="/authors">
+            <nav aria-label="breadcrumb" style={{marginTop: '20px',marginBottom: '0 !important'}}>
+                  <ol class="breadcrumb mb-0">
+                      <li class="breadcrumb-item"><NavLink to="/">Home</NavLink></li>
+                      <li class="breadcrumb-item active" aria-current="page">Authors</li>
+                  </ol>
+              </nav>
+            </Route>
             <Route path="/">
               <div>
                <input type="test" name="add" onChange={handleInput} />
