@@ -1,0 +1,19 @@
+Сущность Users
+
+1. _id                int             Уникальный номер
+2. user_firstname     String          Имя
+3. user_lastname      String          Фамилия
+4. user_bdate         Data            Дата рождения
+5. user_update        Data            Последний раз был онлайн
+6. user_bookmark      Array           Книги
+7. user_age           int             Возраст (по хорошему сделать там что бы он высчитывался от даты рождения тогда не надо будет его обновлять в бд)
+8. user_country       String          Страна
+9. user_rating        Number          Рейтин
+10.user_comments      Array           Комментарии
+11.user_picture       String          Картинка
+12.user_email         String          Имеил автора
+13.user_address       String          Адресс
+14.user_phone         Number/Str      Номер телефона
+15.user_follow        Array           Отслеживание
+16.user_buybook       Array           Купленные книги
+17.user_create        Data            Дата создания профиля

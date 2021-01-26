@@ -11,6 +11,7 @@ const BookProfile = () => {
     const books = useSelector(state => state.books.booksItems);
     const [areaTextLength, setAreaTextLength] = useState(0);
     const {id} = useParams();
+    const [commentValue, setCommentValue] = useState('');
 
     const filterBooks = books.filter(item => item._id === id);
     const dispath = useDispatch();
@@ -22,12 +23,35 @@ const BookProfile = () => {
     let picture = filterBooks[0].book_picture;
 
     const {
-        actionSearchBookData
+        actionSearchBookData,
+        actionSendBookComment
     } = actionsBooks
     
     useEffect(() => {
         dispath(actionSearchBookData())
-    }, [])
+    }, []);
+
+    function sendComment() {
+
+        console.log('work')
+        let book_id = filterBooks[0]._id;
+        let user_id = '600ffbc6d55857f4929aac6c';
+
+        let data = {
+            book_id: book_id,
+            user_id: user_id,
+            comment: commentValue
+        }
+
+        if (areaTextLength) {
+            dispath(actionSendBookComment(data))
+        }
+        
+
+        setCommentValue('');
+        setAreaTextLength(0);
+    }
+
 
     return (
         <div className="col-md-12 p-5">
@@ -57,9 +81,13 @@ const BookProfile = () => {
             <div className="col-md-12 mt-4">
                 <h2>Add comment:</h2>
                 <div className="form-floating mt-4">
-                    <textarea className="form-control" onChange={e => setAreaTextLength(e.target.value.length)} placeholder="Leave a comment here" id="floatingTextarea2" style={{height: '100px'}}></textarea>
+                    <textarea className="form-control" value={commentValue} onChange={e => {setAreaTextLength(e.target.value.length);setCommentValue(e.target.value)}} placeholder="Leave a comment here" id="floatingTextarea2" style={{height: '100px'}}></textarea>
                     <label for="floatingTextarea2">Comments</label><label style={{left: '80px'}} htmlFor="floatingTextarea2">{areaTextLength}</label>
                 </div>
+                <div className="col-md-12 d-flex justify-content-end">
+                    <button onClick={sendComment} className="btn btn-primary d-flex mt-2">Send</button>
+                </div>
+                
             </div>
             <div className="col-md-12 col-lg-12 mt-4">
                 <h2>Comments:</h2>
