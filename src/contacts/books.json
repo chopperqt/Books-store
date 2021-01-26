@@ -6,7 +6,16 @@
     "book_authors": [],
     "book_price": 2763,
     "book_rating": 1,
-    "book_comments": [],
+    "book_comments": [
+      {
+        "user_id": "dawd8aw7d8aw7daw",
+        "comment": "This book is so nice for reading to children"
+      },
+      {
+        "user_id": "w9a8dad8a9wdaw",
+        "comment": "Omg this book so interesting! Read it all!"
+      }
+    ],
     "book_sells": 312,
     "book_books": 638,
     "book_description": "Nulla nulla do anim duis laboris est laborum do Lorem laboris. Ut in culpa deserunt labore officia consectetur ut. Eu laborum deserunt minim duis nostrud nisi in excepteur anim tempor exercitation elit enim. Dolor veniam cupidatat aliqua non qui aliquip non mollit Lorem ea laboris duis tempor.\r\n",
