@@ -9,6 +9,7 @@ const initialState = {
     limit: 20,
     booksItems: bookItems,
     searchBook: [],
+    searching: false
 };
 
 const {
@@ -56,6 +57,7 @@ export const booksStore = (
                 ...state,
                 booksItems: array
             }
+
         case SEARCH_BOOK_DATA:
             if (payload.length !== 0) {
                 console.log(state);
@@ -67,18 +69,21 @@ export const booksStore = (
                     console.log('In ')
                     return {
                         ...state,
-                        searchBook: filterSeacthBook
+                        searchBook: filterSeacthBook,
+                        searching: true
                     }
                 }else {
                     return {
                         ...state,
-                        searchBook: false
+                        searchBook: false,
+                        searching: true,
                     }
                 }
             }else {
                 return {
                     ...state,
-                    searchBook: []
+                    searchBook: [],
+                    searching: false
                 }
             }
 

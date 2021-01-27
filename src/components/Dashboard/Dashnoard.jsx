@@ -32,7 +32,7 @@ const Dashboard = () => {
     return (
         <div className="dashboard d-grid align-items-md-center justify-content-md-center align-content-md-center" style={styless}>
             <NavLink to="/cart" className="w-100 d-grid justify-content-md-center linking">
-                <i className="bi bi-cart-plus" style={{fontSize: '40px'}}></i>
+                <i className="bi bi-cart" style={{fontSize: '40px'}}></i>
                 <p className="fs-6">Cart</p>
                 {cartLength ? <span className="cartLength badge bg-danger">{cartLength}</span> : null}
             </NavLink>

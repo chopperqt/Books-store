@@ -93,7 +93,7 @@ const BookProfile = () => {
             <div className="col-md-12 col-lg-12 mt-4">
                 <h2><i className="bi bi-chat me-2 comments_leng"><span>{filterBooks[0].book_comments.length}</span></i>Comments:</h2>
                 {filterBooks[0].book_comments.length ? filterBooks[0].book_comments.map(item => (
-                    <CommentItem kye={item._id} data={item} />
+                    <CommentItem key={item._id} data={item} />
                 )) : <h5 className="text-muted">There are no comments. Be the first!</h5>}
                 
             </div>

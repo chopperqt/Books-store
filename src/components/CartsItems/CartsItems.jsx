@@ -20,9 +20,8 @@ const CartsItems = ({data}) => {
             
             <Suspense fallback={<div>Загрузка...</div>}>
                 {
-                    cartStore.length ? cartStore.map(item => (<SearchItem data={item} />)) : <h1>В корзине ничего нет</h1>
+                    cartStore.length ? cartStore.map(item => (<SearchItem data={item} key={item._id} />)) : <h1 className="w-100">There is nothing in the basket</h1>
                 }
-
             </Suspense>
         </div>
     );

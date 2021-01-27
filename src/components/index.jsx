@@ -9,6 +9,8 @@ import SearchItem from './SearchItem';
 import CartsItems from './CartsItems';
 import CommentItem from './CommentItem';
 import AuthorsItems from './AuthorsItems';
+import AuthorProfile from './AuthorProfile/';
+
 
 export {
     Wrapper,
@@ -21,5 +23,6 @@ export {
     SearchItem,
     CartsItems,
     CommentItem,
-    AuthorsItems
+    AuthorsItems,
+    AuthorProfile
 }

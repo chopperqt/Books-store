@@ -25,7 +25,8 @@ import {
   BooksItems,
   BookProfile,
   CartsItems,
-  AuthorsItems
+  AuthorsItems,
+  AuthorProfile
 } from './components/'
 
 
@@ -34,6 +35,7 @@ const App = () => {
   const posts = useSelector(state => state.posts.posts);
   const booksStore = useSelector(state => state.books.booksItems);
   const limit = useSelector(state => state.books.limit);
+  const searching = useSelector(state => state.books.searching);
 
   const dispatch = useDispatch();
   const {
@@ -80,12 +82,16 @@ const App = () => {
                   </ol>
               </nav>
               <BooksItems data={posts} />
-              <div className="col-md-12 d-flex justify-content-md-center mt-4">
-                {(limit >= booksStore.length) ? null : <button onClick={loadMoreBooks} className="btn btn-primary">Загрузить ещё</button>}
-              </div>
+              {searching ? null : <div className="col-md-12 d-flex justify-content-md-center mt-4">
+                {(limit >= booksStore.length) ? null : <button onClick={loadMoreBooks} className="btn btn-primary">Load more</button>}
+              </div>}
+              
             </Route>
             <Route path="/book/:id">
               <BookProfile />
+            </Route>
+            <Route path="/author/:id">
+              <AuthorProfile />
             </Route>
             <Route path="/cart">
               <nav aria-label="breadcrumb" style={{marginTop: '20px',marginBottom: '0 !important'}}>

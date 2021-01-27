@@ -21,17 +21,15 @@ const BooksItems = ({data}) => {
 
     return (
         <div className="row row-cols-1 row-cols-md-2 g-6 row-cols-sm-1 row-cols-lg-3 row-cols-xl-4 ml-auto mr-3">
-            
             <Suspense fallback={<div>Загрузка...</div>}>
                 {
-
                     (searchBook === false) ? <h2>Nothing found</h2> : searchBook.length ? searchBook.map(item => (<SearchItem data={item} />)) : books.map(item => (
                         <BookItem key={item._id} data={item} />
                     ))
                 }
-
             </Suspense>
         </div>
+        
     );
 }
  
