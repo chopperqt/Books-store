@@ -10,6 +10,7 @@ import {CommentItem} from '../../components';
 const BookProfile = () => {
     const books = useSelector(state => state.books.booksItems);
     const [areaTextLength, setAreaTextLength] = useState(0);
+    const [user, setUser] = useState(true);
     const {id} = useParams();
     const [commentValue, setCommentValue] = useState('');
 
@@ -28,7 +29,7 @@ const BookProfile = () => {
     } = actionsBooks
     
     useEffect(() => {
-        dispath(actionSearchBookData())
+        //dispath(actionSearchBookData())
     }, []);
 
     function sendComment() {
@@ -39,7 +40,7 @@ const BookProfile = () => {
 
         let data = {
             book_id: book_id,
-            user_id: user_id,
+            user_id: user,
             comment: commentValue
         }
 
@@ -56,10 +57,10 @@ const BookProfile = () => {
     return (
         <div className="col-md-12 p-5">
             <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><NavLink to="/">Home</NavLink></li>
-                    <li class="breadcrumb-item"><NavLink to="/books">Books</NavLink></li>
-                    <li class="breadcrumb-item active" aria-current="page">{name}</li>
+                <ol className="breadcrumb">
+                    <li className="breadcrumb-item"><NavLink to="/">Home</NavLink></li>
+                    <li className="breadcrumb-item"><NavLink to="/books">Books</NavLink></li>
+                    <li className="breadcrumb-item active" aria-current="page">{name}</li>
                 </ol>
             </nav>
             <div className="col-md-12 d-md-flex d-lx-flex">
@@ -90,9 +91,9 @@ const BookProfile = () => {
                 
             </div>
             <div className="col-md-12 col-lg-12 mt-4">
-                <h2>Comments:</h2>
+                <h2><i className="bi bi-chat me-2 comments_leng"><span>{filterBooks[0].book_comments.length}</span></i>Comments:</h2>
                 {filterBooks[0].book_comments.length ? filterBooks[0].book_comments.map(item => (
-                    <CommentItem data={item} />
+                    <CommentItem kye={item._id} data={item} />
                 )) : <h5 className="text-muted">There are no comments. Be the first!</h5>}
                 
             </div>

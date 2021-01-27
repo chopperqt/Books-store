@@ -44,7 +44,6 @@ const Header = () => {
     }
 
     const searching = () => {
-        console.log(searchValue)
         dispath(actionSearchBookData(searchValue))
     }
 
@@ -87,13 +86,9 @@ const Header = () => {
                     <button onClick={actionMenu} className="splitMenuBtn">
                         <AnimateButton menuWidth={menuWidth} />
                     </button>
-                    
-                    
                 </div>
                 <div className="col-md-4 d-flex justify-content-end">
-                    <button  onClick={actionFullScreen} data-toggle-fullscreen="false"  className="fillSizeBtn">
-                        <i className="bi bi-arrows-fullscreen"></i>
-                    </button>
+                    
                     <span className="popup-item">
                         <button onClick={toggle} className="fillSizeBtn">
                             {cartLength ? <span className="cartLength badge bg-danger cartL">{cartLength}</span> : null}
@@ -102,7 +97,7 @@ const Header = () => {
                         <div className="popup-div" style={popup ? {display: 'block'} : {display: 'none'}}>
                             <div className="delta"></div>
                             <PopoverHeader className="d-flex" style={{justifyContent: 'space-between',position: 'fixed',zIndex: '99',width: '298px'}}>Cart <i onClick={toggle} className="bi bi-x-circle rever"></i></PopoverHeader>
-                            <PopoverBody style={{marginTop: "20px"}}>{cartStore.map(item => (
+                            <PopoverBody style={{marginTop: "20px"}}>{cartStore.length ? cartStore.map(item => (
                                 <div key={item._id} className="col-md-12 d-flex miniCart">
                                     <img src={item.book_picture} alt="" className="col-md-3"/>
                                     <div className="col-md-8" style={{marginLeft: '2px'}}>
@@ -113,9 +108,12 @@ const Header = () => {
                                     </div>
                                     <i onClick={() => removeFromCart(item._id)}  className="bi bi-x-circle col-md-1"></i>
                                 </div>
-                            ))}</PopoverBody>
+                            )): <p className="text-muted mt-4">Add book to cart</p>}</PopoverBody>
                         </div>
                     </span>
+                    <button  onClick={actionFullScreen} data-toggle-fullscreen="false"  className="fillSizeBtn">
+                        <i className="bi bi-arrows-fullscreen"></i>
+                    </button>
                     <div className="input-group">
                         <input onChange={e => setSearchValue(e.target.value)} type="text" className="form-control" aria-label="Recipient's username" aria-describedby="button-addon2" />
                         <button onClick={searching} className="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>

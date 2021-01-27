@@ -74,9 +74,9 @@ const App = () => {
           <Switch>
             <Route path="/books">
               <nav aria-label="breadcrumb" style={{marginTop: '20px',marginBottom: '0 !important'}}>
-                  <ol class="breadcrumb mb-0">
-                      <li class="breadcrumb-item"><NavLink to="/">Home</NavLink></li>
-                      <li class="breadcrumb-item active" aria-current="page">Books</li>
+                  <ol className="breadcrumb mb-0">
+                      <li className="breadcrumb-item"><NavLink to="/">Home</NavLink></li>
+                      <li className="breadcrumb-item active" aria-current="page">Books</li>
                   </ol>
               </nav>
               <BooksItems data={posts} />

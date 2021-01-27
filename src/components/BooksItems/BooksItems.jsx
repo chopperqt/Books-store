@@ -15,13 +15,18 @@ const BooksItems = ({data}) => {
     let books = booksStore.slice(0,limit);
 
 
+//Если поиск = фолсе тогда мы выводим то что ничего не найдено
+//Иначе мы проверяем массив на то есть ли в нём элементы если они есть тогда мы их выводим
+//Иначе мы отображем все книги
+
     return (
         <div className="row row-cols-1 row-cols-md-2 g-6 row-cols-sm-1 row-cols-lg-3 row-cols-xl-4 ml-auto mr-3">
             
             <Suspense fallback={<div>Загрузка...</div>}>
                 {
-                    searchBook.length ? searchBook.map(item => (<SearchItem data={item} />)) : books.map(item => (
-                        <BookItem data={item} />
+
+                    (searchBook === false) ? <h2>Nothing found</h2> : searchBook.length ? searchBook.map(item => (<SearchItem data={item} />)) : books.map(item => (
+                        <BookItem key={item._id} data={item} />
                     ))
                 }
 
