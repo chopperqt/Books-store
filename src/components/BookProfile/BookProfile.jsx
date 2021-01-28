@@ -4,6 +4,7 @@ import {useParams} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {NavLink} from 'react-router-dom';
 import actionsBooks from '../../redux/Books/actions';
+import actionsUsers from '../../redux/Users/actions';
 import { useEffect, useState } from 'react';
 import {CommentItem} from '../../components';
 
@@ -27,8 +28,12 @@ const BookProfile = () => {
         actionSearchBookData,
         actionSendBookComment
     } = actionsBooks
-    
+    const {
+        actionsGetUsers
+    } = actionsUsers;
+
     useEffect(() => {
+        dispath(actionsGetUsers())
         //dispath(actionSearchBookData())
     }, []);
 
