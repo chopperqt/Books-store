@@ -1,5 +1,5 @@
 import './style.css';
-
+import axios from 'axios'
 import {useParams} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {NavLink} from 'react-router-dom';
@@ -9,33 +9,52 @@ import { useEffect, useState } from 'react';
 import {CommentItem} from '../../components';
 
 const BookProfile = () => {
+    //stors
+
     const books = useSelector(state => state.books.booksItems);
+    const isLoad = useSelector(state => state.books.isLoad);
+
+    //useState
+
     const [areaTextLength, setAreaTextLength] = useState(0);
     const [user, setUser] = useState(true);
-    const {id} = useParams();
     const [commentValue, setCommentValue] = useState('');
 
-    const filterBooks = books.filter(item => item._id === id);
-    const dispath = useDispatch();
+    const {id} = useParams();
+    
 
-    //data
-    let name = filterBooks[0].book_name;
-    let description = filterBooks[0].book_descriprion;
-    let country = filterBooks[0].book_county;
-    let picture = filterBooks[0].book_picture;
+    const filterBooks = books.filter(item => item._id === id); 
+
+    const dispatch = useDispatch();
 
     const {
         actionSearchBookData,
-        actionSendBookComment
+        actionSendBookComment,
+        actionGetBooks
     } = actionsBooks
     const {
         actionsGetUsers
     } = actionsUsers;
 
+    //fetch function 
+    function fetchBooks() {
+        axios.get('https://api.allorigins.win/raw?url=http://test.zrkcompany.ru/books.json')
+        .then(response => {
+          dispatch(actionGetBooks(response.data))
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
+      }
+
+
     useEffect(() => {
-        dispath(actionsGetUsers())
-        //dispath(actionSearchBookData())
-    }, []);
+        if (!isLoad) { 
+            //fetchBooks()
+        }else {
+            //filterBooks =  
+        }
+    }, [])
 
     function sendComment() {
 
@@ -50,7 +69,7 @@ const BookProfile = () => {
         }
 
         if (areaTextLength) {
-            dispath(actionSendBookComment(data))
+            dispatch(actionSendBookComment(data))
         }
         
 
@@ -60,17 +79,18 @@ const BookProfile = () => {
 
 
     return (
-        <div className="col-md-12 p-5">
+        <div>
+            {/* {isLoad ? <div className="col-md-12 p-5">
             <nav aria-label="breadcrumb">
                 <ol className="breadcrumb">
                     <li className="breadcrumb-item"><NavLink to="/">Home</NavLink></li>
                     <li className="breadcrumb-item"><NavLink to="/books">Books</NavLink></li>
-                    <li className="breadcrumb-item active" aria-current="page">{name}</li>
+                    <li className="breadcrumb-item active" aria-current="page">{filterBooks[0].book_name}</li>
                 </ol>
             </nav>
             <div className="col-md-12 d-md-flex d-lx-flex">
                 <div className="col-md-6 col-lg-6 col-sm-12">
-                    <img src={picture} alt={name} style={{height: '600px', width: '100%'}} />
+                    <img src={filterBooks[0].book_picture} alt={filterBooks[0].book_name} style={{height: '600px', width: '100%'}} />
                 </div>
                 <div className="col-md-6 pr-5 col-lg-6">
                     <h1>Name: {filterBooks[0].book_name}</h1>
@@ -102,6 +122,7 @@ const BookProfile = () => {
                 )) : <h5 className="text-muted">There are no comments. Be the first!</h5>}
                 
             </div>
+        </div> : "Загрузка...."} */}
         </div>
     );
 }
