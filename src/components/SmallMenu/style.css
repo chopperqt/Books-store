@@ -1,0 +1,8 @@
+.smallWrap {
+    height: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    display: grid;
+    align-items: start;
+    align-content: flex-start;
+}

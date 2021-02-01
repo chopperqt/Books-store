@@ -20,7 +20,7 @@ const Wrapper = ({children}) => {
     }, [])
 
     const styless = {
-        marginLeft: paddingWrapper === 1 ? '0px' : paddingWrapper === 2 ? '90px' : '150px',  
+        marginLeft: paddingWrapper === 1 ? '0px' : paddingWrapper === 2 ? '90px' : '320px',  
         transition: '.15s ease-in-out'
     }
 

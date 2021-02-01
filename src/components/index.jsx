@@ -10,6 +10,7 @@ import CartsItems from './CartsItems';
 import CommentItem from './CommentItem';
 import AuthorsItems from './AuthorsItems';
 import AuthorProfile from './AuthorProfile/';
+import SmallMenu from './SmallMenu';
 
 
 export {
@@ -24,5 +25,6 @@ export {
     CartsItems,
     CommentItem,
     AuthorsItems,
-    AuthorProfile
+    AuthorProfile,
+    SmallMenu
 }

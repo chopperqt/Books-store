@@ -53,52 +53,55 @@ const BookProfile = () => {
         setAreaTextLength(0);
     }
 
+    if (books.length !== 0) { 
+        return (
+            <div className="col-md-12 p-5">
+                <nav aria-label="breadcrumb">
+                    <ol className="breadcrumb">
+                        <li className="breadcrumb-item"><NavLink to="/">Home</NavLink></li>
+                        <li className="breadcrumb-item"><NavLink to="/books">Books</NavLink></li>
+                        <li className="breadcrumb-item active" aria-current="page">{name}</li>
+                    </ol>
+                </nav>
+                <div className="col-md-12 d-md-flex d-lx-flex">
+                    <div className="col-md-6 col-lg-6 col-sm-12">
+                        <img src={picture} alt={name} style={{height: '600px', width: '100%'}} />
+                    </div>
+                    <div className="col-md-6 pr-5 col-lg-6">
+                        <h1>Name: {filterBooks[0].book_name}</h1>
+                        <h2>Pages: {filterBooks[0].book_pages}</h2>
+                        <h2>Age limit: {filterBooks[0].book_age_limit}</h2>
+                        <h3>Bestsellers: {filterBooks[0].book_bestsellers ? 'Yes' : 'No'}</h3>
+                        <h4>Rating: {filterBooks[0].book_rating} / 5</h4>
+                        <h5>Price: <span className="text-primary">{filterBooks[0].book_price}$</span></h5>
+                    </div>
+                </div>
+                <div className="col-md-12 mt-4">
+                    <p>{filterBooks[0].book_description}</p>
+                </div>
+                <div className="col-md-12 mt-4">
+                    <h2>Add comment:</h2>
+                    <div className="form-floating mt-4">
+                        <textarea className="form-control" value={commentValue} onChange={e => {setAreaTextLength(e.target.value.length);setCommentValue(e.target.value)}} placeholder="Leave a comment here" id="floatingTextarea2" style={{height: '100px'}}></textarea>
+                        <label for="floatingTextarea2">Comments</label><label style={{left: '80px'}} htmlFor="floatingTextarea2">{areaTextLength}</label>
+                    </div>
+                    <div className="col-md-12 d-flex justify-content-end">
+                        <button onClick={sendComment} className="btn btn-primary d-flex mt-2">Send</button>
+                    </div>
+                    
+                </div>
+                <div className="col-md-12 col-lg-12 mt-4">
+                    <h2><i className="bi bi-chat me-2 comments_leng"><span>{filterBooks[0].book_comments.length}</span></i>Comments:</h2>
+                    {filterBooks[0].book_comments.length ? filterBooks[0].book_comments.map(item => (
+                        <CommentItem key={item._id} data={item} />
+                    )) : <h5 className="text-muted">There are no comments. Be the first!</h5>}
+                    
+                </div>
+            </div>
+        );
+    }
 
-    return (
-        <div className="col-md-12 p-5">
-            <nav aria-label="breadcrumb">
-                <ol className="breadcrumb">
-                    <li className="breadcrumb-item"><NavLink to="/">Home</NavLink></li>
-                    <li className="breadcrumb-item"><NavLink to="/books">Books</NavLink></li>
-                    <li className="breadcrumb-item active" aria-current="page">{name}</li>
-                </ol>
-            </nav>
-            <div className="col-md-12 d-md-flex d-lx-flex">
-                <div className="col-md-6 col-lg-6 col-sm-12">
-                    <img src={picture} alt={name} style={{height: '600px', width: '100%'}} />
-                </div>
-                <div className="col-md-6 pr-5 col-lg-6">
-                    <h1>Name: {filterBooks[0].book_name}</h1>
-                    <h2>Pages: {filterBooks[0].book_pages}</h2>
-                    <h2>Age limit: {filterBooks[0].book_age_limit}</h2>
-                    <h3>Bestsellers: {filterBooks[0].book_bestsellers ? 'Yes' : 'No'}</h3>
-                    <h4>Rating: {filterBooks[0].book_rating} / 5</h4>
-                    <h5>Price: <span className="text-primary">{filterBooks[0].book_price}$</span></h5>
-                </div>
-            </div>
-            <div className="col-md-12 mt-4">
-                <p>{filterBooks[0].book_description}</p>
-            </div>
-            <div className="col-md-12 mt-4">
-                <h2>Add comment:</h2>
-                <div className="form-floating mt-4">
-                    <textarea className="form-control" value={commentValue} onChange={e => {setAreaTextLength(e.target.value.length);setCommentValue(e.target.value)}} placeholder="Leave a comment here" id="floatingTextarea2" style={{height: '100px'}}></textarea>
-                    <label for="floatingTextarea2">Comments</label><label style={{left: '80px'}} htmlFor="floatingTextarea2">{areaTextLength}</label>
-                </div>
-                <div className="col-md-12 d-flex justify-content-end">
-                    <button onClick={sendComment} className="btn btn-primary d-flex mt-2">Send</button>
-                </div>
-                
-            </div>
-            <div className="col-md-12 col-lg-12 mt-4">
-                <h2><i className="bi bi-chat me-2 comments_leng"><span>{filterBooks[0].book_comments.length}</span></i>Comments:</h2>
-                {filterBooks[0].book_comments.length ? filterBooks[0].book_comments.map(item => (
-                    <CommentItem key={item._id} data={item} />
-                )) : <h5 className="text-muted">There are no comments. Be the first!</h5>}
-                
-            </div>
-        </div>
-    );
+
 }
  
 export default BookProfile;
