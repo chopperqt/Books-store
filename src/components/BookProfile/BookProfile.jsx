@@ -77,7 +77,6 @@ const BookProfile = () => {
         setAreaTextLength(0);
     }
 
-<<<<<<< HEAD
     if (books.length !== 0) { 
         return (
             <div className="col-md-12 p-5">
@@ -85,12 +84,12 @@ const BookProfile = () => {
                     <ol className="breadcrumb">
                         <li className="breadcrumb-item"><NavLink to="/">Home</NavLink></li>
                         <li className="breadcrumb-item"><NavLink to="/books">Books</NavLink></li>
-                        <li className="breadcrumb-item active" aria-current="page">{name}</li>
+                        <li className="breadcrumb-item active" aria-current="page">{filterBooks[0].book_name}</li>
                     </ol>
                 </nav>
                 <div className="col-md-12 d-md-flex d-lx-flex">
                     <div className="col-md-6 col-lg-6 col-sm-12">
-                        <img src={picture} alt={name} style={{height: '600px', width: '100%'}} />
+                        <img src={filterBooks[0].book_picture} alt={filterBooks[0].book_name} style={{height: '600px', width: '100%'}} />
                     </div>
                     <div className="col-md-6 pr-5 col-lg-6">
                         <h1>Name: {filterBooks[0].book_name}</h1>
@@ -100,22 +99,6 @@ const BookProfile = () => {
                         <h4>Rating: {filterBooks[0].book_rating} / 5</h4>
                         <h5>Price: <span className="text-primary">{filterBooks[0].book_price}$</span></h5>
                     </div>
-=======
-
-    return (
-        <div>
-            {/* {isLoad ? <div className="col-md-12 p-5">
-            <nav aria-label="breadcrumb">
-                <ol className="breadcrumb">
-                    <li className="breadcrumb-item"><NavLink to="/">Home</NavLink></li>
-                    <li className="breadcrumb-item"><NavLink to="/books">Books</NavLink></li>
-                    <li className="breadcrumb-item active" aria-current="page">{filterBooks[0].book_name}</li>
-                </ol>
-            </nav>
-            <div className="col-md-12 d-md-flex d-lx-flex">
-                <div className="col-md-6 col-lg-6 col-sm-12">
-                    <img src={filterBooks[0].book_picture} alt={filterBooks[0].book_name} style={{height: '600px', width: '100%'}} />
->>>>>>> 565d2583397f33b646af023231fcbc8a53952ef1
                 </div>
                 <div className="col-md-12 mt-4">
                     <p>{filterBooks[0].book_description}</p>
@@ -139,16 +122,10 @@ const BookProfile = () => {
                     
                 </div>
             </div>
-<<<<<<< HEAD
         );
     }
 
 
-=======
-        </div> : "Загрузка...."} */}
-        </div>
-    );
->>>>>>> 565d2583397f33b646af023231fcbc8a53952ef1
 }
  
 export default BookProfile;

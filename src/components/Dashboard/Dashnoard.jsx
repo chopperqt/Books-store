@@ -25,13 +25,13 @@ const Dashboard = () => {
     }
     
     const {
-        actionInitialMenu
+        actionInitialMenu,
+        actionDasboardOpen
     } = MenuAction;
 
     useEffect(() => {
         dispath(actionInitialMenu())
-    }, [])
-
+    }, [dispath])
     return (
         <div className="dashboard" style={styless}>
             <div className="menu__left">
@@ -40,7 +40,7 @@ const Dashboard = () => {
                     <p className="fs-6">Cart</p>
                     {cartLength ? <span className="cartLength badge bg-danger">{cartLength}</span> : null}
                 </NavLink>
-                <NavLink to="/books" className="d-grid justify-content-md-center linking">
+                <NavLink to="/books" className="d-grid justify-content-md-center linking" onClick={() => dispath(actionDasboardOpen())}>
                     <i className="bi bi-book" style={{fontSize: '40px'}}></i>
                     <p className="fs-6">Books</p>
                     {books ? <span className="bookLength badge bg-primary">{books}</span> : null}

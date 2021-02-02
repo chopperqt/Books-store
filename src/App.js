@@ -34,6 +34,7 @@ import {
 const App = () => {
   const [inputText, setInputText] = useState('');
   const posts = useSelector(state => state.posts.posts);
+  const books = useSelector(state => state.books.booksItems)
   const booksStore = useSelector(state => state.books.booksItems);
   const limit = useSelector(state => state.books.limit);
   const searching = useSelector(state => state.books.searching);
@@ -54,8 +55,8 @@ const App = () => {
   
   useEffect(() => {
     dispatch(loadFromDataPosts())
-    //fetchUsers()
-    //fetchBooks()
+    fetchUsers()
+    fetchBooks()
   }, [])
   
   function fetchBooks() {

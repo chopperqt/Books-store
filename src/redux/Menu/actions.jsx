@@ -4,9 +4,11 @@ const actions = {
     CLOSE_MENU: 'CLOSE_MENU',
     INITIAL_MENU: "INITIAL_MENU",
 
-
     actionInitialMenu() {
         return {type: actions.INITIAL_MENU}
+    },
+    actionDasboardOpen(number) {
+        return {type: actions.OPEN_FULL_MENU, payload: number}
     },
     actionOpenFullMenu(item) {
         if (item === 1) {
