@@ -59,9 +59,9 @@ const Header = () => {
             }
         })
 
-        return (() => {
-            document.removeEventListener('fullscreenchange')
-        })
+        // return (() => {
+        //     document.removeEventListener('fullscreenchange')
+        // })
 
     }, [])
 

@@ -1,8 +1,9 @@
 import React , {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-
+import axios from 'axios';
 import LoadDataActions from './redux/Posts/actions';
 import actions from './redux/Books/actions';
+import actionsUsers from './redux/Users/actions';
 
 import {
   BrowserRouter as Router,
@@ -43,13 +44,40 @@ const App = () => {
     addItemToData,
   } = LoadDataActions;
   const {
-    actionMoreBooksData
+    actionMoreBooksData,
+    actionGetBooks
   } = actions
+  const {
+    actionsGetUsers,
+    actionsGetUsersError
+  } = actionsUsers;
   
   useEffect(() => {
     dispatch(loadFromDataPosts())
-  }, [dispatch])
+    //fetchUsers()
+    //fetchBooks()
+  }, [])
   
+  function fetchBooks() {
+    axios.get('https://api.allorigins.win/raw?url=http://test.zrkcompany.ru/books.json')
+    .then(response => {
+      dispatch(actionGetBooks(response.data))
+    })
+    .catch(function (error) {
+      console.log(error)
+    })
+  }
+  function fetchUsers() {
+    axios.get('https://api.allorigins.win/raw?url=http://test.zrkcompany.ru/users.json')
+    .then(response => {
+      dispatch(actionsGetUsers(response.data))
+    })
+    .catch(function (error) {
+      dispatch(actionsGetUsersError(error))
+    })
+  };
+
+
 
   function handleInput(e) {
     setInputText(prev => prev = e.target.value)

@@ -2,18 +2,18 @@ import books from '../../contacts/books.json';
 
 import actions from './actions';
 
-const bookItems = JSON.parse(JSON.stringify(books));
 
 
 const initialState = {
     limit: 20,
-    booksItems: bookItems,
+    booksItems: [],
     searchBook: [],
-    searching: false
+    searching: false,
+    isLoad: false
 };
 
 const {
-    FETCH_BOOKS_DATA,
+    GET_BOOKS,
     MORE_BOOKS_DATA,
     SEARCH_BOOK_DATA,
     SEND_BOOK_COMMENT
@@ -26,9 +26,11 @@ export const booksStore = (
     {type, payload}
 ) => {
     switch (type) {
-        case FETCH_BOOKS_DATA:
+        case GET_BOOKS:
             return {
                 ...state,
+                booksItems: payload,
+                isLoad: true
             }
         case MORE_BOOKS_DATA:
             return {

@@ -1,36 +1,60 @@
 import './style.css';
-
+import axios from 'axios'
 import {useParams} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {NavLink} from 'react-router-dom';
 import actionsBooks from '../../redux/Books/actions';
+import actionsUsers from '../../redux/Users/actions';
 import { useEffect, useState } from 'react';
 import {CommentItem} from '../../components';
 
 const BookProfile = () => {
+    //stors
+
     const books = useSelector(state => state.books.booksItems);
+    const isLoad = useSelector(state => state.books.isLoad);
+
+    //useState
+
     const [areaTextLength, setAreaTextLength] = useState(0);
     const [user, setUser] = useState(true);
-    const {id} = useParams();
     const [commentValue, setCommentValue] = useState('');
 
-    const filterBooks = books.filter(item => item._id === id);
-    const dispath = useDispatch();
+    const {id} = useParams();
+    
 
-    //data
-    let name = filterBooks[0].book_name;
-    let description = filterBooks[0].book_descriprion;
-    let country = filterBooks[0].book_county;
-    let picture = filterBooks[0].book_picture;
+    const filterBooks = books.filter(item => item._id === id); 
+
+    const dispatch = useDispatch();
 
     const {
         actionSearchBookData,
-        actionSendBookComment
+        actionSendBookComment,
+        actionGetBooks
     } = actionsBooks
-    
+    const {
+        actionsGetUsers
+    } = actionsUsers;
+
+    //fetch function 
+    function fetchBooks() {
+        axios.get('https://api.allorigins.win/raw?url=http://test.zrkcompany.ru/books.json')
+        .then(response => {
+          dispatch(actionGetBooks(response.data))
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
+      }
+
+
     useEffect(() => {
-        //dispath(actionSearchBookData())
-    }, []);
+        if (!isLoad) { 
+            //fetchBooks()
+        }else {
+            //filterBooks =  
+        }
+    }, [])
 
     function sendComment() {
 
@@ -45,7 +69,7 @@ const BookProfile = () => {
         }
 
         if (areaTextLength) {
-            dispath(actionSendBookComment(data))
+            dispatch(actionSendBookComment(data))
         }
         
 
@@ -53,6 +77,7 @@ const BookProfile = () => {
         setAreaTextLength(0);
     }
 
+<<<<<<< HEAD
     if (books.length !== 0) { 
         return (
             <div className="col-md-12 p-5">
@@ -75,6 +100,22 @@ const BookProfile = () => {
                         <h4>Rating: {filterBooks[0].book_rating} / 5</h4>
                         <h5>Price: <span className="text-primary">{filterBooks[0].book_price}$</span></h5>
                     </div>
+=======
+
+    return (
+        <div>
+            {/* {isLoad ? <div className="col-md-12 p-5">
+            <nav aria-label="breadcrumb">
+                <ol className="breadcrumb">
+                    <li className="breadcrumb-item"><NavLink to="/">Home</NavLink></li>
+                    <li className="breadcrumb-item"><NavLink to="/books">Books</NavLink></li>
+                    <li className="breadcrumb-item active" aria-current="page">{filterBooks[0].book_name}</li>
+                </ol>
+            </nav>
+            <div className="col-md-12 d-md-flex d-lx-flex">
+                <div className="col-md-6 col-lg-6 col-sm-12">
+                    <img src={filterBooks[0].book_picture} alt={filterBooks[0].book_name} style={{height: '600px', width: '100%'}} />
+>>>>>>> 565d2583397f33b646af023231fcbc8a53952ef1
                 </div>
                 <div className="col-md-12 mt-4">
                     <p>{filterBooks[0].book_description}</p>
@@ -98,10 +139,16 @@ const BookProfile = () => {
                     
                 </div>
             </div>
+<<<<<<< HEAD
         );
     }
 
 
+=======
+        </div> : "Загрузка...."} */}
+        </div>
+    );
+>>>>>>> 565d2583397f33b646af023231fcbc8a53952ef1
 }
  
 export default BookProfile;
