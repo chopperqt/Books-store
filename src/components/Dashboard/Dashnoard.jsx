@@ -64,6 +64,17 @@ const Dashboard = () => {
                         <a href=""><i className="bi bi-suit-heart"></i> Love Story</a>
                     </SmallMenu>
                 </Route>
+                <Route path="/book/:id">
+                <SmallMenu>
+                        <a href="/"><i className="bi bi-bag"></i> Bestseller's</a>
+                        <a href="/"><i className="bi bi-gear"></i> Gear's</a>
+                        <a href="/"><i className="bi bi-bicycle"></i> Sport's</a>
+                        <a href="/"><i className="bi bi-binoculars"></i> Travel's</a>
+                        <a href=""><i className="bi bi-cup-straw"></i> Cooking's</a>
+                        <a href=""><i className="bi bi-dice-5"></i> Game's</a>
+                        <a href=""><i className="bi bi-suit-heart"></i> Love Story</a>
+                    </SmallMenu>
+                </Route>
                 <Route path="/authors">
                     <SmallMenu>
                         Some authors

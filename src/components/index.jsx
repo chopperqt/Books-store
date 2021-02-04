@@ -11,6 +11,7 @@ import CommentItem from './CommentItem';
 import AuthorsItems from './AuthorsItems';
 import AuthorProfile from './AuthorProfile/';
 import SmallMenu from './SmallMenu';
+import Loader from './Loader';
 
 
 export {
@@ -26,5 +27,6 @@ export {
     CommentItem,
     AuthorsItems,
     AuthorProfile,
-    SmallMenu
+    SmallMenu,
+    Loader
 }

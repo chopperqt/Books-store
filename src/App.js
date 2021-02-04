@@ -1,9 +1,11 @@
 import React , {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import axios from 'axios';
+//actions 
 import LoadDataActions from './redux/Posts/actions';
 import actions from './redux/Books/actions';
 import actionsUsers from './redux/Users/actions';
+import actionsAuthors from './redux/Authors/actions';
 
 import {
   BrowserRouter as Router,
@@ -38,25 +40,33 @@ const App = () => {
   const booksStore = useSelector(state => state.books.booksItems);
   const limit = useSelector(state => state.books.limit);
   const searching = useSelector(state => state.books.searching);
+  const isLoadBook = useSelector(state => state.books.isLoad)
 
   const dispatch = useDispatch();
   const {
     loadFromDataPosts,
     addItemToData,
   } = LoadDataActions;
+
   const {
     actionMoreBooksData,
     actionGetBooks
   } = actions
+
   const {
     actionsGetUsers,
     actionsGetUsersError
   } = actionsUsers;
   
+  const {
+    actionsGetAuthors
+  } = actionsAuthors;
+
   useEffect(() => {
     dispatch(loadFromDataPosts())
     fetchUsers()
     fetchBooks()
+    fetchAuthors()
   }, [])
   
   function fetchBooks() {
@@ -77,6 +87,15 @@ const App = () => {
       dispatch(actionsGetUsersError(error))
     })
   };
+  function fetchAuthors() {
+    axios.get("https://api.allorigins.win/raw?url=http://test.zrkcompany.ru/authors.json")
+    .then(response => {
+      dispatch(actionsGetAuthors(response.data))
+    })
+    .catch(function(error) {
+      console.log(error)
+    })
+  }
 
 
 

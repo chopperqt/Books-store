@@ -3,7 +3,9 @@
     "_id": "600d76bb9b926be549420231",
     "book_name": "Hinway",
     "book_data": "2017-02-11T09:52:13 -03:00",
-    "book_authors": [],
+    "book_authors": [
+      "600ecb7c13a740b6d9eeb345"
+    ],
     "book_price": 2763,
     "book_rating": 1,
     "book_comments": [

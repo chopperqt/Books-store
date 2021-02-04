@@ -1,20 +1,23 @@
-import authors from '../../contacts/authors.json';
-
-const authorsItems = JSON.parse(JSON.stringify(authors));
+import actions from './actions';
 
 const initialState = {
-    authors: authorsItems
+    authors: []
 };
+
+const {
+    GET_AUTHORS
+} = actions
 
 export const authorsReducer = (
     state = initialState,
     {type, payload}
 ) => {
     switch (type) {
-        case 'test':
-            
-            break;
-    
+        case GET_AUTHORS:
+            return {
+                ...state,
+                authors: payload
+            }
         default:
             return {...state}
     }

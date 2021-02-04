@@ -1,16 +1,20 @@
 import './style.css';
-
+import React , {useState, useEffect} from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import {Loader} from '../../components';
 
 
 
 const CommentItem = ({data}) => {
-
-
+    //Redux Store
     const usersStore = useSelector(state => state.users.users);
+    //React Store
+    const [user, setUser] = useState([]);
 
-    const filterUsersStore = usersStore.filter(item => item._id === data.user_id)
+    useEffect(() => {
+      setUser(usersStore.filter(item => item._id === data.user_id))
+    },[usersStore])
 
     return (
         <div className="col-lg-12 col-md-12 mt-4 d-flex">
@@ -20,7 +24,8 @@ const CommentItem = ({data}) => {
                 {data.user_id === true ? <h5>Anonym</h5> : 
                 
                 <NavLink to={'/user/'+data.user_id}>
-                    <h5>{filterUsersStore[0].user_firstname} {filterUsersStore[0].user_lastname}</h5>
+                    {user.length !== 0 ? <h5>{user[0].user_firstname} {user[0].user_lastname}</h5> : <Loader />}
+                    
                 </NavLink>
 
                 }
