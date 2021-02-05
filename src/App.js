@@ -30,7 +30,8 @@ import {
   CartsItems,
   AuthorsItems,
   AuthorProfile,
-  WrapperColor
+  WrapperColor,
+  PriceItem
 } from './components/'
 
 
@@ -41,7 +42,8 @@ const App = () => {
   const booksStore = useSelector(state => state.books.booksItems);
   const limit = useSelector(state => state.books.limit);
   const searching = useSelector(state => state.books.searching);
-  const isLoadBook = useSelector(state => state.books.isLoad)
+  const isLoadBook = useSelector(state => state.books.isLoad);
+  const cart = useSelector(state => state.cart.cart)
 
   const dispatch = useDispatch();
   const {
@@ -119,7 +121,7 @@ const App = () => {
   return (
     <div className="App">
       <Router>
-        <Header />
+        <Header cart={cart} />
         <Dashboard />
         <Wrapper>
           <Switch>
@@ -155,6 +157,9 @@ const App = () => {
                     </ol>
                 </nav>
                 <CartsItems />
+              </WrapperColor>
+              <WrapperColor>
+                <PriceItem data={cart} />
               </WrapperColor>
             </Route>
             <Route path="/authors">

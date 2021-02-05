@@ -17,7 +17,7 @@ const CommentItem = ({data}) => {
     },[usersStore])
 
     return (
-        <div className="col-lg-6 col-md-7 mt-1 d-flex">
+        <div className="col-lg-8 col-md-8 col-sm-12 col-xs-12 mt-1 d-flex">
             <div className="comment_profile">
                 {data.user_id === true ? <i className="bi bi-person-circle"></i>
                 : <img src="http://placehold.it/400x300" />}

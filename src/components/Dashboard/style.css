@@ -8,7 +8,7 @@
     bottom: 0;
     width: 90px;
     background: #fff;
-    height: calc(100% - 80px);
+    height: calc(100% - 50px);
     border-right: 1px solid rgba(0,0,0,.125);
     box-shadow: 6px 0px 10px -3px rgba(0,0,0,0.49);
     -webkit-box-shadow: 6px 0px 10px -3px rgba(0,0,0,0.49);
@@ -37,8 +37,14 @@
 }
 .menu__right a {
     width: 190px !important;
+    justify-content: center;
+    padding: 10px 0 10px 0;
+    border-bottom: 1px solid #4b4b4b !important;
     display: flex;
     border-bottom: none !important;
+}
+.menu_right a:last-child {
+    border-bottom: none;
 }
 .menu__right a i {
     margin-right: 10px;

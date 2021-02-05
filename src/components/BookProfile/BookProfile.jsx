@@ -112,7 +112,7 @@ const BookProfile = ({}) => {
                       <h5 className="fs-6"><span className="text-muted">Description: </span>{book[0].book_description}</h5>
                   </div>
               </div>
-              <div className="col-md-7 col-lg-6 col-sm-12 col-xs-12 mt-4">
+              <div className="col-md-12 col-lg-8 col-sm-12 col-xs-12 mt-4">
                   <h5>Add comment:</h5>
                   <div className="form-floating mt-1">
                       <textarea

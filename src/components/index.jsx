@@ -13,6 +13,7 @@ import AuthorProfile from './AuthorProfile/';
 import SmallMenu from './SmallMenu';
 import Loader from './Loader';
 import WrapperColor from './WrapperColor';
+import PriceItem from './PriceItem';
 
 export {
     Wrapper,
@@ -29,5 +30,6 @@ export {
     AuthorProfile,
     SmallMenu,
     Loader,
-    WrapperColor
+    WrapperColor,
+    PriceItem
 }

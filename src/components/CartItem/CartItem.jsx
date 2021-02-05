@@ -22,7 +22,7 @@ const CartItem = ({data}) => {
                     <h5 className="w-25 text-center mb-0" style={{fontSize: '12px'}}>{data.book_books}</h5>
                     <div className="w-25 d-flex align-items-center">
                         <i className="bi bi-dash w-25 text-center" style={{fontSize: '12px'}}></i>
-                        <input className="w-50 text-center" style={{fontSize: '12px'}} value={1} disabled="true" />
+                        <input className="w-50 text-center" style={{fontSize: '12px'}} value={1} disabled={true} />
                         <i className="bi bi-plus w-25 text-center" style={{fontSize: '12px'}}></i>
                     </div>
                     <div className="mb-0 d-flex align-items-center text-center" style={{width: '5%', borderLeft: "1px solid rgb(206, 212, 218)"}}>

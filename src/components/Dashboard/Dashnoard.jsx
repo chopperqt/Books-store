@@ -36,17 +36,17 @@ const Dashboard = () => {
         <div className="dashboard" style={styless}>
             <div className="menu__left">
                 <NavLink to="/cart" className="d-grid justify-content-md-center linking">
-                    <i className="bi bi-cart" style={{fontSize: '40px'}}></i>
+                    <i className="bi bi-cart" style={{fontSize: '30px'}}></i>
                     <p className="fs-6">Cart</p>
                     {cartLength ? <span className="cartLength badge bg-danger">{cartLength}</span> : null}
                 </NavLink>
                 <NavLink to="/books" className="d-grid justify-content-md-center linking" onClick={() => dispath(actionDasboardOpen())}>
-                    <i className="bi bi-book" style={{fontSize: '40px'}}></i>
+                    <i className="bi bi-book" style={{fontSize: '30px'}}></i>
                     <p className="fs-6">Books</p>
                     {books ? <span className="bookLength badge bg-primary">{books}</span> : null}
                 </NavLink>
                 <NavLink to="/authors" className="d-grid justify-content-md-center linking">
-                    <i className="bi bi-people" style={{fontSize: '40px'}}></i>
+                    <i className="bi bi-people" style={{fontSize: '30px'}}></i>
                     <p className="fs-6">Authors</p>
                     {authors ? <span className="bookLength badge bg-primary">{authors}</span>: null}
                 </NavLink>
@@ -79,7 +79,6 @@ const Dashboard = () => {
                     <SmallMenu>
                         Some authors
                     </SmallMenu>
-                    
                 </Route>
             </div>
         </div>

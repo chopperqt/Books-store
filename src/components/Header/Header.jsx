@@ -9,7 +9,9 @@ import {Button,Popover, PopoverHeader, PopoverBody} from 'reactstrap';
 import { NavLink, Link } from 'react-router-dom';
 
 
-const Header = () => {
+const Header = ({
+    cart
+}) => {
 
     const menuWidth = useSelector(state => state.menu.menuType);
     const cartStore = useSelector(state => state.cart.cart);
@@ -17,7 +19,8 @@ const Header = () => {
     const [fullScreen,setFullscreen] = useState(false);
     const [searchValue, setSearchValue] = useState('');
     const [popoverOpen, setPopoverOpen] = useState(false);
-    const [popup, setPopup] = useState(false)
+    const [popup, setPopup] = useState(false);
+    const [sumPrices, setSumPrices] = useState(0);
 
     const toggle = () => {
         setPopup(prev => !prev);
@@ -47,9 +50,6 @@ const Header = () => {
         dispath(actionSearchBookData(searchValue))
     }
 
-
-
-
     useEffect(() => {
         document.addEventListener('fullscreenchange', event => {
             if (document.fullscreenElement) {
@@ -65,6 +65,13 @@ const Header = () => {
 
     }, [])
 
+    useEffect(() => {
+        setSumPrices(0);
+
+        cart.map(item => {
+            setSumPrices(prev => prev + item.book_price)
+        });
+    },[cart])
 
     function actionFullScreen() {
         console.log(fullScreen)
@@ -87,8 +94,7 @@ const Header = () => {
                         <AnimateButton menuWidth={menuWidth} />
                     </button>
                 </div>
-                <div className="col-md-4 d-flex justify-content-end">
-                    
+                <div className="col-md-4 d-flex justify-content-end align-items-baseline">
                     <span className="popup-item">
                         <button onClick={toggle} className="fillSizeBtn">
                             {cartLength ? <span className="cartLength badge bg-danger cartL">{cartLength}</span> : null}
@@ -108,7 +114,17 @@ const Header = () => {
                                     </div>
                                     <i onClick={() => removeFromCart(item._id)}  className="bi bi-x-circle col-md-1"></i>
                                 </div>
-                            )): <p className="text-muted mt-4">Add book to cart</p>}</PopoverBody>
+                            )): <p className="text-muted mt-4">Add book to cart</p>}
+                            
+                            </PopoverBody>
+                            <PopoverHeader>
+                                <div className="col-md-12 col-sm-12 col-lg-12 col-xs-12 d-flex justify-content-end align-items-center">
+                                    <p className="text-muted mb-0" style={{marginRight: "10px"}}>{sumPrices}$</p>
+                                    <NavLink to={"/cart"}>
+                                        <button className="btn-sm btn-primary">В корзину</button>
+                                    </NavLink>
+                                </div>
+                            </PopoverHeader>
                         </div>
                     </span>
                     <button  onClick={actionFullScreen} data-toggle-fullscreen="false"  className="fillSizeBtn">
@@ -116,7 +132,7 @@ const Header = () => {
                     </button>
                     <div className="input-group">
                         <input onChange={e => setSearchValue(e.target.value)} type="text" className="form-control" aria-label="Recipient's username" aria-describedby="button-addon2" />
-                        <button onClick={searching} className="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+                        <button onClick={searching} className="btn btn-sm btn-outline-secondary" type="button" id="button-addon2">Search</button>
                     </div>
                 </div>
             </div>

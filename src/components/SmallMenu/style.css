@@ -6,3 +6,6 @@
     align-items: start;
     align-content: flex-start;
 }
+.smallWrapMenu {
+    height: 85vh;
+}
