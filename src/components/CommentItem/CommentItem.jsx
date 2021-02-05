@@ -17,21 +17,24 @@ const CommentItem = ({data}) => {
     },[usersStore])
 
     return (
-        <div className="col-lg-12 col-md-12 mt-4 d-flex">
-            <div className="col-lg-1 col-md-1 comment_profile"><img src="https://placehold.it/200x200"></img></div>
-            <div className="col-lg-11 col-md-11 comment">
+        <div className="col-lg-6 col-md-7 mt-1 d-flex">
+            <div className="comment_profile">
+                {data.user_id === true ? <i className="bi bi-person-circle"></i>
+                : <img src="http://placehold.it/400x300" />}
+            </div>
+            <div className="col-lg-11 col-md-11 comment ms-2">
 
-                {data.user_id === true ? <h5>Anonym</h5> : 
+                {data.user_id === true ? <h5 className="fs-6 text mb-0 mt-1">Anonym</h5> : 
                 
                 <NavLink to={'/user/'+data.user_id}>
-                    {user.length !== 0 ? <h5>{user[0].user_firstname} {user[0].user_lastname}</h5> : <Loader />}
+                    {user.length !== 0 ? <h5 className="fs-6 text mb-0 mt-1">{user[0].user_firstname} {user[0].user_lastname}</h5> : <Loader />}
                     
                 </NavLink>
 
                 }
 
                 
-                <p>{data.comment}</p>
+                <p className="text-break" style={{fontSize: '14px'}}>{data.comment}</p>
             </div>
         </div>
     );

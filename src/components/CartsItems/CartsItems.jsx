@@ -23,7 +23,7 @@ const CartsItems = ({data}) => {
 
   return (
     <div
-      className="row row-cols-1 row-cols-md-2 g-6 row-cols-sm-1 row-cols-lg-3 row-cols-xl-4 ml-auto mr-3">
+      className="row row-cols-1 row-cols-md-2 g-6 row-cols-sm-1 row-cols-lg-3 row-cols-xl-4 ml-auto mr-3" style={{padding: '20px'}}>
       <Suspense fallback={< div > Загрузка ...</div>}>
         {cartStore.length
           ? cartStore.map(item => (<SearchItem data={item} key={item._id}/>))

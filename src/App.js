@@ -29,7 +29,8 @@ import {
   BookProfile,
   CartsItems,
   AuthorsItems,
-  AuthorProfile
+  AuthorProfile,
+  WrapperColor
 } from './components/'
 
 
@@ -123,41 +124,49 @@ const App = () => {
         <Wrapper>
           <Switch>
             <Route path="/books">
-              <nav aria-label="breadcrumb" style={{marginTop: '20px',marginBottom: '0 !important'}}>
-                  <ol className="breadcrumb mb-0">
-                      <li className="breadcrumb-item"><NavLink to="/">Home</NavLink></li>
-                      <li className="breadcrumb-item active" aria-current="page">Books</li>
-                  </ol>
-              </nav>
-              <BooksItems data={posts} />
-              {searching ? null : <div className="col-md-12 d-flex justify-content-md-center mt-4">
-                {(limit >= booksStore.length) ? null : <button onClick={loadMoreBooks} className="btn btn-primary">Load more</button>}
-              </div>}
-              
+              <WrapperColor>
+                <nav aria-label="breadcrumb" className="p-4 pb-0">
+                    <ol className="breadcrumb mb-0">
+                        <li className="breadcrumb-item"><NavLink to="/">Home</NavLink></li>
+                        <li className="breadcrumb-item active" aria-current="page">Books</li>
+                    </ol>
+                </nav>
+                
+                  <BooksItems data={posts} />
+                  {searching ? null : <div className="col-md-12 d-flex justify-content-md-center mt-4">
+                    {(limit >= booksStore.length) ? null : <button onClick={loadMoreBooks} className="btn btn-primary">Load more</button>}
+                  </div>}
+                </WrapperColor>
             </Route>
             <Route path="/book/:id">
-              <BookProfile />
+              <WrapperColor>
+                <BookProfile />
+              </WrapperColor>
             </Route>
             <Route path="/author/:id">
               <AuthorProfile />
             </Route>
             <Route path="/cart">
-              <nav aria-label="breadcrumb" style={{marginTop: '20px',marginBottom: '0 !important'}}>
-                  <ol className="breadcrumb mb-0">
-                      <li className="breadcrumb-item"><NavLink to="/">Home</NavLink></li>
-                      <li className="breadcrumb-item active" aria-current="page">Cart</li>
-                  </ol>
-              </nav>
-              <CartsItems />
+              <WrapperColor>
+                <nav aria-label="breadcrumb" className="p-4 pb-0">
+                    <ol className="breadcrumb mb-0">
+                        <li className="breadcrumb-item"><NavLink to="/">Home</NavLink></li>
+                        <li className="breadcrumb-item active" aria-current="page">Cart</li>
+                    </ol>
+                </nav>
+                <CartsItems />
+              </WrapperColor>
             </Route>
             <Route path="/authors">
-            <nav aria-label="breadcrumb" style={{marginTop: '20px',marginBottom: '0 !important'}}>
-                  <ol className="breadcrumb mb-0">
-                      <li className="breadcrumb-item"><NavLink to="/">Home</NavLink></li>
-                      <li className="breadcrumb-item active" aria-current="page">Authors</li>
-                  </ol>
-              </nav>
-              <AuthorsItems />
+              <WrapperColor>
+                <nav aria-label="breadcrumb" className="p-4 pb-0">
+                    <ol className="breadcrumb mb-0">
+                        <li className="breadcrumb-item"><NavLink to="/">Home</NavLink></li>
+                        <li className="breadcrumb-item active" aria-current="page">Authors</li>
+                    </ol>
+                </nav>
+                <AuthorsItems />
+              </WrapperColor>
             </Route>
             <Route path="/">
               <div>

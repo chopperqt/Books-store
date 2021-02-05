@@ -7,6 +7,7 @@
     left: 0;
     bottom: 0;
     width: 90px;
+    background: #fff;
     height: calc(100% - 80px);
     border-right: 1px solid rgba(0,0,0,.125);
     box-shadow: 6px 0px 10px -3px rgba(0,0,0,0.49);
@@ -50,11 +51,11 @@
     text-align: center;
     text-decoration: none;
     color: #000;
-    transition: 0.15s ease-in-out;
-    -webkit-transition: 0.15s ease-in-out;
-    -moz-transition: 0.15s ease-in-out;
-    -ms-transition: 0.15s ease-in-out;
-    -o-transition: 0.15s ease-in-out;
+    transition: width 0.15s;
+    -webkit-transition:width 0.15s;
+    -moz-transition:width 0.15s;
+    -ms-transition:width 0.15s;
+    -o-transition:width 0.15s;
 }
 .dashboard a {
     border-bottom: 1px solid #ced4da;
@@ -64,11 +65,11 @@
 }
 .dashboard a:hover {
     color:#0d6efd;
-    transition: 0.15s ease-in-out;
-    -webkit-transition: 0.15s ease-in-out;
-    -moz-transition: 0.15s ease-in-out;
-    -ms-transition: 0.15s ease-in-out;
-    -o-transition: 0.15s ease-in-out;
+    transition: width 0.15s;
+    -webkit-transition: width  0.15s;
+    -moz-transition:width 0.15s;
+    -ms-transition:width 0.15s;
+    -o-transition:width 0.15s;
 }
 .dashboard_line {
     display: block;

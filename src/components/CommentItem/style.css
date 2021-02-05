@@ -1,6 +1,13 @@
 .comment_profile {
     
 }
+.comment_profile i {
+    font-size: 55px;
+    box-sizing: border-box;
+    width: 60px;
+    height: 60px;
+    line-height: 0;
+}
 .comment_profile img {
     width: 60px;
     height: 60px;

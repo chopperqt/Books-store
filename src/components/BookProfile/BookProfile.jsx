@@ -65,7 +65,9 @@ const BookProfile = ({}) => {
           comment: commentValue
       }
       if (areaTextLength) {
-          dispatch(actionSendBookComment(data))
+          if(areaTextLength <= 500) {
+            dispatch(actionSendBookComment(data))
+          }
       }
       setCommentValue('');
       setAreaTextLength(0);
@@ -85,7 +87,7 @@ const BookProfile = ({}) => {
                   </ol>
               </nav>
               <div className="col-md-12 d-md-flex d-lx-flex">
-                  <div className="col-md-6 col-lg-6 col-sm-12">
+                  <div className="col-md-4 col-lg-4 col-sm-12">
                       <img
                           src={book[0].book_picture}
                           alt={book[0].book_name}
@@ -93,24 +95,24 @@ const BookProfile = ({}) => {
                           width: '100%'
                       }}/>
                   </div>
-                  <div className="col-md-6 pr-5 col-lg-6 ms-3">
-                      <h5><span className="text-muted">Name:</span> {book[0].book_name}</h5>
-                      <h5><span className="text-muted">Pages:</span> {book[0].book_pages}</h5>
-                      <h5><span className="text-muted">Author(s): </span></h5>
-                      <h5><span className="text-muted">Age limit:</span> {book[0].book_age_limit}</h5>
-                      <h5><span className="text-muted">Bestsellers:</span> {book[0].book_bestsellers
+                  <div className="col-md-5 pr-5 col-lg-5 ms-3">
+                      <h5 className="fs-6"><span className="text-muted">Name:</span> {book[0].book_name}</h5>
+                      <h5 className="fs-6"><span className="text-muted">Pages:</span> {book[0].book_pages}</h5>
+                      <h5 className="fs-6"><span className="text-muted">Author(s): </span></h5>
+                      <h5 className="fs-6"><span className="text-muted">Age limit:</span> {book[0].book_age_limit}</h5>
+                      <h5 className="fs-6"><span className="text-muted">Bestsellers:</span> {book[0].book_bestsellers
                               ? 'Yes'
                               : 'No'}</h5>
-                      <h5><span className="text-muted">Rating:</span> {book[0].book_rating} / 5</h5>
-                      <h5><span className="text-muted">Price: </span>
+                      <h5 className="fs-6"><span className="text-muted">Rating:</span> {book[0].book_rating} / 5</h5>
+                      <h5 className="fs-6"><span className="text-muted">Price: </span>
                           <span className="text-primary">{book[0].book_price}$</span>
                       </h5>
-                      <h5><span className="text-muted">Description: </span>{book[0].book_description}</h5>
+                      <h5 className="fs-6"><span className="text-muted">Description: </span>{book[0].book_description}</h5>
                   </div>
               </div>
-              <div className="col-md-12 mt-4">
-                  <h2>Add comment:</h2>
-                  <div className="form-floating mt-4">
+              <div className="col-md-7 col-lg-6 col-sm-12 col-xs-12 mt-4">
+                  <h5>Add comment:</h5>
+                  <div className="form-floating mt-1">
                       <textarea
                           className="form-control"
                           value={commentValue}
@@ -123,22 +125,18 @@ const BookProfile = ({}) => {
                           style={{
                           height: '100px'
                       }}></textarea>
-                      <label for="floatingTextarea2">Comments</label>
-                      <label
-                          style={{
-                          left: '80px'
-                      }}
-                          htmlFor="floatingTextarea2">{areaTextLength}</label>
+                      <label for="floatingTextarea2">Add your comments</label>
                   </div>
-                  <div className="col-md-12 d-flex justify-content-end">
-                      <button onClick={sendComment} className="btn btn-primary d-flex mt-2">Send</button>
+                  <div className="col-md-12 d-flex justify-content-end align-items-baseline">
+                      <p className="text-muted" style={{fontSize: '14px'}}>{areaTextLength} / 500</p>
+                      <button onClick={sendComment} className="btn btn-primary d-flex mt-2 ms-2">Send</button>
                   </div>
               </div>
               <div className="col-md-12 col-lg-12 mt-4">
-                  <h2>
+                  <h5>
                       <i className="bi bi-chat me-2 comments_leng">
                           <span>{book[0].book_comments.length}</span>
-                      </i>Comments:</h2>
+                      </i>Comments:</h5>
                   {book[0].book_comments.length !== 0
                       ? book[0].book_comments.map(item => (<CommentItem key={item._id} data={item}/>))
                       : <h5 className="text-muted">There are no comments. Be the first!</h5>}
