@@ -24,10 +24,10 @@ const CommentItem = ({data}) => {
             </div>
             <div className="col-lg-11 col-md-11 comment ms-2">
 
-                {data.user_id === true ? <h5 className="fs-6 text mb-0 mt-1">Anonym</h5> : 
+                {data.user_id === true ? <h5 className="fs-6 text mb-0">Anonym</h5> : 
                 
                 <NavLink to={'/user/'+data.user_id}>
-                    {user.length !== 0 ? <h5 className="fs-6 text mb-0 mt-1">{user[0].user_firstname} {user[0].user_lastname}</h5> : <Loader />}
+                    {user.length !== 0 ? <h5 className="fs-6 text mb-0">{user[0].user_firstname} {user[0].user_lastname}</h5> : <Loader />}
                     
                 </NavLink>
 

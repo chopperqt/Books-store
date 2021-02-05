@@ -138,7 +138,7 @@ const App = () => {
                   </div>}
                 </WrapperColor>
             </Route>
-            <Route path="/book/:id">
+            <Route path="/book/:id" exact>
               <WrapperColor>
                 <BookProfile />
               </WrapperColor>

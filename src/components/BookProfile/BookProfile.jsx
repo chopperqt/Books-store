@@ -2,7 +2,7 @@ import './style.css';
 import axios from 'axios'
 import {useParams} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
-import {NavLink} from 'react-router-dom';
+import {NavLink, Link} from 'react-router-dom';
 import actionsBooks from '../../redux/Books/actions';
 import actionsUsers from '../../redux/Users/actions';
 import React, {useEffect, useState} from 'react';
@@ -46,9 +46,11 @@ const BookProfile = ({}) => {
       if (!isLoad) {
         fetchBooks()
       }else {
+        console.log('Сработало ID: ',id)
         setBook(books.filter(item => item._id === id))
       }
-  }, [])
+      console.log('Сработало')
+  }, [isLoad,id])
   useEffect(() => {
       setBook(books.filter(item => item._id === id));
   }, [isLoad])
@@ -132,7 +134,7 @@ const BookProfile = ({}) => {
                       <button onClick={sendComment} className="btn btn-primary d-flex mt-2 ms-2">Send</button>
                   </div>
               </div>
-              <div className="col-md-12 col-lg-12 mt-4">
+              <div className="col-md-12 col-lg-12">
                   <h5>
                       <i className="bi bi-chat me-2 comments_leng">
                           <span>{book[0].book_comments.length}</span>

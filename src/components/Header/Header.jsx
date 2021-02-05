@@ -6,7 +6,7 @@ import actionsHeader from '../../redux/Header/actions';
 import actionsBooks from '../../redux/Books/actions';
 import actionsCart from '../../redux/Cart/actions';
 import {Button,Popover, PopoverHeader, PopoverBody} from 'reactstrap';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 
 const Header = () => {
@@ -101,10 +101,10 @@ const Header = () => {
                                 <div key={item._id} className="col-md-12 d-flex miniCart">
                                     <img src={item.book_picture} alt="" className="col-md-3"/>
                                     <div className="col-md-8" style={{marginLeft: '2px'}}>
-                                        <NavLink to={'/book/'+item._id}>
-                                            <h5>{item.book_name}</h5>
-                                        </NavLink>
-                                        <p>{item.book_price}</p>
+                                        <Link to={'/book/'+item._id}>
+                                            <h5 className="fs-6 text">{item.book_name}</h5>
+                                        </Link>
+                                        <p className="text-muted" style={{fontSize: '15px'}}>{item.book_price}$</p>
                                     </div>
                                     <i onClick={() => removeFromCart(item._id)}  className="bi bi-x-circle col-md-1"></i>
                                 </div>
