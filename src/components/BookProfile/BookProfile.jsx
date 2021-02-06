@@ -18,7 +18,8 @@ const BookProfile = ({}) => {
   //useState
   const [areaTextLength, setAreaTextLength] = useState(0);
   const [user,setUser] = useState(true);
-  const [bookComments, setBookComments] = useState([])
+  const [bookComments, setBookComments] = useState([]);
+  const [genresArray, setGenresArray] = useState([]);
   const [commentValue,setCommentValue] = useState('');
   const {id} = useParams();
   
@@ -41,7 +42,7 @@ const BookProfile = ({}) => {
           .catch(function (error) {
               console.log(error)
           })
-  }
+    }
   useEffect(() => {
       if (!isLoad) {
         fetchBooks()
@@ -51,12 +52,16 @@ const BookProfile = ({}) => {
       }
       console.log('Сработало')
   }, [isLoad,id])
+
   useEffect(() => {
       setBook(books.filter(item => item._id === id));
   }, [isLoad])
+
   useEffect(() => {
     setBook(books.filter(item => item._id === id))
   }, [commentValue])
+
+  
   function sendComment() {
       console.log('work')
       let book_id = book[0]._id;
@@ -101,6 +106,7 @@ const BookProfile = ({}) => {
                       <h5 className="fs-6"><span className="text-muted">Name:</span> {book[0].book_name}</h5>
                       <h5 className="fs-6"><span className="text-muted">Pages:</span> {book[0].book_pages}</h5>
                       <h5 className="fs-6"><span className="text-muted">Author(s): </span></h5>
+                      <h5 className="fs-6"><span className="text-muted">Genres: </span></h5>
                       <h5 className="fs-6"><span className="text-muted">Age limit:</span> {book[0].book_age_limit}</h5>
                       <h5 className="fs-6"><span className="text-muted">Bestsellers:</span> {book[0].book_bestsellers
                               ? 'Yes'
@@ -131,7 +137,7 @@ const BookProfile = ({}) => {
                   </div>
                   <div className="col-md-12 d-flex justify-content-end align-items-baseline">
                       <p className="text-muted" style={{fontSize: '14px'}}>{areaTextLength} / 500</p>
-                      <button onClick={sendComment} className="btn btn-primary d-flex mt-2 ms-2">Send</button>
+                      <button onClick={sendComment} className="btn btn-sm btn-primary d-flex mt-2 ms-2">Send</button>
                   </div>
               </div>
               <div className="col-md-12 col-lg-12">

@@ -25,7 +25,7 @@
     "book_discount": 14,
     "book_bestseller": false,
     "book_pages": 145,
-    "book_genres": [],
+    "book_genres": ["gear","travel"],
     "book_age_limit": 16
   },
   {

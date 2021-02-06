@@ -6,8 +6,8 @@ const SmallMenu = ({children}) => {
             <div className="smallWrapMenu">
                 {children}
             </div>
-            <div className="text-muted fs-6 text-center">
-                <p>Create by Chopper</p>
+            <div className="text-muted fs-6 text-center h-100 d-flex justify-content-center align-items-end">
+                <p className="mb-0">Create by <span style={{background: '#0d6efd',color: '#fff'}}>Chopper</span></p>
             </div>
         </div>
     );

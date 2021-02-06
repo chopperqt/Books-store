@@ -46,6 +46,7 @@ const BookItem = ({data}) => {
 
         <div className="card-body">
           <h5 className="text-muted mt-1 mb-1 fs-6">{data.book_price}$</h5>
+          <h5 className="text-warning mt-1 mb-1 fs-6" >{data.book_bestseller ? "Bestseller" : null}</h5>
           <h5 className="card-title mt-1 mb-1 fs-5">{data.book_name}</h5>
           <div className="itemButtons ms-0 ps-0">
             <button

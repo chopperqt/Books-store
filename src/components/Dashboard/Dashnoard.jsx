@@ -10,7 +10,10 @@ import {
 } from '../../components';
 
 
-const Dashboard = () => {
+const Dashboard = ({
+    changeBookFilter,
+    bestsellersCount
+}) => {
 
     const dispath = useDispatch();
 
@@ -55,24 +58,32 @@ const Dashboard = () => {
             <div className="menu__right">
                 <Route path="/books">
                     <SmallMenu>
-                        <a href="/"><i className="bi bi-bag"></i> Bestseller's</a>
-                        <a href="/"><i className="bi bi-gear"></i> Gear's</a>
-                        <a href="/"><i className="bi bi-bicycle"></i> Sport's</a>
-                        <a href="/"><i className="bi bi-binoculars"></i> Travel's</a>
-                        <a href=""><i className="bi bi-cup-straw"></i> Cooking's</a>
-                        <a href=""><i className="bi bi-dice-5"></i> Game's</a>
-                        <a href=""><i className="bi bi-suit-heart"></i> Love Story</a>
+                        <div className="text-center" style={{borderBottom: '1px solid rgba(0,0,0,.125)'}}>
+                            <h5 className="fs-6 text" style={{textTransform: 'uppercase'}}>Advanced menu</h5>
+                        </div>
+                        <p className="mb-0" onClick={() => changeBookFilter()}><i className="bi bi-book"></i> All</p>
+                        <p className="mb-0" onClick={() => changeBookFilter('bestseller')}><i className="bi bi-bag"></i> Bestseller's <span className="badge badge-sm bg-primary ms-1">{bestsellersCount}</span></p>
+                        <p className="mb-0"><i className="bi bi-gear"></i> Gear's</p>
+                        <p className="mb-0"><i className="bi bi-bicycle"></i> Sport's</p>
+                        <p className="mb-0"><i className="bi bi-binoculars"></i> Travel's</p>
+                        <p className="mb-0"><i className="bi bi-cup-straw"></i> Cooking's</p>
+                        <p className="mb-0"><i className="bi bi-dice-5"></i> Game's</p>
+                        <p className="mb-0"><i className="bi bi-suit-heart"></i> Love Story</p>
                     </SmallMenu>
                 </Route>
                 <Route path="/book/:id">
                 <SmallMenu>
-                        <a href="/"><i className="bi bi-bag"></i> Bestseller's</a>
-                        <a href="/"><i className="bi bi-gear"></i> Gear's</a>
-                        <a href="/"><i className="bi bi-bicycle"></i> Sport's</a>
-                        <a href="/"><i className="bi bi-binoculars"></i> Travel's</a>
-                        <a href=""><i className="bi bi-cup-straw"></i> Cooking's</a>
-                        <a href=""><i className="bi bi-dice-5"></i> Game's</a>
-                        <a href=""><i className="bi bi-suit-heart"></i> Love Story</a>
+                        <div className="text-center" style={{borderBottom: '1px solid rgba(0,0,0,.125)'}}>
+                            <h5 className="fs-6 text" style={{textTransform: 'uppercase'}}>Advanced menu</h5>
+                        </div>
+                        <p className="mb-0" onClick={() => changeBookFilter()}><i className="bi bi-book"></i> All</p>
+                        <p className="mb-0" onClick={() => changeBookFilter('bestseller')}><i className="bi bi-bag"></i> Bestseller's <span className="badge badge-sm bg-primary ms-1">{bestsellersCount}</span></p>
+                        <p className="mb-0"><i className="bi bi-gear"></i> Gear's</p>
+                        <p className="mb-0"><i className="bi bi-bicycle"></i> Sport's</p>
+                        <p className="mb-0"><i className="bi bi-binoculars"></i> Travel's</p>
+                        <p className="mb-0"><i className="bi bi-cup-straw"></i> Cooking's</p>
+                        <p className="mb-0"><i className="bi bi-dice-5"></i> Game's</p>
+                        <p className="mb-0"><i className="bi bi-suit-heart"></i> Love Story</p>
                     </SmallMenu>
                 </Route>
                 <Route path="/authors">

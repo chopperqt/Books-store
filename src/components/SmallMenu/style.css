@@ -4,8 +4,7 @@
     padding: 10px;
     display: grid;
     align-items: start;
-    align-content: flex-start;
 }
-.smallWrapMenu {
-    height: 85vh;
+.smallWrapMenu p {
+    
 }

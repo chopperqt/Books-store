@@ -21,6 +21,7 @@
     overflow: hidden;
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 .menu__left {
     min-width: 90px;
@@ -33,20 +34,20 @@
     display: grid;
     height: calc(100% - 90px);
     align-items: start;
-    align-content: flex-start;
 }
-.menu__right a {
+.menu__right p {
     width: 190px !important;
     justify-content: center;
     padding: 10px 0 10px 0;
     border-bottom: 1px solid #4b4b4b !important;
     display: flex;
     border-bottom: none !important;
+    align-items: center;
 }
-.menu_right a:last-child {
+.menu_right p:last-child {
     border-bottom: none;
 }
-.menu__right a i {
+.menu__right p i {
     margin-right: 10px;
 }
 .active { 

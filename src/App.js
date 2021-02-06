@@ -43,9 +43,12 @@ const App = () => {
   const limit = useSelector(state => state.books.limit);
   const searching = useSelector(state => state.books.searching);
   const isLoadBook = useSelector(state => state.books.isLoad);
-  const cart = useSelector(state => state.cart.cart)
+  const cart = useSelector(state => state.cart.cart);
+  const [booksVault, setBooksVault] = useState([]);
 
   const dispatch = useDispatch();
+
+  //actions
   const {
     loadFromDataPosts,
     addItemToData,
@@ -71,6 +74,10 @@ const App = () => {
     fetchBooks()
     fetchAuthors()
   }, [])
+
+  useEffect(() => {
+    setBooksVault(books)
+  },[books])
   
   function fetchBooks() {
     axios.get('https://api.allorigins.win/raw?url=http://test.zrkcompany.ru/books.json')
@@ -100,7 +107,16 @@ const App = () => {
     })
   }
 
-
+  const changeBookFilter = (name) => {
+    switch (name) {
+      case 'bestseller':
+        setBooksVault(booksVault.filter(item => item.book_bestseller === true));
+        break;
+      default:
+        setBooksVault(books)
+        break;
+    }
+  }
 
   function handleInput(e) {
     setInputText(prev => prev = e.target.value)
@@ -121,10 +137,28 @@ const App = () => {
   return (
     <div className="App">
       <Router>
-        <Header cart={cart} />
-        <Dashboard />
+        <Header 
+          cart={cart}
+          
+        />
+        <Dashboard 
+          changeBookFilter={changeBookFilter}
+          bestsellersCount={books.filter(item => item.book_bestseller === true).length}  
+        />
         <Wrapper>
           <Switch>
+            <Route path="/books/bestsellers/">
+              <WrapperColor>
+                <nav aria-label="breadcrumb" className="p-4 pb-0">
+                    <ol className="breadcrumb mb-0">
+                        <li className="breadcrumb-item"><NavLink to="/">Home</NavLink></li>
+                        <li className="breadcrumb-item active" aria-current="page"><NavLink to="/books">Books</NavLink></li>
+                        <li className="breadcrumb-item active" aria-current="page">Bestsellers</li>
+                    </ol>
+                </nav>
+                SomeText
+              </WrapperColor>
+            </Route>
             <Route path="/books">
               <WrapperColor>
                 <nav aria-label="breadcrumb" className="p-4 pb-0">
@@ -133,12 +167,11 @@ const App = () => {
                         <li className="breadcrumb-item active" aria-current="page">Books</li>
                     </ol>
                 </nav>
-                
-                  <BooksItems data={posts} />
-                  {searching ? null : <div className="col-md-12 d-flex justify-content-md-center mt-4">
-                    {(limit >= booksStore.length) ? null : <button onClick={loadMoreBooks} className="btn btn-primary">Load more</button>}
-                  </div>}
-                </WrapperColor>
+                <BooksItems data={booksVault} />
+                {searching ? null : <div className="col-md-12 d-flex justify-content-md-center mt-4">
+                  {(limit >= booksStore.length) ? null : <button onClick={loadMoreBooks} className="btn btn-sm btn-primary mb-4">Load more</button>}
+                </div>}
+              </WrapperColor>
             </Route>
             <Route path="/book/:id" exact>
               <WrapperColor>
