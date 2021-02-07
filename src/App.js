@@ -133,7 +133,7 @@ const App = () => {
   function loadMoreBooks() {
     dispatch(actionMoreBooksData())
   }
-
+  //console.log(books.filter(item => item.book_genres))
   return (
     <div className="App">
       <Router>
@@ -144,6 +144,7 @@ const App = () => {
         <Dashboard 
           changeBookFilter={changeBookFilter}
           bestsellersCount={books.filter(item => item.book_bestseller === true).length}  
+          gearsCount={books.filter(item => item.book_genres[0] === "gear").length}
         />
         <Wrapper>
           <Switch>

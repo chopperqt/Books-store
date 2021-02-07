@@ -14,6 +14,9 @@ header {
     -moz-box-shadow: 1px 4px 10px -3px rgba(0,0,0,0.49);
     z-index: 999;
 }
+.popover {
+    top: 10px !important;
+}
 .splitMenuBtn { 
     border: none;
     background: transparent;

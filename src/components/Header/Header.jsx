@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import actionsHeader from '../../redux/Header/actions';
 import actionsBooks from '../../redux/Books/actions';
 import actionsCart from '../../redux/Cart/actions';
-import {Button,Popover, PopoverHeader, PopoverBody} from 'reactstrap';
+import {Button,Popover, PopoverHeader, PopoverBody, UncontrolledPopover} from 'reactstrap';
 import { NavLink, Link } from 'react-router-dom';
 
 
@@ -49,6 +49,24 @@ const Header = ({
     const searching = () => {
         dispath(actionSearchBookData(searchValue))
     }
+    
+    useEffect(() => {
+
+        let elem = document.querySelector('.search-input');
+
+        if (searchValue.length > 0) {
+            elem.onblur = () => {
+                setPopup(false)
+                console.log('сработало')
+            }
+            elem.onfocus = () => {
+                console.log('сработал блур')
+                setPopup(true)
+            }
+        }else {
+            
+        }
+    }, [searchValue])
 
     useEffect(() => {
         document.addEventListener('fullscreenchange', event => {
@@ -58,7 +76,6 @@ const Header = ({
                 setFullscreen(prev => !prev)
             }
         })
-
         // return (() => {
         //     document.removeEventListener('fullscreenchange')
         // })
@@ -96,14 +113,13 @@ const Header = ({
                 </div>
                 <div className="col-md-4 d-flex justify-content-end align-items-baseline">
                     <span className="popup-item">
-                        <button onClick={toggle} className="fillSizeBtn">
+                        <button className="fillSizeBtn" id="PopoverFocus">
                             {cartLength ? <span className="cartLength badge bg-danger cartL">{cartLength}</span> : null}
                             <i className="bi bi-cart"></i>
                         </button>
-                        <div className="popup-div" style={popup ? {display: 'block'} : {display: 'none'}}>
-                            <div className="delta"></div>
-                            <PopoverHeader className="d-flex" style={{justifyContent: 'space-between',position: 'fixed',zIndex: '99',width: '298px'}}>Cart <i onClick={toggle} className="bi bi-x-circle rever"></i></PopoverHeader>
-                            <PopoverBody style={{marginTop: "20px"}}>{cartStore.length ? cartStore.map(item => (
+                        <UncontrolledPopover trigger="legacy" placement="bottom" target="PopoverFocus">
+                            <PopoverHeader className="d-flex" style={{justifyContent: 'space-between',width: '274px'}}>Cart</PopoverHeader>
+                            <PopoverBody style={{width: '275px', maxHeight: "300px",overflow: "auto"}}>{cartStore.length ? cartStore.map(item => (
                                 <div key={item._id} className="col-md-12 d-flex miniCart">
                                     <img src={item.book_picture} alt="" className="col-md-3"/>
                                     <div className="col-md-8" style={{marginLeft: '2px'}}>
@@ -119,21 +135,30 @@ const Header = ({
                             </PopoverBody>
                             <PopoverHeader>
                                 <div className="col-md-12 col-sm-12 col-lg-12 col-xs-12 d-flex justify-content-end align-items-center">
-                                    <p className="text-muted mb-0" style={{marginRight: "10px"}}>{sumPrices}$</p>
+                                    <p className="text-muted mb-0" style={{marginRight: "10px"}}>Amount: {sumPrices}$</p>
                                     <NavLink to={"/cart"}>
                                         <button className="btn-sm btn-primary">В корзину</button>
                                     </NavLink>
                                 </div>
                             </PopoverHeader>
-                        </div>
+                        </UncontrolledPopover>
                     </span>
                     <button  onClick={actionFullScreen} data-toggle-fullscreen="false"  className="fillSizeBtn">
                         <i className="bi bi-arrows-fullscreen"></i>
                     </button>
                     <div className="input-group">
-                        <input onChange={e => setSearchValue(e.target.value)} type="text" className="form-control" aria-label="Recipient's username" aria-describedby="button-addon2" />
+                        <input onChange={e => setSearchValue(e.target.value)} type="text" className="form-control search-input" aria-label="Recipient's username" aria-describedby="button-addon2" />
                         <button onClick={searching} className="btn btn-sm btn-outline-secondary" type="button" id="button-addon2">Search</button>
+                        <div className="popup-div" style={popup ? {display: "block"} : {display: 'none'}}>
+                            <PopoverHeader>
+                                <p className="text-muted mb-0">Search</p>
+                            </PopoverHeader>
+                            <PopoverBody>
+                                Тут должен быть элемент который учавствует в поиск
+                            </PopoverBody>
+                        </div>
                     </div>
+                    
                 </div>
             </div>
         </header>

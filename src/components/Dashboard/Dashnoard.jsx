@@ -12,15 +12,16 @@ import {
 
 const Dashboard = ({
     changeBookFilter,
-    bestsellersCount
+    bestsellersCount,
+    gearsCount
 }) => {
-
+    console.log(gearsCount)
     const dispath = useDispatch();
 
     const menuWidth = useSelector(state => state.menu.menuType);
     const cartLength = useSelector(state => state.cart.cart.length);
-    const books = useSelector(state => state.books.booksItems.length)
-    const authors = useSelector(state => state.authors.authors.length)
+    const books = useSelector(state => state.books.booksItems.length);
+    const authors = useSelector(state => state.authors.authors.length);
 
     const styless = {
         width: menuWidth === 1 ? '0px' : menuWidth === 2 ? '90px' : '320px',
@@ -63,7 +64,7 @@ const Dashboard = ({
                         </div>
                         <p className="mb-0" onClick={() => changeBookFilter()}><i className="bi bi-book"></i> All</p>
                         <p className="mb-0" onClick={() => changeBookFilter('bestseller')}><i className="bi bi-bag"></i> Bestseller's <span className="badge badge-sm bg-primary ms-1">{bestsellersCount}</span></p>
-                        <p className="mb-0"><i className="bi bi-gear"></i> Gear's</p>
+                        <p className="mb-0"><i className="bi bi-gear"></i> Gear's <span className="badge badge-sm bg-primary ms-1">{gearsCount}</span></p>
                         <p className="mb-0"><i className="bi bi-bicycle"></i> Sport's</p>
                         <p className="mb-0"><i className="bi bi-binoculars"></i> Travel's</p>
                         <p className="mb-0"><i className="bi bi-cup-straw"></i> Cooking's</p>
