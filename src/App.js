@@ -46,6 +46,8 @@ const App = () => {
   const cart = useSelector(state => state.cart.cart);
   const [booksVault, setBooksVault] = useState([]);
 
+  const searchBook = useSelector(state => state.books.searchBook);
+
   const dispatch = useDispatch();
 
   //actions
@@ -139,7 +141,7 @@ const App = () => {
       <Router>
         <Header 
           cart={cart}
-          
+          searchBook={searchBook}
         />
         <Dashboard 
           changeBookFilter={changeBookFilter}

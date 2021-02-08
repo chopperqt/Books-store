@@ -57,7 +57,7 @@ header {
     border-radius: 2px;
     background: #fff;
     z-index: 99;
-    max-height: 350px;
+    width: 100% !important;
     position: absolute;
     width: 300px;
     -webkit-border-radius: 2px;
@@ -126,5 +126,5 @@ header {
     justify-content: flex-end;
 }
 .input-group input {
-    max-width: 300px;
+    
 }

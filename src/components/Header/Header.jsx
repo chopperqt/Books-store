@@ -7,10 +7,14 @@ import actionsBooks from '../../redux/Books/actions';
 import actionsCart from '../../redux/Cart/actions';
 import {Button,Popover, PopoverHeader, PopoverBody, UncontrolledPopover} from 'reactstrap';
 import { NavLink, Link } from 'react-router-dom';
+import {
+    SearchItem
+} from '../../components'
 
 
 const Header = ({
-    cart
+    cart,
+    searchBook
 }) => {
 
     const menuWidth = useSelector(state => state.menu.menuType);
@@ -54,18 +58,20 @@ const Header = ({
 
         let elem = document.querySelector('.search-input');
 
-        if (searchValue.length > 0) {
-            elem.onblur = () => {
-                setPopup(false)
-                console.log('сработало')
-            }
-            elem.onfocus = () => {
-                console.log('сработал блур')
-                setPopup(true)
-            }
-        }else {
+        // if (searchValue.length > 0) {
+        //     elem.onblur = () => {
+        //         setPopup(false)
+        //         console.log('сработало')
+        //     }
+        //     elem.onfocus = () => {
+        //         console.log('сработал блур')
+        //         setPopup(true)
+        //     }
+        // }else {
             
-        }
+        // }
+        searching();
+        searchValue.length > 0 ? setPopup(true) : setPopup(false)
     }, [searchValue])
 
     useEffect(() => {
@@ -147,18 +153,21 @@ const Header = ({
                         <i className="bi bi-arrows-fullscreen"></i>
                     </button>
                     <div className="input-group">
-                        <input onChange={e => setSearchValue(e.target.value)} type="text" className="form-control search-input" aria-label="Recipient's username" aria-describedby="button-addon2" />
-                        <button onClick={searching} className="btn btn-sm btn-outline-secondary" type="button" id="button-addon2">Search</button>
+                        <input onChange={e => setSearchValue(e.target.value)} type="text" placeholder="Write search text" className="form-control search-input" aria-label="Recipient's username" aria-describedby="button-addon2" />
                         <div className="popup-div" style={popup ? {display: "block"} : {display: 'none'}}>
                             <PopoverHeader>
                                 <p className="text-muted mb-0">Search</p>
                             </PopoverHeader>
                             <PopoverBody>
-                                Тут должен быть элемент который учавствует в поиск
+                                {
+                                    searchValue.length !== 0 ?
+                                        searchBook !== false ? searchBook.map(item => <SearchItem key={item._id} data={item} />)
+                                        : <p>Nothing found!</p>
+                                    : <p>Nothing found!</p>
+                                }
                             </PopoverBody>
                         </div>
                     </div>
-                    
                 </div>
             </div>
         </header>
