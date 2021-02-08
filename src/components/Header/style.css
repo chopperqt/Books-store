@@ -68,6 +68,12 @@ header {
     left: 0;
     overflow-x: hidden;
 }
+#popup-div {
+    max-height: 500px;
+}
+#popup-div { 
+    
+}
 .popup-div img {
     width: 50px;
     height: 60px;

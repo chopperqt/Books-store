@@ -154,15 +154,15 @@ const Header = ({
                     </button>
                     <div className="input-group">
                         <input onChange={e => setSearchValue(e.target.value)} type="text" placeholder="Write search text" className="form-control search-input" aria-label="Recipient's username" aria-describedby="button-addon2" />
-                        <div className="popup-div" style={popup ? {display: "block"} : {display: 'none'}}>
+                        <div className="popup-div" id="popup-div" style={popup ? {display: "block"} : {display: 'none'}}>
                             <PopoverHeader>
                                 <p className="text-muted mb-0">Search</p>
                             </PopoverHeader>
                             <PopoverBody>
                                 {
                                     searchValue.length !== 0 ?
-                                        searchBook !== false ? searchBook.map(item => <SearchItem key={item._id} data={item} />)
-                                        : <p>Nothing found!</p>
+                                        searchBook !== false ? searchBook.map(item => <SearchItem cartStore={cart} key={item._id} data={item} />)
+                                        : <p className="text mb-0">Nothing found!</p>
                                     : <p>Nothing found!</p>
                                 }
                             </PopoverBody>
