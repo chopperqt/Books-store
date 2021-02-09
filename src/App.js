@@ -40,6 +40,7 @@ const App = () => {
   const posts = useSelector(state => state.posts.posts);
   const books = useSelector(state => state.books.booksItems)
   const booksStore = useSelector(state => state.books.booksItems);
+  const authorsStore = useSelector(state => state.authors.authors)
   const limit = useSelector(state => state.books.limit);
   const searching = useSelector(state => state.books.searching);
   const isLoadBook = useSelector(state => state.books.isLoad);
@@ -178,7 +179,7 @@ const App = () => {
             </Route>
             <Route path="/book/:id" exact>
               <WrapperColor>
-                <BookProfile />
+                <BookProfile cart={cart} authors={authorsStore} />
               </WrapperColor>
             </Route>
             <Route path="/author/:id">

@@ -15,7 +15,6 @@ const Dashboard = ({
     bestsellersCount,
     gearsCount
 }) => {
-    console.log(gearsCount)
     const dispath = useDispatch();
 
     const menuWidth = useSelector(state => state.menu.menuType);

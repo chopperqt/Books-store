@@ -5,11 +5,20 @@ import {useDispatch, useSelector} from 'react-redux';
 import {NavLink, Link} from 'react-router-dom';
 import actionsBooks from '../../redux/Books/actions';
 import actionsUsers from '../../redux/Users/actions';
+import actionsCart from '../../redux/Cart/actions';
 import React, {useEffect, useState} from 'react';
 import {CommentItem} from '../../components';
 import {Loader} from '../../components';
+import _ from 'lodash'
+import {
+  Button,
+  Tooltip
+} from 'reactstrap';
 
-const BookProfile = ({}) => {
+const BookProfile = ({
+  cart,
+  authors
+}) => {
   const dispatch = useDispatch();
 
   //stors
@@ -21,6 +30,12 @@ const BookProfile = ({}) => {
   const [bookComments, setBookComments] = useState([]);
   const [genresArray, setGenresArray] = useState([]);
   const [commentValue,setCommentValue] = useState('');
+  const [cartFilter, setCartFilter] = useState([]);
+  const [color, setColor] = useState(true);
+  const [text, setText] = useState(true);
+  const [tooltipOpen, setTooltionOpen] = useState(false);
+  const [tooltopTwoOpen, setTooltipTwoOpen] = useState(false);
+  const [authrosArray, setAuthorsArray] = useState([]);
   const {id} = useParams();
   
   const {
@@ -28,6 +43,11 @@ const BookProfile = ({}) => {
     actionSendBookComment, 
     actionGetBooks
   } = actionsBooks;
+
+  const {
+    actionAddBookToCart,
+    actionRemoveBookFromCart,
+  } = actionsCart
   
   const {actionsGetUsers} = actionsUsers;
   const [book, setBook] = useState([]);
@@ -47,10 +67,12 @@ const BookProfile = ({}) => {
       if (!isLoad) {
         fetchBooks()
       }else {
-        console.log('Сработало ID: ',id)
+        console.log('ID your book: ',id)
         setBook(books.filter(item => item._id === id))
       }
-      console.log('Сработало')
+      
+
+
   }, [isLoad,id])
 
   useEffect(() => {
@@ -61,7 +83,41 @@ const BookProfile = ({}) => {
     setBook(books.filter(item => item._id === id))
   }, [commentValue])
 
-  
+  useEffect(() => {
+    if (cart.filter(item => item._id === id).length !== 0) {
+      setColor(prev => !prev);
+      setText(prev => !prev);
+    }
+  }, [])
+
+  useEffect(() => {
+    if (book.length !== 0) {
+      _.forEach(authors, author => {
+        let findCartItem = _.find(book[0].book_authors, bookItem => author._id === bookItem);
+        if (findCartItem) {
+          setAuthorsArray(prev => [author,...prev])
+        }
+      })
+    }
+    
+
+    console.log(authrosArray)
+  }, [book,authors]);
+
+  const tooltipToggle = () => setTooltionOpen(!tooltipOpen);
+  const tooltopTwoToggle = () => setTooltipTwoOpen(!tooltopTwoOpen);
+
+  function actionBtn() {
+    if (color) {
+      dispatch(actionAddBookToCart(book[0]))
+    } else {
+      dispatch(actionRemoveBookFromCart(id))
+    }
+
+    setColor(prev => !prev);
+    setText(prev => !prev);
+  }
+
   function sendComment() {
       console.log('work')
       let book_id = book[0]._id;
@@ -79,6 +135,8 @@ const BookProfile = ({}) => {
       setCommentValue('');
       setAreaTextLength(0);
   }
+
+
   if (book.length !== 0) {
       return (
           <div className="col-md-12 p-5">
@@ -101,11 +159,29 @@ const BookProfile = ({}) => {
                           style={{
                           width: '100%'
                       }}/>
+                      <div className="col-md-12 col-sm-12 col-lg-12 d-flex">
+                        <div className="col-sm-6 col-lg-6 col-md-6">
+                          <Button onClick={actionBtn} className={!color ? "btn btn-danger mt-2 w-100" : "btn btn-success mt-2 w-100" }>
+                            {text ? "Add to cart" : "Remove from cart"}
+                          </Button>
+                        </div>
+                        <div className="col-sm-6 col-lg-6 col-md-6 d-flex align-items-center">
+                          <p className="text-muted ps-4 mb-0" id={"Tooltip-"+book[0]._id}><i className="bi bi-people"></i> {book[0].book_sells}</p>
+                          <Tooltip placement="bottom" isOpen={tooltipOpen} target={"Tooltip-"+book[0]._id} style={{background: "#198754"}}  toggle={tooltipToggle}>
+                            <p className="mb-0" style={{color: "#fff"}}>Number of books sold</p>
+                          </Tooltip>
+                          <p className="text-muted ps-4 mb-0" id={"Tooltip-"+book[0].book_name}><i className="bi bi-book"></i> {book[0].book_books}</p>
+                          <Tooltip placement="bottom" isOpen={tooltopTwoOpen} target={"Tooltip-"+book[0].book_name} style={{background: "#198754"}}  toggle={tooltopTwoToggle}>
+                            <p className="mb-0" style={{color: "#fff"}}>Books in stock</p>
+                          </Tooltip>
+                        </div>
+                      </div>
+                      
                   </div>
                   <div className="col-md-5 pr-5 col-lg-5 ms-3">
                       <h5 className="fs-6"><span className="text-muted">Name:</span> {book[0].book_name}</h5>
                       <h5 className="fs-6"><span className="text-muted">Pages:</span> {book[0].book_pages}</h5>
-                      <h5 className="fs-6"><span className="text-muted">Author(s): </span></h5>
+                      <h5 className="fs-6"><span className="text-muted">Author(s): </span> {authrosArray.length !== 0 ? authrosArray.map(item => <span>{item.author_firstname} {item.author_lastname}</span>) : "Not specified"}</h5>
                       <h5 className="fs-6"><span className="text-muted">Genres: </span></h5>
                       <h5 className="fs-6"><span className="text-muted">Age limit:</span> {book[0].book_age_limit}</h5>
                       <h5 className="fs-6"><span className="text-muted">Bestsellers:</span> {book[0].book_bestsellers
