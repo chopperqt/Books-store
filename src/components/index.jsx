@@ -14,6 +14,7 @@ import SmallMenu from './SmallMenu';
 import Loader from './Loader';
 import WrapperColor from './WrapperColor';
 import PriceItem from './PriceItem';
+import Home from './Home';
 
 export {
     Wrapper,
@@ -31,5 +32,6 @@ export {
     SmallMenu,
     Loader,
     WrapperColor,
-    PriceItem
+    PriceItem,
+    Home
 }

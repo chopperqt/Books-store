@@ -1,0 +1,28 @@
+.home {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    transition: .7s;
+    -webkit-transition: .7s;
+    -moz-transition: .7s;
+    -ms-transition: .7s;
+    -o-transition: .7s;
+}
+@media screen and (min-width: 0px) and (max-width: 767px) {
+ .home {
+     grid-template-columns: 1fr;
+     transition: .7s;
+     -webkit-transition: .7s;
+     -moz-transition: .7s;
+     -ms-transition: .7s;
+     -o-transition: .7s;
+}   
+}
+@media screen and (min-width: 768px) and (max-width: 992px) {
+    .home {
+        grid-template-columns: 1fr 1fr;
+        transition: .7s;
+        -webkit-transition: .7s;
+        -moz-transition: .7s;
+        -ms-transition: .7s;
+        -o-transition: .7s;
+}
+   }

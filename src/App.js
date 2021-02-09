@@ -31,7 +31,8 @@ import {
   AuthorsItems,
   AuthorProfile,
   WrapperColor,
-  PriceItem
+  PriceItem,
+  Home
 } from './components/'
 
 
@@ -211,10 +212,7 @@ const App = () => {
               </WrapperColor>
             </Route>
             <Route path="/">
-              <div>
-               <input type="test" name="add" onChange={handleInput} />
-                <button type="button" onClick={addDataItem}>Add</button>
-              </div>
+                <Home />
             </Route>
           </Switch>
         </Wrapper>

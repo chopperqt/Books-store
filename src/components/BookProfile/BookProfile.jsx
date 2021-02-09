@@ -36,6 +36,8 @@ const BookProfile = ({
   const [tooltipOpen, setTooltionOpen] = useState(false);
   const [tooltopTwoOpen, setTooltipTwoOpen] = useState(false);
   const [authrosArray, setAuthorsArray] = useState([]);
+
+
   const {id} = useParams();
   
   const {

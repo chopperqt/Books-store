@@ -3,3 +3,6 @@
 body {
   background: #f6f6f6;
 }
+.loader {
+  height: cacl(100vh - 39vh) !important;
+}

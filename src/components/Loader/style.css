@@ -1,0 +1,5 @@
+.loader {
+    height: calc(100vh - 33vh);
+    display: flex;
+    align-items: center;
+}
