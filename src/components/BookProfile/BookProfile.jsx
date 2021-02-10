@@ -196,6 +196,7 @@ const BookProfile = ({
                       
                   </div>
                   <div className="col-md-5 pr-5 col-lg-5 ms-3">
+                    <h5 className="w-100" style={{borderBottom: '1px solid #ced4da'}}>Detailed information:</h5>
                       <h5 className="fs-6"><span className="text-muted">Name:</span> {book[0].book_name}</h5>
                       <h5 className="fs-6"><span className="text-muted">Pages:</span> {book[0].book_pages}</h5>
                       <h5 className="fs-6"><span className="text-muted">Author(s): </span> {authrosArray.length !== 0 ? authrosArray.map(item => <span>{item.author_firstname} {item.author_lastname}</span>) : "Not specified"}</h5>
@@ -208,7 +209,6 @@ const BookProfile = ({
                       <h5 className="fs-6"><span className="text-muted">Price: </span>
                           <span className="text-primary">{book[0].book_price}$</span>
                       </h5>
-                      <h5 className="fs-6"><span className="text-muted">Description: </span>{book[0].book_description}</h5>
                   </div>
               </div>
               
@@ -217,6 +217,12 @@ const BookProfile = ({
         </WrapperColor>
         <div className="col-md-12 col-lg-12 col-sm-12 bookProfileGrid">
           <div className="col-md-6 col-sm-6 col-lg-6 w-100">
+            <WrapperColor>
+              <div  className="col-md-12 col-sm-12 col-lg-12 p-5 mt-4">
+                <h5>Description:</h5>
+                <p>{book[0].book_description}</p>
+              </div>
+            </WrapperColor>
             <WrapperColor>
                 <div className="col-md-12 col-sm-12 col-lg-12 p-5 mt-4">
                     <h5>Similar Books:</h5>

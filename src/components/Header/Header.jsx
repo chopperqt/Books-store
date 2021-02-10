@@ -53,23 +53,14 @@ const Header = ({
     const searching = () => {
         dispath(actionSearchBookData(searchValue))
     }
+
+    const clearSearchValue = () => {
+        setSearchValue('');
+    }
     
     useEffect(() => {
-
         let elem = document.querySelector('.search-input');
 
-        // if (searchValue.length > 0) {
-        //     elem.onblur = () => {
-        //         setPopup(false)
-        //         console.log('сработало')
-        //     }
-        //     elem.onfocus = () => {
-        //         console.log('сработал блур')
-        //         setPopup(true)
-        //     }
-        // }else {
-            
-        // }
         searching();
         searchValue.length > 0 ? setPopup(true) : setPopup(false)
     }, [searchValue])
@@ -153,7 +144,7 @@ const Header = ({
                         <i className="bi bi-arrows-fullscreen"></i>
                     </button>
                     <div className="input-group">
-                        <input onChange={e => setSearchValue(e.target.value)} type="text" placeholder="Write search text" className="form-control search-input" aria-label="Recipient's username" aria-describedby="button-addon2" />
+                        <input onChange={e => setSearchValue(e.target.value)} type="text" placeholder="Write search text" value={searchValue} className="form-control search-input" aria-label="Recipient's username" aria-describedby="button-addon2" />
                         <div className="popup-div" id="popup-div" style={popup ? {display: "block"} : {display: 'none'}}>
                             <PopoverHeader>
                                 <p className="text-muted mb-0">Search</p>
@@ -161,7 +152,7 @@ const Header = ({
                             <PopoverBody>
                                 {
                                     searchValue.length !== 0 ?
-                                        searchBook !== false ? searchBook.map(item => <SearchItem cartStore={cart} key={item._id} data={item} />)
+                                        searchBook !== false ? searchBook.map(item => <SearchItem clearValue={() => clearSearchValue()} cartStore={cart} key={item._id} data={item} />)
                                         : <p className="text mb-0">Nothing found!</p>
                                     : <p>Nothing found!</p>
                                 }

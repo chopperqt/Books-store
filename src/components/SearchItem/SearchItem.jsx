@@ -8,7 +8,8 @@ import './style.css';
 
 const SearchItem = ({
   data,
-  cartStore
+  cartStore,
+  clearValue
 }) => {
   const cart = useSelector(state => state.cart.cart)
   const dispath = useDispatch();
@@ -53,13 +54,13 @@ const SearchItem = ({
   return (
       <div className="col-md-12 col-sm-12 col-lg-12 mb-3 d-flex">
         <div className="col-md-2 col-sm-2 col-lg-2">
-          <NavLink to={"/book/"+data._id}>
+          <NavLink to={"/book/"+data._id} onClick={(e) => clearValue(e)}>
             <img src="http://placehold.it/400x300" className="w-100" style={{height: "70px"}} />
           </NavLink>
         </div>
         <div className="col-md-9 col-sm-9-col-lg-9 ps-2 d-flex">
           <div className="col-md-11 col-sm-11 col-lg-11">
-            <NavLink to={"/book/"+data._id}>
+            <NavLink to={"/book/"+data._id} onClick={(e) => clearValue(e)}>
               <p className="text mb-0" style={{fontSize: "15px"}}>{data.book_name}</p>
             </NavLink>
             <div className="d-flex">
