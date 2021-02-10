@@ -179,9 +179,7 @@ const App = () => {
               </WrapperColor>
             </Route>
             <Route path="/book/:id" exact>
-              <WrapperColor>
                 <BookProfile cart={cart} authors={authorsStore} />
-              </WrapperColor>
             </Route>
             <Route path="/author/:id">
               <AuthorProfile />

@@ -8,8 +8,13 @@
     text-align: center;
     line-height: 15px;
     left: 0;
-    top: 5px;
+    top: 0px;
     font-size: 10px;
     position: absolute;
     margin-top: 4px;
+}
+.bookProfileGrid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
 }

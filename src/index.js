@@ -10,10 +10,14 @@ import { Provider } from 'react-redux';
 import {rootReducer} from './redux/rootReducer';
 
 
+const composeEnhancers = (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
 
 
-
-const store = createStore(rootReducer, compose(applyMiddleware(thunk),window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
+const store = createStore(
+  rootReducer, 
+  composeEnhancers(applyMiddleware(thunk)),
+  //applyMiddleware(thunk),
+);
 
 
 ReactDOM.render(

@@ -1,5 +1,5 @@
 import books from '../../contacts/books.json';
-
+import _, { filter } from 'lodash';
 import actions from './actions';
 
 
@@ -9,14 +9,16 @@ const initialState = {
     booksItems: [],
     searchBook: [],
     searching: false,
-    isLoad: false
+    isLoad: false,
+    similarBooks: []
 };
 
 const {
     GET_BOOKS,
     MORE_BOOKS_DATA,
     SEARCH_BOOK_DATA,
-    SEND_BOOK_COMMENT
+    SEND_BOOK_COMMENT,
+    GET_SIMILAR_BOOKS
 } = actions;
 
 //JSON.parse(books)
@@ -59,7 +61,33 @@ export const booksStore = (
                 ...state,
                 booksItems: array
             }
+        case GET_SIMILAR_BOOKS: 
+        let filterBook = [];
+            if (payload !== undefined) {
+                
+                let filterGenres = [];
+                let filterBook = [];
 
+                _.forEach(payload.book_genres, (item, index) => {
+                    if (item === true) {
+                        filterGenres = {[index]: item  ,...filterGenres}
+                    }
+                })
+
+                _.forEach(state.booksItems, book => {
+                    let findPayload = _.find(filterGenres, genres => book.book_genres[genres] === true);
+                    if (findPayload) {
+                        filterBook = [book, ...filterBook]
+                    }
+                })
+
+                console.log(filterBook)
+
+            }
+            return {
+                ...state,
+                similarBooks: []
+            }
         case SEARCH_BOOK_DATA:
             if (payload.length !== 0) {
                 console.log(state);

@@ -25,7 +25,14 @@
     "book_discount": 14,
     "book_bestseller": false,
     "book_pages": 145,
-    "book_genres": ["gear","travel"],
+    "book_genres": {
+      "gear": true,
+      "sport": false,
+      "travel": true,
+      "cooking": false,
+      "game": false,
+      "loveStory": false
+    },
     "book_age_limit": 16
   },
   {
@@ -43,7 +50,14 @@
     "book_discount": 1,
     "book_bestseller": true,
     "book_pages": 373,
-    "book_genres": [],
+    "book_genres": {
+      "gear": true,
+      "sport": false,
+      "travel": false,
+      "cooking": false,
+      "game": true,
+      "loveStory": false
+    },
     "book_age_limit": 12
   },
   {
@@ -61,7 +75,14 @@
     "book_discount": 6,
     "book_bestseller": false,
     "book_pages": 555,
-    "book_genres": [],
+    "book_genres": {
+      "gear": true,
+      "sport": false,
+      "travel": true,
+      "cooking": false,
+      "game": true,
+      "loveStory": false
+    },
     "book_age_limit": 16
   },
   {
@@ -79,7 +100,14 @@
     "book_discount": 8,
     "book_bestseller": false,
     "book_pages": 65,
-    "book_genres": [],
+    "book_genres": {
+      "gear": false,
+      "sport": false,
+      "travel": false,
+      "cooking": true,
+      "game": false,
+      "loveStory": true
+    },
     "book_age_limit": 16
   },
   {
@@ -97,7 +125,14 @@
     "book_discount": 15,
     "book_bestseller": false,
     "book_pages": 971,
-    "book_genres": [],
+    "book_genres": {
+      "gear": false,
+      "sport": true,
+      "travel": true,
+      "cooking": false,
+      "game": true,
+      "loveStory": false
+    },
     "book_age_limit": 12
   },
   {
@@ -115,7 +150,14 @@
     "book_discount": 3,
     "book_bestseller": false,
     "book_pages": 479,
-    "book_genres": [],
+    "book_genres": {
+      "gear": true,
+      "sport": false,
+      "travel": true,
+      "cooking": true,
+      "game": true,
+      "loveStory": true
+    },
     "book_age_limit": 12
   },
   {
@@ -133,7 +175,14 @@
     "book_discount": 20,
     "book_bestseller": false,
     "book_pages": 218,
-    "book_genres": [],
+    "book_genres": {
+      "gear": true,
+      "sport": false,
+      "travel": true,
+      "cooking": false,
+      "game": false,
+      "loveStory": false
+    },
     "book_age_limit": 6
   },
   {
@@ -151,7 +200,14 @@
     "book_discount": 2,
     "book_bestseller": true,
     "book_pages": 84,
-    "book_genres": [],
+    "book_genres": {
+      "gear": true,
+      "sport": false,
+      "travel": true,
+      "cooking": false,
+      "game": false,
+      "loveStory": false
+    },
     "book_age_limit": 12
   },
   {
@@ -169,7 +225,14 @@
     "book_discount": 8,
     "book_bestseller": true,
     "book_pages": 734,
-    "book_genres": [],
+    "book_genres": {
+      "gear": true,
+      "sport": false,
+      "travel": true,
+      "cooking": false,
+      "game": false,
+      "loveStory": false
+    },
     "book_age_limit": 12
   },
   {
@@ -187,7 +250,14 @@
     "book_discount": 19,
     "book_bestseller": true,
     "book_pages": 887,
-    "book_genres": [],
+    "book_genres": {
+      "gear": true,
+      "sport": false,
+      "travel": true,
+      "cooking": false,
+      "game": false,
+      "loveStory": false
+    },
     "book_age_limit": 12
   },
   {
@@ -205,7 +275,14 @@
     "book_discount": 7,
     "book_bestseller": false,
     "book_pages": 675,
-    "book_genres": [],
+    "book_genres": {
+      "gear": true,
+      "sport": false,
+      "travel": true,
+      "cooking": false,
+      "game": false,
+      "loveStory": false
+    },
     "book_age_limit": 6
   },
   {
@@ -223,7 +300,14 @@
     "book_discount": 17,
     "book_bestseller": false,
     "book_pages": 579,
-    "book_genres": [],
+    "book_genres": {
+      "gear": true,
+      "sport": false,
+      "travel": true,
+      "cooking": false,
+      "game": false,
+      "loveStory": false
+    },
     "book_age_limit": 16
   },
   {
@@ -241,7 +325,14 @@
     "book_discount": 17,
     "book_bestseller": true,
     "book_pages": 101,
-    "book_genres": [],
+    "book_genres": {
+      "gear": true,
+      "sport": false,
+      "travel": true,
+      "cooking": false,
+      "game": false,
+      "loveStory": false
+    },
     "book_age_limit": 12
   },
   {
@@ -259,7 +350,14 @@
     "book_discount": 20,
     "book_bestseller": true,
     "book_pages": 982,
-    "book_genres": [],
+    "book_genres": {
+      "gear": true,
+      "sport": false,
+      "travel": true,
+      "cooking": false,
+      "game": false,
+      "loveStory": false
+    },
     "book_age_limit": 6
   },
   {
@@ -277,7 +375,14 @@
     "book_discount": 14,
     "book_bestseller": true,
     "book_pages": 838,
-    "book_genres": [],
+    "book_genres": {
+      "gear": true,
+      "sport": false,
+      "travel": true,
+      "cooking": false,
+      "game": false,
+      "loveStory": false
+    },
     "book_age_limit": 18
   },
   {
@@ -295,7 +400,14 @@
     "book_discount": 3,
     "book_bestseller": false,
     "book_pages": 945,
-    "book_genres": [],
+    "book_genres": {
+      "gear": true,
+      "sport": false,
+      "travel": true,
+      "cooking": false,
+      "game": false,
+      "loveStory": false
+    },
     "book_age_limit": 12
   },
   {
@@ -313,7 +425,14 @@
     "book_discount": 13,
     "book_bestseller": true,
     "book_pages": 412,
-    "book_genres": [],
+    "book_genres": {
+      "gear": true,
+      "sport": false,
+      "travel": true,
+      "cooking": false,
+      "game": false,
+      "loveStory": false
+    },
     "book_age_limit": 12
   },
   {
@@ -331,7 +450,14 @@
     "book_discount": 14,
     "book_bestseller": false,
     "book_pages": 500,
-    "book_genres": [],
+    "book_genres": {
+      "gear": true,
+      "sport": false,
+      "travel": true,
+      "cooking": false,
+      "game": false,
+      "loveStory": false
+    },
     "book_age_limit": 12
   },
   {
@@ -349,7 +475,14 @@
     "book_discount": 7,
     "book_bestseller": true,
     "book_pages": 581,
-    "book_genres": [],
+    "book_genres": {
+      "gear": true,
+      "sport": false,
+      "travel": true,
+      "cooking": false,
+      "game": false,
+      "loveStory": false
+    },
     "book_age_limit": 18
   },
   {
@@ -367,7 +500,14 @@
     "book_discount": 11,
     "book_bestseller": false,
     "book_pages": 503,
-    "book_genres": [],
+    "book_genres": {
+      "gear": true,
+      "sport": false,
+      "travel": true,
+      "cooking": false,
+      "game": false,
+      "loveStory": false
+    },
     "book_age_limit": 16
   },
   {
@@ -385,7 +525,14 @@
     "book_discount": 12,
     "book_bestseller": true,
     "book_pages": 210,
-    "book_genres": [],
+    "book_genres": {
+      "gear": true,
+      "sport": false,
+      "travel": true,
+      "cooking": false,
+      "game": false,
+      "loveStory": false
+    },
     "book_age_limit": 16
   },
   {
@@ -403,7 +550,14 @@
     "book_discount": 1,
     "book_bestseller": false,
     "book_pages": 894,
-    "book_genres": [],
+    "book_genres": {
+      "gear": true,
+      "sport": false,
+      "travel": true,
+      "cooking": false,
+      "game": false,
+      "loveStory": false
+    },
     "book_age_limit": 6
   },
   {
@@ -421,7 +575,14 @@
     "book_discount": 16,
     "book_bestseller": true,
     "book_pages": 974,
-    "book_genres": [],
+    "book_genres": {
+      "gear": true,
+      "sport": false,
+      "travel": true,
+      "cooking": false,
+      "game": false,
+      "loveStory": false
+    },
     "book_age_limit": 14
   },
   {
@@ -439,7 +600,14 @@
     "book_discount": 11,
     "book_bestseller": true,
     "book_pages": 921,
-    "book_genres": [],
+    "book_genres": {
+      "gear": true,
+      "sport": false,
+      "travel": true,
+      "cooking": false,
+      "game": false,
+      "loveStory": false
+    },
     "book_age_limit": 18
   },
   {
@@ -457,7 +625,14 @@
     "book_discount": 13,
     "book_bestseller": true,
     "book_pages": 11,
-    "book_genres": [],
+    "book_genres": {
+      "gear": true,
+      "sport": false,
+      "travel": true,
+      "cooking": false,
+      "game": false,
+      "loveStory": false
+    },
     "book_age_limit": 6
   },
   {
@@ -475,7 +650,14 @@
     "book_discount": 7,
     "book_bestseller": true,
     "book_pages": 630,
-    "book_genres": [],
+    "book_genres": {
+      "gear": true,
+      "sport": false,
+      "travel": true,
+      "cooking": false,
+      "game": false,
+      "loveStory": false
+    },
     "book_age_limit": 12
   },
   {
@@ -493,7 +675,14 @@
     "book_discount": 20,
     "book_bestseller": false,
     "book_pages": 566,
-    "book_genres": [],
+    "book_genres": {
+      "gear": true,
+      "sport": false,
+      "travel": true,
+      "cooking": false,
+      "game": false,
+      "loveStory": false
+    },
     "book_age_limit": 18
   },
   {
@@ -511,7 +700,14 @@
     "book_discount": 20,
     "book_bestseller": false,
     "book_pages": 132,
-    "book_genres": [],
+    "book_genres": {
+      "gear": true,
+      "sport": false,
+      "travel": true,
+      "cooking": false,
+      "game": false,
+      "loveStory": false
+    },
     "book_age_limit": 6
   }
 ]
