@@ -43,6 +43,7 @@ const BookProfile = ({
   const [tooltipOpen, setTooltionOpen] = useState(false);
   const [tooltopTwoOpen, setTooltipTwoOpen] = useState(false);
   const [authrosArray, setAuthorsArray] = useState([]);
+  const [itemSwap, setItemSwap] = useState(0);
 
 
   const {id} = useParams();
@@ -151,6 +152,20 @@ const BookProfile = ({
       setAreaTextLength(0);
   }
 
+  const swapSelected = (e,number) => {
+    let comments = document.querySelector(".under__actions__comments");
+    let reviews = document.querySelector(".under__actions__reviews");
+
+
+    //Selected element
+    let p = document.querySelector("#selected");
+    //Remove add attribute
+    p.removeAttribute("id")
+    //Add Selected to target
+    e.target.id = "selected"
+
+    setItemSwap(number)
+  }
 
   if (book.length !== 0) {
       return (
@@ -231,39 +246,48 @@ const BookProfile = ({
           </div>
           <div className="col-md-6 col-sm-6 col-lg-6 w-100" style={{marginRight: '10px'}}>
             <WrapperColor>
-            <div className="col-md-12 col-lg-12 col-sm-12 col-xs-12 mt-4 p-5 ms-auto pb-0">
-              <h5>Add comment:</h5>
-                <div className="form-floating mt-1">
-                    <textarea
-                        className="form-control"
-                        value={commentValue}
-                        onChange={e => {
-                        setAreaTextLength(e.target.value.length);
-                        setCommentValue(e.target.value)
-                        
-                    }}
-                        placeholder="Leave a comment here"
-                        id="floatingTextarea2"
-                        style={{
-                        height: '100px',
-                        resize: 'none'
-                    }}></textarea>
-                    <label for="floatingTextarea2">Add your comments</label>
-                </div>
-                <div className="col-md-12 d-flex justify-content-end align-items-baseline">
-                  <p className="text-muted" style={{fontSize: '14px'}}>{areaTextLength} / 500</p>
-                  <button onClick={sendComment} className="btn btn-sm btn-primary d-flex mt-2 ms-2">Send</button>
+            <div className="col-md-12 col-lg-12 col-sm-12 col-xs-12 mt-4 p-5 ms-auto">
+              <h5>Comments & Reviews</h5>
+              {/* menu */}
+              <div className="col-md-12 col-sm-12 col-lg-12 under__menu">
+                <div className="col-md-12 col-sm-12 col-lg-12 d-flex under__menu__active mb-3">
+                  <p onClick={(e,number) => swapSelected(e,0)} style={{fontSize: "14px"}} className="comments__" id="selected">Comments <span className="text-muted">{book[0].book_comments.length}</span></p>
+                  <p onClick={(e,number) => swapSelected(e,1)} style={{fontSize: "14px"}} className="reviews__ ms-3">Reviews <span className="text-muted">0</span></p>
                 </div>
               </div>
-            <div className="col-md-12 col-lg-12 p-5 pt-0">
-                  <h5>
-                      <i className="bi bi-chat me-2 comments_leng">
-                          <span>{book[0].book_comments.length}</span>
-                      </i>Comments:</h5>
-                  {book[0].book_comments.length !== 0
+              <div className="col-dm-12 col-sm-12 col-lg-12 under__actions">
+                {itemSwap === 0 ? (
+                <div className="col-md-12 col-sm-12 col-lg-12 under__actions__comments">
+                  <div className="form-floating mt-1">
+                    <textarea 
+                      className="form-control" 
+                      value={commentValue} 
+                      onChange={e => { setAreaTextLength(e.target.value.length); setCommentValue(e.target.value)}}
+                      placeholder="Leave a comment here"
+                      id="floatingTextarea2"
+                      style={{height: '100px',resize: 'none'}}>
+                    </textarea>
+                    <label htmlFor="floatingTextarea2">Add your comments</label>
+                  </div>
+                  <div className="col-md-12 d-flex justify-content-end align-items-baseline">
+                    <p className="text-muted" style={{fontSize: '14px'}}>{areaTextLength} / 500</p>
+                    <button onClick={sendComment} className="btn btn-sm btn-primary d-flex mt-2 ms-2">Send</button>
+                  </div>
+                  <div className="col-md-12 col-lg-12">
+                    <p className="fs-6"><i className="bi bi-chat me-1 comments_leng" style={{fontSize: "20px"}}><span>{book[0].book_comments.length}</span></i>Comments:</p>
+                    {book[0].book_comments.length !== 0
                       ? book[0].book_comments.map(item => (<CommentItem key={item._id} data={item}/>))
-                      : <h5 className="text-muted">There are no comments. Be the first!</h5>}
+                      : <h5 className="text-muted">There are no comments. Be the first!</h5>
+                    }
+                  </div>
+                </div>
+                ) : 
+                <div className="col-md-12 col-sm-12 col-lg-12 under__actions__reviews">
+                    Reviews
+                </div>
+                }
               </div>
+            </div>
             </WrapperColor>
           </div>
           

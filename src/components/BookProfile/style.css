@@ -18,3 +18,32 @@
     grid-template-columns: 1fr 1fr;
     column-gap: 20px;
 }
+
+.under__mennu {
+
+}
+
+.under__menu__active {
+    border-bottom: 1px solid rgb(206, 212, 218);
+}
+.under__menu__active p {
+    margin-bottom: 0;
+    cursor: pointer;
+}
+.under__menu__active p span {
+    pointer-events: none;
+}
+.under__menu__active p:hover {
+    color: #383e45;
+}
+.under__menu__active #selected {
+    border-bottom: 2px solid #ffc107;
+}
+
+.under__actions {
+    display: inline-flex;
+    transition: cubic-bezier(0.215, 0.610, 0.355, 1);
+}
+.under__actions__reviews {
+    
+}
