@@ -18,6 +18,12 @@
     grid-template-columns: 1fr 1fr;
     column-gap: 20px;
 }
+.bookProfileGrid div:first-child {
+    order: 1;
+}
+.bookProfileGrid div:last-child {
+    order: 2;
+}
 
 .under__mennu {
 
@@ -44,6 +50,15 @@
     display: inline-flex;
     transition: cubic-bezier(0.215, 0.610, 0.355, 1);
 }
-.under__actions__reviews {
-    
+
+
+@media screen and (min-width: 0px) and (max-width: 767px) {
+    .bookProfileGrid {
+        grid-template-columns: 1fr;
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 992px) {
+    .bookProfileGrid {
+        grid-template-columns: 1fr;
+    }
 }

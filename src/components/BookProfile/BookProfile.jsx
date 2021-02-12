@@ -44,6 +44,8 @@ const BookProfile = ({
   const [tooltopTwoOpen, setTooltipTwoOpen] = useState(false);
   const [authrosArray, setAuthorsArray] = useState([]);
   const [itemSwap, setItemSwap] = useState(0);
+  const [fakeLoader, setFakeLoader] = useState(false);
+  const [countStars, setCountStars] = useState(5);
 
 
   const {id} = useParams();
@@ -116,10 +118,17 @@ const BookProfile = ({
           setAuthorsArray(prev => [author,...prev])
         }
       })
+      setCountStars(prev => prev - book[0].book_rating)
     }
     dispatch(actionGetSimilarBook(book[0]))
   }, [book,authors]);
-
+  
+  //fakeLoader
+  useEffect(() => {
+    setTimeout(() => {
+      setFakeLoader(prev => !prev);
+    }, 5000)
+  }, [])
   const tooltipToggle = () => setTooltionOpen(!tooltipOpen);
   const tooltopTwoToggle = () => setTooltipTwoOpen(!tooltopTwoOpen);
 
@@ -220,7 +229,7 @@ const BookProfile = ({
                       <h5 className="fs-6"><span className="text-muted">Bestsellers:</span> {book[0].book_bestseller
                               ? 'Yes'
                               : 'No'}</h5>
-                      <h5 className="fs-6"><span className="text-muted">Rating:</span> {book[0].book_rating} / 5</h5>
+                      <h5 className="fs-6"><span className="text-muted">Rating:</span> {book[0].book_rating ? [book[0].book_rating].map(item => <i className="bi bi-star-fill" style={{color: "#ffd700"}}></i>): null} / {book[0] ? [countStars].map(item => <i className="bi bi-start-fill"></i>) : null }</h5>
                       <h5 className="fs-6"><span className="text-muted">Price: </span>
                           <span className="text-primary">{book[0].book_price}$</span>
                       </h5>
@@ -281,10 +290,10 @@ const BookProfile = ({
                     }
                   </div>
                 </div>
-                ) : 
-                <div className="col-md-12 col-sm-12 col-lg-12 under__actions__reviews">
-                    Reviews
-                </div>
+                ) :
+                  <div className="col-md-12 col-sm-12 col-lg-12 under__actions__reviews">
+                    { fakeLoader ? "Reviews" : <Loader height={100} />}
+                  </div>
                 }
               </div>
             </div>

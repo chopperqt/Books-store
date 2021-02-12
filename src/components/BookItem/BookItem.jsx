@@ -11,13 +11,20 @@ const BookItem = ({data}) => {
   const [text,setText] = useState(true)
   const [color,setColor] = useState(true);
 
-  const {actionAddBookToCart, actionRemoveBookFromCart} = actionsCart;
+  const {
+    actionAddBookToCart, 
+    actionRemoveBookFromCart,
+    actionAddSelected,
+    actionRemoveSelected
+  } = actionsCart;
 
   function actionBtn(event) {
 
     if (color) {
       dispath(actionAddBookToCart(data))
+      dispath(actionAddSelected(data._id))
     } else {
+      dispath(actionRemoveSelected(data._id))
       dispath(actionRemoveBookFromCart(data._id))
     }
 

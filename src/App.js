@@ -6,12 +6,14 @@ import LoadDataActions from './redux/Posts/actions';
 import actions from './redux/Books/actions';
 import actionsUsers from './redux/Users/actions';
 import actionsAuthors from './redux/Authors/actions';
+import actionsCart from './redux/Cart/actions';
 
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link,
+  Redirect,
   NavLink
 } from 'react-router-dom';
 
@@ -53,6 +55,10 @@ const App = () => {
   const dispatch = useDispatch();
 
   //actions
+  const {
+    actionAddSelected,
+    actionRemoveSelected
+  } = actionsCart;
   const {
     loadFromDataPosts,
     addItemToData,
@@ -192,11 +198,14 @@ const App = () => {
                         <li className="breadcrumb-item active" aria-current="page">Cart</li>
                     </ol>
                 </nav>
-                <CartsItems />
+                <CartsItems selected={actionAddSelected} unSelected={actionRemoveSelected} />
               </WrapperColor>
               <WrapperColor>
                 <PriceItem data={cart} />
               </WrapperColor>
+            </Route>
+            <Route path="/home" redirect>
+              <Redirect to="/" />
             </Route>
             <Route path="/authors">
               <WrapperColor>

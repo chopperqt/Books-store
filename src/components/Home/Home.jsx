@@ -15,6 +15,12 @@ const Home = () => {
                         <h1 className="fs-1 text-success">2010</h1>
                     </div>
                 </WrapperColor>
+                <WrapperColor>
+                    <div className="p-4 text-center">
+                        <h1 className="text-success">~800</h1>
+                        <h3>people per day</h3>
+                    </div>
+                </WrapperColor>
             </div>
             <div className="col-3 w-100">
                 <WrapperColor>
@@ -39,14 +45,6 @@ const Home = () => {
                     <div className="p-4 text-center">
                         <h1 className="text-success">~10000</h1>
                         <h3>people per week</h3>
-                    </div>
-                </WrapperColor>
-            </div>
-            <div className="col-3 w-100">
-                <WrapperColor>
-                    <div className="p-4 text-center">
-                        <h1 className="text-success">~800</h1>
-                        <h3>people per day</h3>
                     </div>
                 </WrapperColor>
             </div>

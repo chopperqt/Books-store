@@ -38,7 +38,7 @@ const Dashboard = ({
     return (
         <div className="dashboard" style={styless}>
             <div className="menu__left">
-                <NavLink to="/" className="g-grid justify-content-center linking" >
+                <NavLink to="/home" className="g-grid justify-content-center linking" >
                     <i className="bi bi-journal" style={{fontSize: '30px'}}></i>
                     <p className="fs-6">Home</p>
                 </NavLink>

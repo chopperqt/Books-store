@@ -2,11 +2,14 @@ import actions from './actions';
 
 const {
     ACTION_ADD_BOOK_TO_CART,
-    ACTION_REMOVE_BOOK_FROM_CART
+    ACTION_REMOVE_BOOK_FROM_CART,
+    ACTION_ADD_BOOK_SELECTED,
+    ACTION_REMOVE_BOOK_SELECTED
 } = actions;
 
 const initilaState = {
-    cart: []
+    cart: [],
+    cartSelected: [],
 }
 
 
@@ -24,6 +27,16 @@ export const cartReducer = (
             return {
                 ...state,
                 cart: state.cart.filter(item => item._id !== payload)
+            }
+        case ACTION_ADD_BOOK_SELECTED:
+            return {
+                ...state,
+                cartSelected: [...state.cartSelected,payload]
+            }
+        case ACTION_REMOVE_BOOK_SELECTED:
+            return {
+                ...state,
+                cartSelected: state.cartSelected.filter(item => item !== payload)
             }
         default:
             return {

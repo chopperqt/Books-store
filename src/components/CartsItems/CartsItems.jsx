@@ -9,7 +9,7 @@ const SearchItem = React.lazy(() => import ('../../components/SearchItem'));
 
 const {actionDasboardOpen} = actionsMenu;
 
-const CartsItems = ({data}) => {
+const CartsItems = ({selected, unSelected}) => {
   const dispatch = useDispatch();
 
   const limit = useSelector(state => state.books.limit);
@@ -28,6 +28,7 @@ const CartsItems = ({data}) => {
       <Suspense fallback={< div > Загрузка ...</div>}>
         <div className="col-md-12 col-lg-12 col-sm-12 d-flex align-items-center" style={{borderBottom: '1px solid #ced4da', padding: '5px'}}>
           <p className="text-center text-muted" style={{width: '10%'}}></p>
+          <p className="text-center text-muted" style={{width: '10%'}}></p>
           <p className="w-25 text-center text-muted" style={{fontSize: '12px'}}>Название</p>
           <p className="w-25 text-center text-muted" style={{fontSize: '12px'}}>Год</p>
           <p className="w-25 text-center text-muted" style={{fontSize: '12px'}}>Страниц</p>
@@ -40,7 +41,7 @@ const CartsItems = ({data}) => {
           <div style={{width: '5%'}}></div>
         </div>
         {cartStore.length
-          ? cartStore.map(item => (<CartItem data={item} key={item._id}/>))
+          ? cartStore.map(item => (<CartItem  selected={(id) => selected(id)} unSelected={(id) => unSelected(id)} data={item} key={item._id}/>))
           : <h1 className="w-100">There is nothing in the basket</h1>
         }
       </Suspense>
