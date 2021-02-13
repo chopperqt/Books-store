@@ -143,7 +143,7 @@ const Header = ({
                     <button  onClick={actionFullScreen} data-toggle-fullscreen="false"  className="fillSizeBtn">
                         <i className="bi bi-arrows-fullscreen"></i>
                     </button>
-                    <div className="input-group">
+                    <div className="input-group col-md-7 col-sm-12 col-lg-7">
                         <input onChange={e => setSearchValue(e.target.value)} type="text" placeholder="Write search text" value={searchValue} className="form-control search-input" aria-label="Recipient's username" aria-describedby="button-addon2" />
                         <div className="popup-div" id="popup-div" style={popup ? {display: "block"} : {display: 'none'}}>
                             <PopoverHeader>

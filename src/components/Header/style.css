@@ -128,7 +128,7 @@ header {
     padding-left: 10px;
 }
 .input-group {
-    width: 350px;
+    width: auto !important;
     justify-content: flex-end;
 }
 .input-group input {
