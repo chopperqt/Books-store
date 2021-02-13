@@ -8,6 +8,7 @@ import actionsUsers from '../../redux/Users/actions';
 import actionsCart from '../../redux/Cart/actions';
 import actionsMenu from '../../redux/Menu/actions';
 import React, {useEffect, useState} from 'react';
+import 'bootstrap/dist/css/bootstrap.css';
 
 
 import {
@@ -19,7 +20,7 @@ import {
 import _ from 'lodash'
 import {
   Button,
-  Tooltip
+  Tooltip,
 } from 'reactstrap';
 
 const BookProfile = ({
@@ -40,13 +41,26 @@ const BookProfile = ({
   const [cartFilter, setCartFilter] = useState([]);
   const [color, setColor] = useState(true);
   const [text, setText] = useState(true);
+  //tooltips
   const [tooltipOpen, setTooltionOpen] = useState(false);
-  const [tooltopTwoOpen, setTooltipTwoOpen] = useState(false);
+  const [tooltipTwoOpen, setTooltipTwoOpen] = useState(false);
+  const [tooltipRatingOpen,setTooltipRatingOpen] = useState(false)
+
   const [authrosArray, setAuthorsArray] = useState([]);
   const [itemSwap, setItemSwap] = useState(0);
   const [fakeLoader, setFakeLoader] = useState(false);
   const [countStars, setCountStars] = useState(5);
 
+  //rating
+  const [fixedRating, setFixedRating] = useState(false);
+  const [firstStarFill, setFirstStarFill] = useState("bi bi-star")
+  const [twoStarFill, setTwoStarFill] = useState("bi bi-star")
+  const [threeStarFill, setThreeStarFill] = useState("bi bi-star")
+  const [fourStarFill, setFourStarFill] = useState("bi bi-star")
+  const [fiveStarFill, setFiveStarFill] = useState("bi bi-star")
+
+  //genres
+  const [arrayGanres, setArrayGenres] = useState([]);
 
   const {id} = useParams();
   
@@ -118,10 +132,37 @@ const BookProfile = ({
           setAuthorsArray(prev => [author,...prev])
         }
       })
+
       setCountStars(prev => prev - book[0].book_rating)
     }
     dispatch(actionGetSimilarBook(book[0]))
   }, [book,authors]);
+
+  useEffect(() => {
+    setArrayGenres([]);
+    if (book.length !== 0) {
+      if (book[0].book_genres.gear) {
+        setArrayGenres(prev => [ ...prev,'Gear']);
+      }
+      if (book[0].book_genres.sport) {
+        setArrayGenres(prev => [ ...prev,'Sport']);
+      }
+      if (book[0].book_genres.travel) {
+        setArrayGenres(prev => [ ...prev,'Travel']);
+      }
+      if (book[0].book_genres.cooking) {
+        setArrayGenres(prev => [ ...prev,'Cooking']);
+      }
+      if (book[0].book_genres.game) {
+        setArrayGenres(prev => [ ...prev,'Game']);
+      }
+      if (book[0].book_genres.loveStore) {
+        setArrayGenres(prev => [ ...prev,'Love Story']);
+      }
+    }
+    console.log(arrayGanres)
+  }, [book])
+
   
   //fakeLoader
   useEffect(() => {
@@ -129,8 +170,82 @@ const BookProfile = ({
       setFakeLoader(prev => !prev);
     }, 5000)
   }, [])
+
+  //tooltips
   const tooltipToggle = () => setTooltionOpen(!tooltipOpen);
-  const tooltopTwoToggle = () => setTooltipTwoOpen(!tooltopTwoOpen);
+  const tooltipTwoToggle = () => setTooltipTwoOpen(!tooltipTwoOpen);
+  const tooltipRatingToggle = () => setTooltipRatingOpen(!tooltipRatingOpen)
+
+  //rating
+  const onMouseOverRating = (e) => {
+    if (!fixedRating) {
+      switch (e.target.id) {
+        case "star-one":
+          setFirstStarFill("bi bi-star-fill gold")
+          break;
+        case "star-two":
+          setFirstStarFill("bi bi-star-fill gold")
+          setTwoStarFill("bi bi-star-fill gold")
+          break;
+        case "star-three":
+          setFirstStarFill("bi bi-star-fill gold")
+          setTwoStarFill("bi bi-star-fill gold")
+          setThreeStarFill("bi bi-star-fill gold")
+          break;
+        case "star-four":
+          setFirstStarFill("bi bi-star-fill gold")
+          setTwoStarFill("bi bi-star-fill gold")
+          setThreeStarFill("bi bi-star-fill gold")
+          setFourStarFill("bi bi-star-fill gold")
+          break;
+        case "star-five":
+          setFirstStarFill("bi bi-star-fill gold")
+          setTwoStarFill("bi bi-star-fill gold")
+          setThreeStarFill("bi bi-star-fill gold")
+          setFourStarFill("bi bi-star-fill gold")
+          setFiveStarFill("bi bi-star-fill gold")
+          break;
+        default:
+          break;
+      }
+    }
+  }
+  const omMouseOutRating = (e) => {
+    if (!fixedRating) {
+      switch (e.target.id) {
+        case "star-one":
+          setFirstStarFill("bi bi-star")
+          break;
+        case "star-two":
+          setFirstStarFill("bi bi-star")
+          setTwoStarFill("bi bi-star")
+          break;
+        case "star-three":
+          setFirstStarFill("bi bi-star")
+          setTwoStarFill("bi bi-star")
+          setThreeStarFill("bi bi-star")
+          break;
+        case "star-four":
+          setFirstStarFill("bi bi-star")
+          setTwoStarFill("bi bi-star")
+          setThreeStarFill("bi bi-star")
+          setFourStarFill("bi bi-star")
+          break;
+        case "star-five":
+          setFirstStarFill("bi bi-star")
+          setTwoStarFill("bi bi-star")
+          setThreeStarFill("bi bi-star")
+          setFourStarFill("bi bi-star")
+          setFiveStarFill("bi bi-star")
+          break;
+        default:
+          break;
+      }
+    } 
+  }
+  const fixRating = () => {
+    setFixedRating(true);
+  }
 
   function actionBtn() {
     if (color) {
@@ -208,11 +323,11 @@ const BookProfile = ({
                         </div>
                         <div className="col-sm-6 col-lg-6 col-md-6 d-flex align-items-center mt-2">
                           <p className="text-muted ps-4 mb-0" id={"Tooltip-"+book[0]._id}><i className="bi bi-people"></i> {book[0].book_sells}</p>
-                          <Tooltip placement="bottom" isOpen={tooltipOpen} target={"Tooltip-"+book[0]._id} style={{background: "#198754"}}  toggle={tooltipToggle}>
+                          <Tooltip arrowClassName={"tooltip-arrow"} placement="bottom" isOpen={tooltipOpen} target={"Tooltip-"+book[0]._id}  toggle={tooltipToggle}>
                             <p className="mb-0" style={{color: "#fff"}}>Number of books sold</p>
                           </Tooltip>
                           <p className="text-muted ps-4 mb-0" id={"Tooltip-"+book[0].book_name}><i className="bi bi-book"></i> {book[0].book_books}</p>
-                          <Tooltip placement="bottom" isOpen={tooltopTwoOpen} target={"Tooltip-"+book[0].book_name} style={{background: "#198754"}}  toggle={tooltopTwoToggle}>
+                          <Tooltip arrowClassName={"tooltip-arrow"} placement="bottom" isOpen={tooltipTwoOpen} target={"Tooltip-"+book[0].book_name} toggle={tooltipTwoToggle}>
                             <p className="mb-0" style={{color: "#fff"}}>Books in stock</p>
                           </Tooltip>
                         </div>
@@ -223,13 +338,26 @@ const BookProfile = ({
                     <h5 className="w-100" style={{borderBottom: '1px solid #ced4da'}}>Detailed information:</h5>
                       <h5 className="fs-6"><span className="text-muted">Name:</span> {book[0].book_name}</h5>
                       <h5 className="fs-6"><span className="text-muted">Pages:</span> {book[0].book_pages}</h5>
-                      <h5 className="fs-6"><span className="text-muted">Author(s): </span> {authrosArray.length !== 0 ? authrosArray.map(item => <span>{item.author_firstname} {item.author_lastname}</span>) : "Not specified"}</h5>
-                      <h5 className="fs-6"><span className="text-muted">Genres: </span></h5>
+                      <h5 className="fs-6"><span className="text-muted">Author(s): </span> {authrosArray.length !== 0 ? authrosArray.map(item => <span key={item._id}>{item.author_firstname} {item.author_lastname}</span>) : "Not specified"}</h5>
+                      <h5 className="fs-6"><span className="text-muted">Genres: </span>{arrayGanres.map((item,index) => <NavLink style={{textDecoration: 'none'}} key={index} to={"/books/"+item}>{item}{(arrayGanres.length <= index + 1) ? null : ", "} </NavLink>)}</h5>
                       <h5 className="fs-6"><span className="text-muted">Age limit:</span> {book[0].book_age_limit}</h5>
                       <h5 className="fs-6"><span className="text-muted">Bestsellers:</span> {book[0].book_bestseller
                               ? 'Yes'
                               : 'No'}</h5>
-                      <h5 className="fs-6"><span className="text-muted">Rating:</span> {book[0].book_rating ? [book[0].book_rating].map(item => <i className="bi bi-star-fill" style={{color: "#ffd700"}}></i>): null} / {book[0] ? [countStars].map(item => <i className="bi bi-start-fill"></i>) : null }</h5>
+                      <h5 id={"Tooltip--"+book[0]._id} className="fs-6" style={{width: "135px"}}><span className="text-muted">Rating: </span>
+                        <i id="star-one" className={"star-one "+firstStarFill} onClick={fixRating} onMouseOver={(e) => onMouseOverRating(e)} onMouseOut={(e) => omMouseOutRating(e)}></i>
+                        <i id="star-two" className={"star-two "+twoStarFill} onClick={fixRating} onMouseOver={(e) => onMouseOverRating(e)} onMouseOut={(e) => omMouseOutRating(e)}></i>
+                        <i id="star-three" className={"star-three "+threeStarFill} onClick={fixRating} onMouseOver={(e) => onMouseOverRating(e)} onMouseOut={(e) => omMouseOutRating(e)}></i>
+                        <i id="star-four" className={"star-four "+fourStarFill} onClick={fixRating} onMouseOver={(e) => onMouseOverRating(e)} onMouseOut={(e) => omMouseOutRating(e)}></i>
+                        <i id="star-five" className={"star-five "+fiveStarFill} onClick={fixRating} onMouseOver={(e) => onMouseOverRating(e)} onMouseOut={(e) => omMouseOutRating(e)}></i>
+                      </h5>
+                      <Tooltip arrowClassName={"tooltip-arrow"}  placement="bottom" isOpen={tooltipRatingOpen} target={"Tooltip--"+book[0]._id}  toggle={tooltipRatingToggle}>
+                        <div>
+                          <p className="mb-0">LitRes: 44.5</p>
+                          <p className="mb-0">OZON: 65/100</p>
+                          <p className="mb-0">LiveLib: 43.8</p>
+                        </div>
+                      </Tooltip>
                       <h5 className="fs-6"><span className="text-muted">Price: </span>
                           <span className="text-primary">{book[0].book_price}$</span>
                       </h5>

@@ -14,7 +14,7 @@ import {
   Route,
   Link,
   Redirect,
-  NavLink
+  NavLink,
 } from 'react-router-dom';
 
 import {v4 as uuid} from 'uuid';
@@ -122,6 +122,24 @@ const App = () => {
       case 'bestseller':
         setBooksVault(booksVault.filter(item => item.book_bestseller === true));
         break;
+      case 'gear':
+        setBooksVault(booksVault.filter(item => item.book_genres.gear === true));
+        break;
+      case 'sport':
+        setBooksVault(booksVault.filter(item => item.book_genres.sport === true));
+        break;
+      case 'travel':
+        setBooksVault(booksVault.filter(item => item.book_genres.travel === true));
+        break;
+      case 'cooking':
+        setBooksVault(booksVault.filter(item => item.book_genres.cooking === true));
+        break;
+      case 'game':
+        setBooksVault(booksVault.filter(item => item.book_genres.game === true));
+        break;
+      case 'loveStory':
+        setBooksVault(booksVault.filter(item => item.book_genres.loveStory === true));
+        break;
       default:
         setBooksVault(books)
         break;
@@ -158,16 +176,88 @@ const App = () => {
         />
         <Wrapper>
           <Switch>
-            <Route path="/books/bestsellers/">
+            <Route path="/books/Bestseller">
               <WrapperColor>
                 <nav aria-label="breadcrumb" className="p-4 pb-0">
                     <ol className="breadcrumb mb-0">
                         <li className="breadcrumb-item"><NavLink to="/">Home</NavLink></li>
                         <li className="breadcrumb-item active" aria-current="page"><NavLink to="/books">Books</NavLink></li>
-                        <li className="breadcrumb-item active" aria-current="page">Bestsellers</li>
+                        <li className="breadcrumb-item active" aria-current="page">Bestseller</li>
                     </ol>
                 </nav>
-                SomeText
+                <BooksItems data={books.filter(item => item.book_bestseller === true)} />
+              </WrapperColor>
+            </Route>
+            <Route path="/books/Gear">
+              <WrapperColor>
+              <nav aria-label="breadcrumb" className="p-4 pb-0">
+                    <ol className="breadcrumb mb-0">
+                        <li className="breadcrumb-item"><NavLink to="/">Home</NavLink></li>
+                        <li className="breadcrumb-item active" aria-current="page"><NavLink to="/books">Books</NavLink></li>
+                        <li className="breadcrumb-item active" aria-current="page">Gear</li>
+                    </ol>
+                </nav>
+                <BooksItems data={books.filter(item => item.book_genres.gear === true)} />
+              </WrapperColor>
+            </Route>
+            <Route path="/books/Sport" >
+              <WrapperColor>
+              <nav aria-label="breadcrumb" className="p-4 pb-0">
+                    <ol className="breadcrumb mb-0">
+                        <li className="breadcrumb-item"><NavLink to="/">Home</NavLink></li>
+                        <li className="breadcrumb-item active" aria-current="page"><NavLink to="/books">Books</NavLink></li>
+                        <li className="breadcrumb-item active" aria-current="page">Sport</li>
+                    </ol>
+                </nav>
+                <BooksItems data={books.filter(item => item.book_genres.sport === true)} />
+              </WrapperColor>
+            </Route>
+            <Route path="/books/Travel" >
+              <WrapperColor>
+              <nav aria-label="breadcrumb" className="p-4 pb-0">
+                    <ol className="breadcrumb mb-0">
+                        <li className="breadcrumb-item"><NavLink to="/">Home</NavLink></li>
+                        <li className="breadcrumb-item active" aria-current="page"><NavLink to="/books">Books</NavLink></li>
+                        <li className="breadcrumb-item active" aria-current="page">Travel</li>
+                    </ol>
+                </nav>
+                <BooksItems data={books.filter(item => item.book_genres.travel === true)} />
+              </WrapperColor>
+            </Route>
+            <Route path="/books/Cooking" >
+              <WrapperColor>
+              <nav aria-label="breadcrumb" className="p-4 pb-0">
+                    <ol className="breadcrumb mb-0">
+                        <li className="breadcrumb-item"><NavLink to="/">Home</NavLink></li>
+                        <li className="breadcrumb-item active" aria-current="page"><NavLink to="/books">Books</NavLink></li>
+                        <li className="breadcrumb-item active" aria-current="page">Cooking</li>
+                    </ol>
+                </nav>
+                <BooksItems data={books.filter(item => item.book_genres.cooking === true)} />
+              </WrapperColor>
+            </Route>
+            <Route path="/books/Game" >
+              <WrapperColor>
+              <nav aria-label="breadcrumb" className="p-4 pb-0">
+                    <ol className="breadcrumb mb-0">
+                        <li className="breadcrumb-item"><NavLink to="/">Home</NavLink></li>
+                        <li className="breadcrumb-item active" aria-current="page"><NavLink to="/books">Books</NavLink></li>
+                        <li className="breadcrumb-item active" aria-current="page">Game</li>
+                    </ol>
+                </nav>
+                <BooksItems data={books.filter(item => item.book_genres.game === true)} />
+              </WrapperColor>
+            </Route>
+            <Route path="/books/Love-Story" >
+              <WrapperColor>
+              <nav aria-label="breadcrumb" className="p-4 pb-0">
+                    <ol className="breadcrumb mb-0">
+                        <li className="breadcrumb-item"><NavLink to="/">Home</NavLink></li>
+                        <li className="breadcrumb-item active" aria-current="page"><NavLink to="/books">Books</NavLink></li>
+                        <li className="breadcrumb-item active" aria-current="page">Love Story</li>
+                    </ol>
+                </nav>
+                <BooksItems data={books.filter(item => item.book_genres.loveStory === true)} />
               </WrapperColor>
             </Route>
             <Route path="/books">
@@ -184,6 +274,7 @@ const App = () => {
                 </div>}
               </WrapperColor>
             </Route>
+            
             <Route path="/book/:id" exact>
                 <BookProfile cart={cart} authors={authorsStore} />
             </Route>
