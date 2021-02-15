@@ -10,6 +10,7 @@ const {
 const initilaState = {
     cart: [],
     cartSelected: [],
+    price: 0,
 }
 
 
@@ -31,12 +32,14 @@ export const cartReducer = (
         case ACTION_ADD_BOOK_SELECTED:
             return {
                 ...state,
-                cartSelected: [...state.cartSelected,payload]
+                cartSelected: [...state.cartSelected,payload.id],
+                price: state.price + payload.price
             }
         case ACTION_REMOVE_BOOK_SELECTED:
             return {
                 ...state,
-                cartSelected: state.cartSelected.filter(item => item !== payload)
+                cartSelected: state.cartSelected.filter(item => item !== payload.id),
+                price: state.price - payload.price
             }
         default:
             return {

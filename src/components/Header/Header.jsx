@@ -14,11 +14,13 @@ import {
 
 const Header = ({
     cart,
-    searchBook
+    searchBook,
+    priceStore
 }) => {
 
     const menuWidth = useSelector(state => state.menu.menuType);
     const cartStore = useSelector(state => state.cart.cart);
+    const cartSelected = useSelector(state => state.cart.cartSelected);
     const cartLength = cartStore.length;
     const [fullScreen,setFullscreen] = useState(false);
     const [searchValue, setSearchValue] = useState('');
@@ -43,7 +45,8 @@ const Header = ({
         actionSearchBookData
     } = actionsBooks
     const {
-        actionRemoveBookFromCart
+        actionRemoveBookFromCart,
+        actionRemoveSelected,
     } = actionsCart
 
     function actionMenu() {
@@ -96,8 +99,11 @@ const Header = ({
         }
     }
 
-    function removeFromCart(id) {
+    function removeFromCart(id,price) {
         dispath(actionRemoveBookFromCart(id))
+        if (cartSelected.filter(item => item === id).length !== 0) {
+            dispath(actionRemoveSelected(id, price))
+          }
     }
 
     return (
@@ -125,16 +131,16 @@ const Header = ({
                                         </Link>
                                         <p className="text-muted" style={{fontSize: '15px'}}>{item.book_price}$</p>
                                     </div>
-                                    <i onClick={() => removeFromCart(item._id)}  className="bi bi-x-circle col-md-1"></i>
+                                    <i onClick={() => removeFromCart(item._id,item.book_price)}  className="bi bi-x-circle col-md-1"></i>
                                 </div>
                             )): <p className="text-muted mt-4">Add book to cart</p>}
                             
                             </PopoverBody>
                             <PopoverHeader>
                                 <div className="col-md-12 col-sm-12 col-lg-12 col-xs-12 d-flex justify-content-end align-items-center">
-                                    <p className="text-muted mb-0" style={{marginRight: "10px"}}>Amount: {sumPrices}$</p>
-                                    <NavLink to={"/cart"}>
-                                        <button className="btn-sm btn-primary">В корзину</button>
+                                    <p className="text-muted mb-0" style={{marginRight: "10px"}}>Amount: {priceStore}$</p>
+                                    <NavLink to={"/cart"} style={{outline: 'none', border: 'none'}}>
+                                        <button className="btn-sm btn-outline-primary">В корзину</button>
                                     </NavLink>
                                 </div>
                             </PopoverHeader>

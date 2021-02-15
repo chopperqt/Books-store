@@ -2,20 +2,12 @@ import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 
 const PriceItem = ({data}) => {
-    //React Store
-    const [sumPrices, setSumPrices] = useState(0);
-
-    useEffect(() => {
-        setSumPrices(0)
-
-        data.map(item => {
-            setSumPrices(prev => prev + item.book_price);
-        })
-    },[data])
-
     return (
         <div style={{padding: '20px'}}>
-            {sumPrices}
+            <div className="col-md-12 col-sm-12 col-lg-12 d-flex align-items-center justify-content-end">
+                <h5 className="mb-0">{data}$</h5>
+                <button type="button" className="btn btn-outline-primary ms-2">Pay</button>
+            </div>
         </div>
     );
 }

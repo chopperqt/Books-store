@@ -7,9 +7,12 @@ import {useDispatch, useSelector} from 'react-redux';
 const BookItem = ({data}) => {
   const dispath = useDispatch();
   const cart = useSelector(state => state.cart.cart);
+  const cartSelected = useSelector(state => state.cart.cartSelected);
   const short = data.book_description.slice(0, 120);
   const [text,setText] = useState(true)
   const [color,setColor] = useState(true);
+
+ 
 
   const {
     actionAddBookToCart, 
@@ -18,13 +21,14 @@ const BookItem = ({data}) => {
     actionRemoveSelected
   } = actionsCart;
 
-  function actionBtn(event) {
-
-    if (color) {
+  function actionBtn() {
+    if (cart.filter(item => item._id === data._id).length === 0) {
       dispath(actionAddBookToCart(data))
-      dispath(actionAddSelected(data._id))
+      dispath(actionAddSelected(data._id, data.book_price))
     } else {
-      dispath(actionRemoveSelected(data._id))
+      if (cartSelected.filter(item => item === data._id).length !== 0) {
+        dispath(actionRemoveSelected(data._id, data.book_price))
+      }
       dispath(actionRemoveBookFromCart(data._id))
     }
 
@@ -33,13 +37,22 @@ const BookItem = ({data}) => {
   }
 
   useEffect(() => {
-    let filterCart = cart.filter(item => item._id === data._id)
+    const filterCart = cart.filter(item => item._id === data._id);
 
-    if (filterCart.length) {
+    if (filterCart.length !== 0) {
       setColor(prev => !prev);
       setText(prev => !prev);
     }
   }, [])
+
+  useEffect(() => {
+    const filterCart = cart.filter(item => item._id === data._id);
+
+    if (filterCart.length !== 0) {
+      setColor(false);
+      setText(false);
+    }
+  },[cart])
 
   return (
     <div className="col mt-3">

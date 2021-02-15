@@ -42,6 +42,7 @@ const App = () => {
   const [inputText, setInputText] = useState('');
   const posts = useSelector(state => state.posts.posts);
   const books = useSelector(state => state.books.booksItems)
+  const priceStore = useSelector(state => state.cart.price);
   const booksStore = useSelector(state => state.books.booksItems);
   const authorsStore = useSelector(state => state.authors.authors)
   const limit = useSelector(state => state.books.limit);
@@ -51,6 +52,8 @@ const App = () => {
   const [booksVault, setBooksVault] = useState([]);
 
   const searchBook = useSelector(state => state.books.searchBook);
+
+  const [stateBooks, setStateBooks] = useState([]);
 
   const dispatch = useDispatch();
 
@@ -86,9 +89,14 @@ const App = () => {
   }, [])
 
   useEffect(() => {
-    setBooksVault(books)
-  },[books])
+    setBooksVault(books);
+    setStateBooks(books);
+  },[books]);
   
+  useEffect(() => {
+    setBooksVault(books)
+  }, [cart])
+
   function fetchBooks() {
     axios.get('https://api.allorigins.win/raw?url=http://test.zrkcompany.ru/books.json')
     .then(response => {
@@ -117,34 +125,6 @@ const App = () => {
     })
   }
 
-  const changeBookFilter = (name) => {
-    switch (name) {
-      case 'bestseller':
-        setBooksVault(booksVault.filter(item => item.book_bestseller === true));
-        break;
-      case 'gear':
-        setBooksVault(booksVault.filter(item => item.book_genres.gear === true));
-        break;
-      case 'sport':
-        setBooksVault(booksVault.filter(item => item.book_genres.sport === true));
-        break;
-      case 'travel':
-        setBooksVault(booksVault.filter(item => item.book_genres.travel === true));
-        break;
-      case 'cooking':
-        setBooksVault(booksVault.filter(item => item.book_genres.cooking === true));
-        break;
-      case 'game':
-        setBooksVault(booksVault.filter(item => item.book_genres.game === true));
-        break;
-      case 'loveStory':
-        setBooksVault(booksVault.filter(item => item.book_genres.loveStory === true));
-        break;
-      default:
-        setBooksVault(books)
-        break;
-    }
-  }
 
   function handleInput(e) {
     setInputText(prev => prev = e.target.value)
@@ -168,9 +148,9 @@ const App = () => {
         <Header 
           cart={cart}
           searchBook={searchBook}
+          priceStore={priceStore}
         />
         <Dashboard 
-          changeBookFilter={changeBookFilter}
           bestsellersCount={books.filter(item => item.book_bestseller === true).length}  
           gearsCount={books.filter(item => item.book_genres[0] === "gear").length}
         />
@@ -200,7 +180,7 @@ const App = () => {
                 <BooksItems data={books.filter(item => item.book_genres.gear === true)} />
               </WrapperColor>
             </Route>
-            <Route path="/books/Sport" >
+            <Route path="/books/Sport"  ex>
               <WrapperColor>
               <nav aria-label="breadcrumb" className="p-4 pb-0">
                     <ol className="breadcrumb mb-0">
@@ -221,7 +201,7 @@ const App = () => {
                         <li className="breadcrumb-item active" aria-current="page">Travel</li>
                     </ol>
                 </nav>
-                <BooksItems data={books.filter(item => item.book_genres.travel === true)} />
+                <BooksItems data={stateBooks.filter(item => item.book_genres.travel === true)} />
               </WrapperColor>
             </Route>
             <Route path="/books/Cooking" >
@@ -273,8 +253,7 @@ const App = () => {
                   {(limit >= booksStore.length) ? null : <button onClick={loadMoreBooks} className="btn btn-sm btn-primary mb-4">Load more</button>}
                 </div>}
               </WrapperColor>
-            </Route>
-            
+            </Route>           
             <Route path="/book/:id" exact>
                 <BookProfile cart={cart} authors={authorsStore} />
             </Route>
@@ -292,7 +271,7 @@ const App = () => {
                 <CartsItems selected={actionAddSelected} unSelected={actionRemoveSelected} />
               </WrapperColor>
               <WrapperColor>
-                <PriceItem data={cart} />
+                <PriceItem data={priceStore} />
               </WrapperColor>
             </Route>
             <Route path="/home" redirect>

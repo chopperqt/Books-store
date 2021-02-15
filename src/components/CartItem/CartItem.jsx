@@ -12,10 +12,16 @@ const CartItem = ({
     const dispatch = useDispatch();
     const cartSelected = useSelector(state => state.cart.cartSelected);
 
-    const [check,setCheck] = useState(true);
+    const [check,setCheck] = useState(false);
     useEffect(() => {
         let item = document.querySelectorAll(".customCard__"+data._id)[0];
         item.style.boxShadow = "0px 0px 10px 0px rgb(34 60 80 / 20%)";
+
+        let filterCartSelected = cartSelected.filter(sel => sel === data._id);
+
+        if (filterCartSelected.length !== 0) {
+            setCheck(true)
+        }
     }, [])
     const checked = (e,id) => {
         let item = document.querySelectorAll(".customCard__"+id)[0];
@@ -24,17 +30,16 @@ const CartItem = ({
             setCheck(prev => !prev);
             item.style.boxShadow = "none"
             item.style.transition = ".4s";
-            dispatch(unSelected(data._id))
+            dispatch(unSelected(data._id,data.book_price))
         }else {
             setCheck(prev => !prev);
             item.style.boxShadow = "0px 0px 10px 0px rgb(34 60 80 / 20%)";
             item.style.transition = ".4s";
-            dispatch(selected(data._id))
+            dispatch(selected(data._id,data.book_price))
         }
 
         //item.style.boxShadow = "0px 0px 10px 0px rgb(34 60 80 / 20%)";
     }
-
     return (
         <div className="col-md-12 col-lg-12 col-sm-12 mt-3">
             <div className="col-lg-12 col-sm-12 col-md-12 d-flex">

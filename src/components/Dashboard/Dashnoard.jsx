@@ -62,7 +62,7 @@ const Dashboard = ({
     return (
         <div className="dashboard" style={styless}>
             <div className="menu__left">
-                <NavLink to="/home" className="g-grid justify-content-center linking" >
+                <NavLink to="/" exact className="g-grid justify-content-center linking" >
                     <i className="bi bi-journal" style={{fontSize: '30px'}}></i>
                     <p className="fs-6">Home</p>
                 </NavLink>
@@ -89,7 +89,7 @@ const Dashboard = ({
                         <div className="text-center" style={{borderBottom: '1px solid rgba(0,0,0,.125)'}}>
                             <h5 className="fs-6 text" style={{textTransform: 'uppercase'}}>Advanced menu</h5>
                         </div>
-                        <NavLink to="/books/">
+                        <NavLink to="/books/" exact>
                             <p className="mb-0"><i className="bi bi-book"></i> All</p>
                         </NavLink>
                         <NavLink to="/books/Bestseller">
