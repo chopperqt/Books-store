@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack://src/components/CartItem/style.css"],"names":[],"mappings":"AAAA,YACE,wBAAoC,CACpC,WAAY,CACZ,iBACF","file":"3.d2cf6d94.chunk.css","sourcesContent":[".customCard {\r\n  border: 1px solid rgb(206, 212, 218);\r\n  padding: 5px;\r\n  border-radius: 5px;\r\n}"]}

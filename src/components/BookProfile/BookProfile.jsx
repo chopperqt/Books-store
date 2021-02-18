@@ -14,6 +14,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import {
   CommentItem,
   Loader,
+  SimilarBook,
   WrapperColor
 } from '../../components';
 
@@ -104,7 +105,7 @@ const BookProfile = ({
   }, [isLoad,id])
 
   useEffect(() => {
-    dispatch(actionDasboardOpen(2));
+    dispatch(actionDasboardOpen(0));
   }, [dispatch])
 
   useEffect(() => {
@@ -338,13 +339,13 @@ const BookProfile = ({
                     <h5 className="w-100" style={{borderBottom: '1px solid #ced4da'}}>Detailed information:</h5>
                     <h5 className="fs-6"><span className="text-muted">Name:</span> {book[0].book_name}</h5>
                     <h5 className="fs-6"><span className="text-muted">Pages:</span> {book[0].book_pages}</h5>
-                    <h5 className="fs-6"><span className="text-muted">Author(s): </span> {authrosArray.length !== 0 ? authrosArray.map(item => <span key={item._id}>{item.author_firstname} {item.author_lastname}</span>) : "Not specified"}</h5>
+                    <h5 className="fs-6"><span className="text-muted">Author(s): </span> {authrosArray.length !== 0 ? authrosArray.map(item => <NavLink to={"/author/"+item._id}><span key={item._id}>{item.author_firstname} {item.author_lastname}</span></NavLink>) : "Not specified"}</h5>
                     <h5 className="fs-6"><span className="text-muted">Genres: </span>{arrayGanres.map((item,index) => <NavLink style={{textDecoration: 'none'}} key={index} to={"/books/"+item}>{item}{(arrayGanres.length <= index + 1) ? null : ", "} </NavLink>)}</h5>
                     <h5 className="fs-6"><span className="text-muted">Age limit:</span> {book[0].book_age_limit}</h5>
                     <h5 className="fs-6"><span className="text-muted">Bestsellers:</span> {book[0].book_bestseller
                             ? 'Yes'
                             : 'No'}</h5>
-                    <h5 id={"Tooltip--"+book[0]._id} className="fs-6" style={{width: "135px"}}><span className="text-muted">Rating: </span>
+                    <h5 id={"Tooltip--"+book[0]._id} className="fs-6" style={{width: "150px"}}><span className="text-muted">Rating: </span>
                       <i id="star-one" className={"star-one "+firstStarFill} onClick={fixRating} onMouseOver={(e) => onMouseOverRating(e)} onMouseOut={(e) => omMouseOutRating(e)}></i>
                       <i id="star-two" className={"star-two "+twoStarFill} onClick={fixRating} onMouseOver={(e) => onMouseOverRating(e)} onMouseOut={(e) => omMouseOutRating(e)}></i>
                       <i id="star-three" className={"star-three "+threeStarFill} onClick={fixRating} onMouseOver={(e) => onMouseOverRating(e)} onMouseOut={(e) => omMouseOutRating(e)}></i>
@@ -385,6 +386,7 @@ const BookProfile = ({
             <WrapperColor>
                 <div className="col-md-12 col-sm-12 col-lg-12 p-5 mt-4">
                     <h5>Similar Books:</h5>
+                    <SimilarBook></SimilarBook>
                 </div>
             </WrapperColor>
           </div>

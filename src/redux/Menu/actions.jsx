@@ -11,16 +11,11 @@ const actions = {
         return {type: actions.OPEN_FULL_MENU, payload: number}
     },
     actionOpenFullMenu(item) {
-        if (item === 1) {
-            return {type: actions.OPEN_FULL_MENU, payload: item + 1}
+        if (item === 0) {
+            return {type: actions.CLOSE_MENU, payload: 0}
         }else {
-            if (item === 2) {
-                return {type: actions.OPEN_SHORT_MENU, payload: item + 1}
-            }else {
-                return {type: actions.CLOSE_MENU, payload: 1}
-            }
+            return {type: actions.OPEN_FULL_MENU, payload: 1}
         }
-        
     }
 
 }

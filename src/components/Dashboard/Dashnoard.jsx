@@ -4,6 +4,9 @@ import {NavLink, Route} from 'react-router-dom'
 
 import './style.css';
 import { useDispatch, useSelector } from 'react-redux';
+import {
+    Tooltip
+} from 'reactstrap';
 
 import {
     SmallMenu
@@ -32,9 +35,14 @@ const Dashboard = ({
     const [booksGame, setBooksGame] = useState(0);
     const [booksLoveStory, setBooksLoveStory] = useState(0);
 
+    const [tooltipOpen, setTooltionOpen] = useState(false);
+    const [tooltipTwoOpen, setTooltopTwoOpen] = useState(false);
+
+    const tooltipToggle = () => setTooltionOpen(!tooltipOpen);
+    const tooltipTwoToggle = () => setTooltopTwoOpen(!tooltipTwoOpen);
 
     const styless = {
-        width: menuWidth === 1 ? '0px' : menuWidth === 2 ? '90px' : '320px',
+        width: menuWidth === 0 ? '50px' : '280px',
         transition: '.15s ease-in-out'
     }
     
@@ -64,22 +72,22 @@ const Dashboard = ({
             <div className="menu__left">
                 <NavLink to="/" exact className="g-grid justify-content-center linking" >
                     <i className="bi bi-journal" style={{fontSize: '30px'}}></i>
-                    <p className="fs-6">Home</p>
                 </NavLink>
                 <NavLink to="/cart" className="d-grid justify-content-center linking">
                     <i className="bi bi-cart" style={{fontSize: '30px'}}></i>
-                    <p className="fs-6">Cart</p>
                     {cartLength ? <span className="cartLength badge bg-danger">{cartLength}</span> : null}
                 </NavLink>
-                <NavLink to="/books" className="d-grid justify-content-center linking" onClick={() => dispath(actionDasboardOpen())}>
+                <NavLink to="/books" id="Tooltip-books" className="d-grid justify-content-center linking">
                     <i className="bi bi-book" style={{fontSize: '30px'}}></i>
-                    <p className="fs-6">Books</p>
-                    {books ? <span className="bookLength badge bg-primary">{books}</span> : null}
+                    <Tooltip arrowClassName={"tooltip-arrow"}  placement="left" isOpen={tooltipOpen} target={"Tooltip-books"}  toggle={tooltipToggle}>
+                        <p className="mb-0" style={{fontSize: '14px'}}>Total number of books: {books ? books : "Loading..."}</p>
+                    </Tooltip>
                 </NavLink>
-                <NavLink to="/authors" className="d-grid justify-content-center linking">
+                <NavLink to="/authors" id="Tooltip-authors" className="d-grid justify-content-center linking">
                     <i className="bi bi-people" style={{fontSize: '30px'}}></i>
-                    <p className="fs-6">Authors</p>
-                    {authors ? <span className="bookLength badge bg-primary">{authors}</span>: null}
+                    <Tooltip arrowClassName={"tooltip-arrow"}  placement="left" isOpen={tooltipTwoOpen} target={"Tooltip-authors"}  toggle={tooltipTwoToggle}>
+                    <p className="mb-0" style={{fontSize: '14px'}}>Total number of authors: {authors ? authors : "Loading..."}</p>
+                    </Tooltip>
                 </NavLink>
             </div>
             <div className="dashboard_line"></div>

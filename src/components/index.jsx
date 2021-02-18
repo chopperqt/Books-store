@@ -15,6 +15,7 @@ import Loader from './Loader';
 import WrapperColor from './WrapperColor';
 import PriceItem from './PriceItem';
 import Home from './Home';
+import SimilarBook from './SimilarBook';
 
 export {
     Wrapper,
@@ -33,5 +34,6 @@ export {
     Loader,
     WrapperColor,
     PriceItem,
-    Home
+    Home,
+    SimilarBook
 }

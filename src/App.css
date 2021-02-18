@@ -1,7 +1,7 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
 
 body {
-  background: #f6f6f6;
+  background: url("./images/body/background.png") !important;
 }
 .loader {
   height: cacl(100vh - 39vh) !important;

@@ -66,17 +66,14 @@ const App = () => {
     loadFromDataPosts,
     addItemToData,
   } = LoadDataActions;
-
   const {
     actionMoreBooksData,
     actionGetBooks
   } = actions
-
   const {
     actionsGetUsers,
     actionsGetUsersError
   } = actionsUsers;
-  
   const {
     actionsGetAuthors
   } = actionsAuthors;
@@ -240,7 +237,7 @@ const App = () => {
                 <BooksItems data={books.filter(item => item.book_genres.loveStory === true)} />
               </WrapperColor>
             </Route>
-            <Route path="/books">
+            <Route path="/books" component={() =>
               <WrapperColor>
                 <nav aria-label="breadcrumb" className="p-4 pb-0">
                     <ol className="breadcrumb mb-0">
@@ -249,10 +246,11 @@ const App = () => {
                     </ol>
                 </nav>
                 <BooksItems data={booksVault} />
-                {searching ? null : <div className="col-md-12 d-flex justify-content-md-center mt-4">
+                {/* {searching ? null : <div className="col-md-12 d-flex justify-content-md-center mt-4">
                   {(limit >= booksStore.length) ? null : <button onClick={loadMoreBooks} className="btn btn-sm btn-primary mb-4">Load more</button>}
-                </div>}
+                </div>} */}
               </WrapperColor>
+            }>
             </Route>           
             <Route path="/book/:id" exact>
                 <BookProfile cart={cart} authors={authorsStore} />

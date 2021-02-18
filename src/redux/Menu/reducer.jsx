@@ -1,7 +1,7 @@
 import actions from './actions';
 
 const initialState = {
-    menuType: 2
+    menuType: 1
 }
 
 const {
@@ -20,16 +20,11 @@ export const menuReducer = (
                 ...state,
                 menuType: payload
             }
-        case OPEN_SHORT_MENU:
+        case CLOSE_MENU:
             return {
                 ...state,
                 menuType: payload
             }
-            case CLOSE_MENU:
-                return {
-                    ...state,
-                    menuType: payload
-                }
         default:
             return state;
     }

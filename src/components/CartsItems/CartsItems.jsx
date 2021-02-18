@@ -24,7 +24,7 @@ const CartsItems = ({selected, unSelected}) => {
   let books = cartStore.slice(0, limit);
 
   useEffect(() => {
-    dispatch(actionDasboardOpen(2));
+    dispatch(actionDasboardOpen(0));
   }, [dispatch])
 
   return (

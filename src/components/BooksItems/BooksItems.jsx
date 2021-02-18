@@ -19,7 +19,7 @@ const BooksItems = ({data}) => {
   let books = booksStore.slice(0, limit);
 
   useEffect(() => {
-    dispatch(actionDasboardOpen(3))
+    dispatch(actionDasboardOpen(1))
     
   }, [dispatch])
   useEffect(() => {
