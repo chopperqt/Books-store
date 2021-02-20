@@ -341,7 +341,7 @@ const BookProfile = ({
                     <h5 className="fs-6"><span className="text-muted">Pages:</span> {book[0].book_pages}</h5>
                     <h5 className="fs-6"><span className="text-muted">Author(s): </span> {authrosArray.length !== 0 ? authrosArray.map(item => <NavLink to={"/author/"+item._id}><span key={item._id}>{item.author_firstname} {item.author_lastname}</span></NavLink>) : "Not specified"}</h5>
                     <h5 className="fs-6"><span className="text-muted">Genres: </span>{arrayGanres.map((item,index) => <NavLink style={{textDecoration: 'none'}} key={index} to={"/books/"+item}>{item}{(arrayGanres.length <= index + 1) ? null : ", "} </NavLink>)}</h5>
-                    <h5 className="fs-6"><span className="text-muted">Age limit:</span> {book[0].book_age_limit}</h5>
+                    <h5 className="fs-6"><span className="text-muted">Age limit:</span> {book[0].book_age_limit}+</h5>
                     <h5 className="fs-6"><span className="text-muted">Bestsellers:</span> {book[0].book_bestseller
                             ? 'Yes'
                             : 'No'}</h5>

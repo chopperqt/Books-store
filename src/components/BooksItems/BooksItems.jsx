@@ -7,7 +7,10 @@ import {Loader} from '../../components';
 const BookItem = React.lazy(() => import ('../../components/BookItem'));
 const SearchItem = React.lazy(() => import ('../../components/SearchItem'));
 
-const {actionDasboardOpen} = actionsMenu
+const {
+  actionDasboardOpen,
+  actionSetHistoryType
+} = actionsMenu
 
 const BooksItems = ({data}) => {
   const [updateData, setUpdateData] = useState([]);
@@ -20,8 +23,9 @@ const BooksItems = ({data}) => {
 
   useEffect(() => {
     dispatch(actionDasboardOpen(1))
-    
+    dispatch(actionSetHistoryType(true))
   }, [dispatch])
+  
   useEffect(() => {
     setUpdateData(data);
   }, [data,cartStore])
@@ -31,7 +35,7 @@ const BooksItems = ({data}) => {
 
   return (
     <div
-      className="row row-cols-1 row-cols-md-2 g-6 row-cols-sm-1 row-cols-lg-3 row-cols-xl-4 ml-auto mr-3" style={{padding: '20px'}}>
+      className="row row-cols-1 row-cols-md-1 g-3 row-cols-sm-1 row-cols-lg-1 row-cols-xl-1 ml-auto mr-1" style={{padding: '20px', display: 'flex',  justifyContent: 'center'}}>
       <Suspense fallback={<Loader />}>
       {updateData.length !== 0 ? data.map(item => (<BookItem key={item._id} data={item} />)): <Loader />}
       </Suspense>

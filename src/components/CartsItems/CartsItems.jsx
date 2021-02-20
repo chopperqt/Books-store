@@ -12,7 +12,10 @@ const SearchItem = React.lazy(() => import ('../../components/SearchItem'));
 
 
 
-const {actionDasboardOpen} = actionsMenu;
+const {
+  actionDasboardOpen,
+  actionSetHistoryType,
+} = actionsMenu;
 
 const CartsItems = ({selected, unSelected}) => {
   const dispatch = useDispatch();
@@ -25,6 +28,7 @@ const CartsItems = ({selected, unSelected}) => {
 
   useEffect(() => {
     dispatch(actionDasboardOpen(0));
+    dispatch(actionSetHistoryType(false))
   }, [dispatch])
 
   return (

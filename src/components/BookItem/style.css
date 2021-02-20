@@ -7,3 +7,31 @@
 .itemButtons button {
     margin-left: 10px;
 }
+.card__item {
+    position: relative;
+}
+.card__item__info {
+    width: 100%;
+    opacity: 0;
+    background: rgba(0, 0, 0, 0.877);
+    position: absolute;
+    bottom: 0;
+    border-radius: 0 0 4px 4px;
+    transition: 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    -webkit-transition: 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    -moz-transition: 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    -ms-transition: 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    -o-transition: 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    -webkit-border-radius: 0 0 4px 4px;
+    -moz-border-radius: 0 0 4px 4px;
+    -ms-border-radius: 0 0 4px 4px;
+    -o-border-radius: 0 0 4px 4px;
+}
+.card__item:hover .card__item__info {
+    opacity: 1;
+    transition: 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    -webkit-transition: 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    -moz-transition: 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    -ms-transition: 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    -o-transition: 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}

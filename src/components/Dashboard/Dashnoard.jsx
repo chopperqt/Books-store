@@ -26,6 +26,7 @@ const Dashboard = ({
     const books = useSelector(state => state.books.booksItems.length);
     const booksStore = useSelector(state => state.books.booksItems);
     const authors = useSelector(state => state.authors.authors.length);
+    const menuBtnVision = useSelector(state => state.menu.historyType);
 
     //advanced menu
     const [booksGear, setBooksGear] = useState(0);
@@ -35,11 +36,15 @@ const Dashboard = ({
     const [booksGame, setBooksGame] = useState(0);
     const [booksLoveStory, setBooksLoveStory] = useState(0);
 
+    //tooltips
     const [tooltipOpen, setTooltionOpen] = useState(false);
     const [tooltipTwoOpen, setTooltopTwoOpen] = useState(false);
 
     const tooltipToggle = () => setTooltionOpen(!tooltipOpen);
     const tooltipTwoToggle = () => setTooltopTwoOpen(!tooltipTwoOpen);
+
+    //dashboard menu
+    const [nameBtn, setNameBtn] = useState("");
 
     const styless = {
         width: menuWidth === 0 ? '50px' : '280px',
@@ -48,7 +53,8 @@ const Dashboard = ({
     
     const {
         actionInitialMenu,
-        actionDasboardOpen
+        actionDasboardOpen,
+        actionOpenFullMenu
     } = MenuAction;
 
     useEffect(() => {
@@ -59,36 +65,66 @@ const Dashboard = ({
             setBooksCooking(booksStore.filter(book => book.book_genres.cooking === true).length);
             setBooksGame(booksStore.filter(book => book.book_genres.game === true).length);
             setBooksLoveStory(booksStore.filter(book => book.book_genres.loveStory === true).length);
-        }
+        } 
     }, [booksStore]);
+
+    useEffect(() => {
+        const btn = document.querySelector('.menu-btn');
+        if (menuWidth == 0) {
+            setNameBtn("bi bi-arrow-bar-right")
+            btn.style.left = "10px";
+            btn.style.transition = ".15s ease-in-out";
+        }else {
+            setNameBtn("bi bi-arrow-bar-left")
+            btn.style.left = "85%";
+            btn.style.transition = ".15s ease-in-out";
+        }
+    }, [menuWidth])
 
     useEffect(() => {
         dispath(actionInitialMenu())
     }, [dispath])
 
+    const clickMenuBtn = () => {
+        if (menuWidth === 0) {
+            dispath(actionOpenFullMenu(1)); 
+        }else {
+            dispath(actionOpenFullMenu(0));
+        }
+    }
     
     return (
         <div className="dashboard" style={styless}>
             <div className="menu__left">
-                <NavLink to="/" exact className="g-grid justify-content-center linking" >
-                    <i className="bi bi-journal" style={{fontSize: '30px'}}></i>
-                </NavLink>
-                <NavLink to="/cart" className="d-grid justify-content-center linking">
-                    <i className="bi bi-cart" style={{fontSize: '30px'}}></i>
-                    {cartLength ? <span className="cartLength badge bg-danger">{cartLength}</span> : null}
-                </NavLink>
-                <NavLink to="/books" id="Tooltip-books" className="d-grid justify-content-center linking">
-                    <i className="bi bi-book" style={{fontSize: '30px'}}></i>
-                    <Tooltip arrowClassName={"tooltip-arrow"}  placement="left" isOpen={tooltipOpen} target={"Tooltip-books"}  toggle={tooltipToggle}>
-                        <p className="mb-0" style={{fontSize: '14px'}}>Total number of books: {books ? books : "Loading..."}</p>
-                    </Tooltip>
-                </NavLink>
-                <NavLink to="/authors" id="Tooltip-authors" className="d-grid justify-content-center linking">
-                    <i className="bi bi-people" style={{fontSize: '30px'}}></i>
-                    <Tooltip arrowClassName={"tooltip-arrow"}  placement="left" isOpen={tooltipTwoOpen} target={"Tooltip-authors"}  toggle={tooltipTwoToggle}>
-                    <p className="mb-0" style={{fontSize: '14px'}}>Total number of authors: {authors ? authors : "Loading..."}</p>
-                    </Tooltip>
-                </NavLink>
+                <div className="d-grid justify-content-center">
+                    <button className="menu-btn" onClick={clickMenuBtn} style={{display: menuBtnVision ? 'block' : 'none'}}>
+                        <i className={nameBtn}></i>
+                    </button>
+                </div>
+                <div className="d-grid justify-content-center">
+                    <NavLink to="/" exact className="g-grid justify-content-center linking" >
+                        <i className="bi bi-journal pb-2" style={{fontSize: '30px'}}></i>
+                    </NavLink>
+                    <NavLink to="/cart" className="d-grid justify-content-center linking">
+                        <i className="bi bi-cart pb-2" style={{fontSize: '30px'}}></i>
+                        {cartLength ? <span className="cartLength badge bg-danger">{cartLength}</span> : null}
+                    </NavLink>
+                    <NavLink to="/books" id="Tooltip-books" className="d-grid justify-content-center linking">
+                        <i className="bi bi-book pb-2" style={{fontSize: '30px'}}></i>
+                        <Tooltip arrowClassName={"tooltip-arrow"}  placement="left" isOpen={tooltipOpen} target={"Tooltip-books"}  toggle={tooltipToggle}>
+                            <p className="mb-0" style={{fontSize: '14px'}}>Total number of books: {books ? books : "Loading..."}</p>
+                        </Tooltip>
+                    </NavLink>
+                    <NavLink to="/authors" id="Tooltip-authors" className="d-grid justify-content-center linking">
+                        <i className="bi bi-people" style={{fontSize: '30px'}}></i>
+                        <Tooltip arrowClassName={"tooltip-arrow"}  placement="left" isOpen={tooltipTwoOpen} target={"Tooltip-authors"}  toggle={tooltipTwoToggle}>
+                        <p className="mb-0" style={{fontSize: '14px'}}>Total number of authors: {authors ? authors : "Loading..."}</p>
+                        </Tooltip>
+                    </NavLink>
+                </div>
+                <div>
+
+                </div>
             </div>
             <div className="dashboard_line"></div>
             <div className="menu__right">

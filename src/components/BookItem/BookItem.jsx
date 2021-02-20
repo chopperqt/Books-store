@@ -55,16 +55,19 @@ const BookItem = ({data}) => {
   },[cart])
 
   return (
-    <div className="col mt-3">
-      <div className="card h-100 w-100">
-        <NavLink to={`/book/${data._id}`}>
+    <div className="col mt-3" style={{width: '250px'}}>
+      <div className="card card__item w-100" style={{height: '300px'}}>
+        <NavLink to={`/book/${data._id}`} className="h-100">
           <img
             src="http://placehold.it/400x300"
-            className="card-img-top"
+            className="card-img-top p-1 h-100"
             alt="Some image"/>
         </NavLink>
-
-        <div className="card-body">
+        <div className="card__item__info p-1">
+          <h5 className="mb-0 text-white">{data.book_name}</h5>
+          <p className='text-muted mb-0'>{data.book_price}$</p>
+        </div>
+        {/* <div className="card-body">
           <div className="d-flex">
             <h5 className="text-muted mt-1 mb-1 fs-6">{data.book_price}$</h5>
             <h5 className="text-danger mt-1 mb-1 fs-6 ms-2" >{data.book_bestseller ? "Bestseller" : null}</h5>
@@ -79,7 +82,7 @@ const BookItem = ({data}) => {
                 ? 'Add to cart'
                 : 'Remove cart'}</button>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
 

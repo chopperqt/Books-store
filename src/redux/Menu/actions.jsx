@@ -3,6 +3,7 @@ const actions = {
     OPEN_SHORT_MENU: 'OPEN_SHORT_MENU',
     CLOSE_MENU: 'CLOSE_MENU',
     INITIAL_MENU: "INITIAL_MENU",
+    SET_HISTORY_TYPE: "SET_HISTORY_TYPE",
 
     actionInitialMenu() {
         return {type: actions.INITIAL_MENU}
@@ -16,8 +17,10 @@ const actions = {
         }else {
             return {type: actions.OPEN_FULL_MENU, payload: 1}
         }
+    },
+    actionSetHistoryType(name) {
+        return {type: actions.SET_HISTORY_TYPE, payload: name}
     }
-
 }
 
 export default actions;

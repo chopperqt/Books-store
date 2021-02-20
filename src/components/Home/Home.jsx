@@ -1,11 +1,26 @@
+import React, {useEffect, useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import './style.css';
 import {
     WrapperColor
 } from '../../components';
 
 import format from 'dateformat';
+import actionsMenu from '../../redux/Menu/actions';
+const {
+    actionOpenFullMenu,
+    actionSetHistoryType
+} = actionsMenu
+
 
 const Home = () => {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(actionOpenFullMenu(0))
+        dispatch(actionSetHistoryType(false))
+    }, [dispatch])
+    
     return (
         <div className="row d-grid home">
             <div className="col-3 w-100">

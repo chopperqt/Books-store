@@ -110,9 +110,9 @@ const Header = ({
         <header>
             <div className="col-md-12 h-100 d-flex align-items-md-center d-flex justify-content-around">
                 <div className="col-md-6">
-                    <button onClick={actionMenu} className="splitMenuBtn">
+                    {/* <button onClick={actionMenu} className="splitMenuBtn">
                         <AnimateButton menuWidth={menuWidth} />
-                    </button>
+                    </button> */}
                 </div>
                 <div className="col-md-4 d-flex justify-content-end align-items-baseline">
                     <span className="popup-item">
