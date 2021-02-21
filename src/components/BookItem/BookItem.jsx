@@ -64,8 +64,14 @@ const BookItem = ({data}) => {
             alt="Some image"/>
         </NavLink>
         <div className="card__item__info p-1">
-          <h5 className="mb-0 text-white">{data.book_name}</h5>
-          <p className='text-muted mb-0'>{data.book_price}$</p>
+          <h4 className="mb-0 text-white fs-5 mb-1">{data.book_name} {data.book_bestseller ? <i className="bi bi-award text-warning"></i> : null}</h4>
+          <h4 className="mb-0 text-white fs-6">There Author</h4>
+          <div className="d-flex align-items-center justify-content-between">
+            <p className='text-muted mb-0'>{data.book_price}$</p>
+            <button onClick={actionBtn} className={color ? "card__btn__info text-success ms-0 fs-5" : "card__btn__info text-danger ms-0 fs-5"}>
+              {text ? <i className="bi bi-plus-square"></i> : <i className="bi bi-dash-square"></i>}
+            </button>
+          </div>
         </div>
         {/* <div className="card-body">
           <div className="d-flex">
