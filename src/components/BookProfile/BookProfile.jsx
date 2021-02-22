@@ -18,7 +18,7 @@ import {
   WrapperColor
 } from '../../components';
 
-import _ from 'lodash'
+import _, { filter } from 'lodash'
 import {
   Button,
   Tooltip,
@@ -28,6 +28,7 @@ const BookProfile = ({
   cart,
   authors
 }) => {
+
   const dispatch = useDispatch();
 
   //stors
@@ -42,6 +43,7 @@ const BookProfile = ({
   const [cartFilter, setCartFilter] = useState([]);
   const [color, setColor] = useState(true);
   const [text, setText] = useState(true);
+  const [dataSimilarBook, setDataSimilarBook] = useState([]);
   //tooltips
   const [tooltipOpen, setTooltionOpen] = useState(false);
   const [tooltipTwoOpen, setTooltipTwoOpen] = useState(false);
@@ -94,7 +96,8 @@ const BookProfile = ({
           .catch(function (error) {
               console.log(error)
           })
-    }
+  }
+
   useEffect(() => {
       if (!isLoad) {
         fetchBooks()
@@ -122,7 +125,6 @@ const BookProfile = ({
       setText(prev => !prev);
     }
   }, [isLoad])
-
 
   useEffect(() => {
     setAuthorsArray([]);
@@ -163,6 +165,18 @@ const BookProfile = ({
     }
     console.log(arrayGanres)
   }, [book])
+
+  useEffect(() => {
+    if (books !== undefined && book[0] !== undefined) {
+      if (book[0].book_genres.game === true) {
+        let filterBooksGenres = books.filter(item => item.book_genres.game === true);
+        let delSameBook = filterBooksGenres.filter(item => item._id !== book[0]._id);
+        setDataSimilarBook(delSameBook)
+      }
+    }
+    
+    console.log(dataSimilarBook)
+  }, [books,book])
 
   
   //fakeLoader
@@ -386,7 +400,16 @@ const BookProfile = ({
             <WrapperColor>
                 <div className="col-md-12 col-sm-12 col-lg-12 p-5 mt-4">
                     <h5>Similar Books:</h5>
-                    <SimilarBook></SimilarBook>
+                    <div className="col-md-12 col-sm-12 col-lg-12" style={{columnCount: '6', columnGap: '10px'}}>
+                      {dataSimilarBook.length !== 0 ? 
+                        dataSimilarBook.map(item => (
+                          <SimilarBook key={item._id} /> 
+                        ))
+                        : 
+                        <Loader />
+                      }
+                    </div>
+                    
                 </div>
             </WrapperColor>
           </div>

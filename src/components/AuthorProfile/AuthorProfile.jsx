@@ -1,6 +1,7 @@
 import React , {useState} from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import './style.css';
 import {
     WrapperColor
 } from '../../components';
@@ -11,11 +12,8 @@ const AuthorProfile = () => {
     const {id} = useParams();
     const author = authors.filter(item => item._id === id)
     
-    //author[0].author_books.map()
-    console.log(author)
     let authorBook = books.filter(book => !author.some(authorBook => authorBook.author_books == book._id))
 
-    console.log(authorBook);
     return (
         <div className="col-md-12 col-lg-12 mt-4">
             <WrapperColor>
