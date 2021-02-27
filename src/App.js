@@ -34,7 +34,8 @@ import {
   AuthorProfile,
   WrapperColor,
   PriceItem,
-  Home
+  Home,
+  AddBook
 } from './components/'
 
 
@@ -252,6 +253,9 @@ const App = () => {
               </WrapperColor>
             }>
             </Route>           
+            <Route path="/book/add">
+              <AddBook />
+            </Route>
             <Route path="/book/:id" exact>
                 <BookProfile cart={cart} authors={authorsStore} />
             </Route>
