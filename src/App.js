@@ -156,12 +156,17 @@ const App = () => {
           <Switch>
             <Route path="/books/Bestseller">
               <WrapperColor>
-                <nav aria-label="breadcrumb" className="p-4 pb-0">
+                <nav aria-label="breadcrumb" className="p-4 pb-0 d-flex justify-content-between align-items-center">
                     <ol className="breadcrumb mb-0">
                         <li className="breadcrumb-item"><NavLink to="/">Home</NavLink></li>
                         <li className="breadcrumb-item active" aria-current="page"><NavLink to="/books">Books</NavLink></li>
                         <li className="breadcrumb-item active" aria-current="page">Bestseller</li>
                     </ol>
+                    <NavLink to="/book/add">
+                      <button className="btn btn-outline-primary">
+                        Add book
+                      </button>
+                    </NavLink>
                 </nav>
                 <BooksItems data={books.filter(item => item.book_bestseller === true)} />
               </WrapperColor>

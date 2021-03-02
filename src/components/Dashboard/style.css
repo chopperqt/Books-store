@@ -112,3 +112,7 @@
 .menu-btn:active, .menu-btn:focus {
     outline: none;
 }
+
+.tooltip {
+    font-family: 'AdventProRegular' !important;
+}

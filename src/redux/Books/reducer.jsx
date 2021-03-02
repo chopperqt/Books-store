@@ -90,11 +90,7 @@ export const booksStore = (
             }
         case SEARCH_BOOK_DATA:
             if (payload.length !== 0) {
-                console.log(state);
                 let filterSeacthBook = state.booksItems.filter(item => item.book_name.toLowerCase().includes(payload.toLowerCase()));
-
-                console.log(filterSeacthBook)
-
                 if (filterSeacthBook.length !== 0) {
                     console.log('In ')
                     return {

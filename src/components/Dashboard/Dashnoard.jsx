@@ -111,7 +111,7 @@ const Dashboard = ({
                     </NavLink>
                     <NavLink to="/books" id="Tooltip-books" className="d-grid justify-content-center linking">
                         <i className="bi bi-book pb-2" style={{fontSize: '30px'}}></i>
-                        <Tooltip arrowClassName={"tooltip-arrow"}  placement="left" isOpen={tooltipOpen} target={"Tooltip-books"}  toggle={tooltipToggle}>
+                        <Tooltip arrowClassName={"tooltip-arrow"}  placement="right" isOpen={tooltipOpen} target={"Tooltip-books"}  toggle={tooltipToggle}>
                             <p className="mb-0" style={{fontSize: '14px'}}>Total number of books: {books ? books : "Loading..."}</p>
                         </Tooltip>
                     </NavLink>

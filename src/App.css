@@ -6,3 +6,20 @@ body {
 .loader {
   height: cacl(100vh - 39vh) !important;
 }
+
+@font-face {
+  font-family: 'AdventProRegular';
+  src: url('fonts/AdventProRegular.eot');
+  src: url('fonts/AdventProRegular.eot') format('embedded-opentype'),
+       url('fonts/AdventProRegular.woff2') format('woff2'),
+       url('fonts/AdventProRegular.woff') format('woff'),
+       url('fonts/AdventProRegular.ttf') format('truetype'),
+       url('fonts/AdventProRegular.svg#AdventProRegular') format('svg');
+}
+
+.breadcrumb {
+  font-family: 'AdventProRegular';
+}
+.breadcrumb a, .breadcrumb li {
+  color: rgba(0, 0, 0, 0.801) !important;
+}
