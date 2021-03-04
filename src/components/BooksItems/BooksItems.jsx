@@ -35,7 +35,7 @@ const BooksItems = ({data}) => {
 
   return (
     <div
-      className="row row-cols-1 row-cols-md-1 g-3 row-cols-sm-1 row-cols-lg-1 row-cols-xl-1 ml-auto mr-1" style={{padding: '20px', display: 'flex',  justifyContent: updateData.length < 5 ? 'start' : 'center'}}>
+      className="row row-cols-1 row-cols-md-1 g-3 row-cols-sm-1 row-cols-lg-1 row-cols-xl-1 ml-auto mr-1" style={{padding: '20px', display: 'flex'}}>
       <Suspense fallback={<Loader />}>
       {updateData.length !== 0 ? data.map(item => (<BookItem key={item._id} data={item} />)): <Loader />}
       </Suspense>

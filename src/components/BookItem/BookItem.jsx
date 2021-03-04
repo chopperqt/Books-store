@@ -56,18 +56,20 @@ const BookItem = ({data}) => {
 
   return (
     <div className="col mt-3" style={{width: '250px'}}>
-      <div className="card card__item w-100" style={{height: '300px'}}>
-        <NavLink to={`/book/${data._id}`} className="h-100">
+      <div className="card card__item w-100">
+        <NavLink to={`/book/${data._id}`}>
           <img
-            src="http://placehold.it/400x300"
-            className="card-img-top p-1 h-100"
+            src={data.book_picture}
+            className="card-img-top p-1"
             alt="Some image"/>
         </NavLink>
-        <div className="card__item__info p-1">
-          <h4 className="mb-0 text-white fs-5 mb-1">{data.book_name} {data.book_bestseller ? <i className="bi bi-award text-warning"></i> : null}</h4>
-          <h4 className="mb-0 text-white fs-6">There Author</h4>
+        <div className="card-body card__item__info d-flex flex-column justify-content-between  p-1">
+          <div>
+            <h4 className="mb-0  fs-6 mb-1">{data.book_name} {data.book_bestseller ? <i className="bi bi-award text-warning"></i> : null}</h4>
+            <h4 className="mb-0 text-muted fs-6">There Author</h4>
+          </div>
           <div className="d-flex align-items-center justify-content-between">
-            <p className='text-muted mb-0'>{data.book_price}$</p>
+            <p className='text-muted mb-0'>{data.book_price} $</p>
             <button onClick={actionBtn} className={color ? "card__btn__info text-success ms-0 fs-5" : "card__btn__info text-danger ms-0 fs-5"}>
               {text ? <i className="bi bi-plus-square"></i> : <i className="bi bi-dash-square"></i>}
             </button>

@@ -7,9 +7,9 @@ import actionsBooks from '../../redux/Books/actions';
 import actionsUsers from '../../redux/Users/actions';
 import actionsCart from '../../redux/Cart/actions';
 import actionsMenu from '../../redux/Menu/actions';
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useMemo} from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-
+import {getAllBooks, getOneBook} from '../../api/fetchBooks';
 
 import {
   CommentItem,
@@ -33,6 +33,7 @@ const BookProfile = ({
 
   //stors
   const books = useSelector(state => state.books.booksItems);
+  const oneBook = useSelector(state => state.books.bookItem);
   const isLoad = useSelector(state => state.books.isLoad);
   //useState
   const [areaTextLength, setAreaTextLength] = useState(0);
@@ -71,7 +72,8 @@ const BookProfile = ({
     actionSearchBookData, 
     actionSendBookComment, 
     actionGetBooks,
-    actionGetSimilarBook
+    actionGetSimilarBook,
+    actionGetBook,
   } = actionsBooks;
 
   const {
@@ -85,27 +87,6 @@ const BookProfile = ({
   
   const {actionsGetUsers} = actionsUsers;
   const [book, setBook] = useState([]);
-
-  //fetch function
-  function fetchBooks() {
-      axios
-          .get('https://api.allorigins.win/raw?url=http://test.zrkcompany.ru/books.json')
-          .then(response => {
-              dispatch(actionGetBooks(response.data))
-          })
-          .catch(function (error) {
-              console.log(error)
-          })
-  }
-
-  useEffect(() => {
-      if (!isLoad) {
-        fetchBooks()
-      }else {
-        console.log('ID your book: ',id)
-        setBook(books.filter(item => item._id === id))
-      }
-  }, [isLoad,id])
 
   useEffect(() => {
     dispatch(actionDasboardOpen(0));
@@ -126,64 +107,26 @@ const BookProfile = ({
     }
   }, [isLoad])
 
-  useEffect(() => {
-    setAuthorsArray([]);
-    if (book.length !== 0) {
-      _.forEach(authors, author => {
-        let findCartItem = _.find(book[0].book_authors, bookItem => author._id === bookItem);
-        if (findCartItem) {
-          setAuthorsArray(prev => [author,...prev])
-        }
-      })
+  // useEffect(() => {
+  //   setAuthorsArray([]);
+  //   if (book.length !== 0) {
+  //     _.forEach(authors, author => {
+  //       let findCartItem = _.find(book[0].book_authors, bookItem => author._id === bookItem);
+  //       if (findCartItem) {
+  //         setAuthorsArray(prev => [author,...prev])
+  //       }
+  //     })
 
-      setCountStars(prev => prev - book[0].book_rating)
-    }
-    dispatch(actionGetSimilarBook(book[0]))
-  }, [book,authors]);
+  //     setCountStars(prev => prev - book[0].book_rating)
+  //   }
+  //   dispatch(actionGetSimilarBook(book[0]))
+  // }, [book,authors]);
 
-  useEffect(() => {
-    setArrayGenres([]);
-    if (book.length !== 0) {
-      if (book[0].book_genres.gear) {
-        setArrayGenres(prev => [ ...prev,'Gear']);
-      }
-      if (book[0].book_genres.sport) {
-        setArrayGenres(prev => [ ...prev,'Sport']);
-      }
-      if (book[0].book_genres.travel) {
-        setArrayGenres(prev => [ ...prev,'Travel']);
-      }
-      if (book[0].book_genres.cooking) {
-        setArrayGenres(prev => [ ...prev,'Cooking']);
-      }
-      if (book[0].book_genres.game) {
-        setArrayGenres(prev => [ ...prev,'Game']);
-      }
-      if (book[0].book_genres.loveStore) {
-        setArrayGenres(prev => [ ...prev,'Love Story']);
-      }
-    }
-    console.log(arrayGanres)
-  }, [book])
-
-  useEffect(() => {
-    if (books !== undefined && book[0] !== undefined) {
-      if (book[0].book_genres.game === true) {
-        let filterBooksGenres = books.filter(item => item.book_genres.game === true);
-        let delSameBook = filterBooksGenres.filter(item => item._id !== book[0]._id);
-        setDataSimilarBook(delSameBook)
-      }
-    }
-    
-    console.log(dataSimilarBook)
-  }, [books,book])
 
   
-  //fakeLoader
   useEffect(() => {
-    setTimeout(() => {
-      setFakeLoader(prev => !prev);
-    }, 5000)
+    dispatch(actionGetBook([]))
+    getOneBook(`http://localhost:8181/books/${id}`,dispatch);
   }, [])
 
   //tooltips
@@ -306,7 +249,7 @@ const BookProfile = ({
     setItemSwap(number)
   }
 
-  if (book.length !== 0) {
+  if (oneBook.length !== 0) {
       return (
         <div>
         <WrapperColor>
@@ -319,16 +262,17 @@ const BookProfile = ({
                       <li className="breadcrumb-item">
                           <NavLink to="/books">Books</NavLink>
                       </li>
-                      <li className="breadcrumb-item active" aria-current="page">{book[0].book_name}</li>
+                      <li className="breadcrumb-item active" aria-current="page">{oneBook.book_name}</li>
                   </ol>
               </nav>
               <div className="col-md-12 d-md-flex d-lx-flex">
-                  <div className="col-md-4 col-lg-4 col-sm-12">
+                  <div className="col-md-4 col-lg-4 col-sm-12" style={{maxWidth: '300px'}} >
                       <img
-                          src={book[0].book_picture}
-                          alt={book[0].book_name}
+                          src={oneBook.book_picture}
+                          alt={oneBook.book_name}
                           style={{
-                          width: '100%'
+                          width: '300px',
+                          height: '400px'
                       }}/>
                       <div className="col-md-12 col-sm-12 col-lg-12 d-flex">
                         <div className="col-sm-6 col-lg-6 col-md-6">
@@ -337,12 +281,12 @@ const BookProfile = ({
                           </Button>
                         </div>
                         <div className="col-sm-6 col-lg-6 col-md-6 d-flex align-items-center mt-2">
-                          <p className="text-muted ps-4 mb-0" id={"Tooltip-"+book[0]._id}><i className="bi bi-people"></i> {book[0].book_sells}</p>
-                          <Tooltip arrowClassName={"tooltip-arrow"} placement="bottom" isOpen={tooltipOpen} target={"Tooltip-"+book[0]._id}  toggle={tooltipToggle}>
+                          <p className="text-muted ps-4 mb-0" id={"Tooltip-"+oneBook._id}><i className="bi bi-people"></i> {oneBook.book_sells}</p>
+                          <Tooltip arrowClassName={"tooltip-arrow"} placement="bottom" isOpen={tooltipOpen} target={"Tooltip-"+oneBook._id}  toggle={tooltipToggle}>
                             <p className="mb-0" style={{color: "#fff"}}>Number of books sold</p>
                           </Tooltip>
-                          <p className="text-muted ps-4 mb-0" id={"Tooltip-"+book[0].book_name}><i className="bi bi-book"></i> {book[0].book_books}</p>
-                          <Tooltip arrowClassName={"tooltip-arrow"} placement="bottom" isOpen={tooltipTwoOpen} target={"Tooltip-"+book[0].book_name} toggle={tooltipTwoToggle}>
+                          <p className="text-muted ps-4 mb-0" id={"Tooltipp-"+oneBook._id}><i className="bi bi-book"></i> {oneBook.book_books}</p>
+                          <Tooltip arrowClassName={"tooltip-arrow"} placement="bottom" isOpen={tooltipTwoOpen} target={"Tooltipp-"+oneBook._id} toggle={tooltipTwoToggle}>
                             <p className="mb-0" style={{color: "#fff"}}>Books in stock</p>
                           </Tooltip>
                         </div>
@@ -351,22 +295,22 @@ const BookProfile = ({
                   </div>
                   <div className="col-md-5 pr-5 col-lg-5 ms-lg-3 ms-md-3 ms-sm-0">
                     <h5 className="w-100" style={{borderBottom: '1px solid #ced4da'}}>Detailed information:</h5>
-                    <h5 className="fs-6"><span className="text-muted">Name:</span> {book[0].book_name}</h5>
-                    <h5 className="fs-6"><span className="text-muted">Pages:</span> {book[0].book_pages}</h5>
+                    <h5 className="fs-6"><span className="text-muted">Name:</span> {oneBook.book_name}</h5>
+                    <h5 className="fs-6"><span className="text-muted">Pages:</span> {oneBook.book_pages}</h5>
                     <h5 className="fs-6"><span className="text-muted">Author(s): </span> {authrosArray.length !== 0 ? authrosArray.map(item => <NavLink to={"/author/"+item._id}><span key={item._id}>{item.author_firstname} {item.author_lastname}</span></NavLink>) : "Not specified"}</h5>
-                    <h5 className="fs-6"><span className="text-muted">Genres: </span>{arrayGanres.map((item,index) => <NavLink style={{textDecoration: 'none'}} key={index} to={"/books/"+item}>{item}{(arrayGanres.length <= index + 1) ? null : ", "} </NavLink>)}</h5>
-                    <h5 className="fs-6"><span className="text-muted">Age limit:</span> {book[0].book_age_limit}+</h5>
-                    <h5 className="fs-6"><span className="text-muted">Bestsellers:</span> {book[0].book_bestseller
+                    <h5 className="fs-6"><span className="text-muted">Genres: </span>{oneBook.book_genres.map((item,index) => <NavLink style={{textDecoration: 'none'}} key={index} to={"/books/"+item.name}>{item.name}{(oneBook.book_genres.length <= index + 1) ? null : ", "} </NavLink>)}</h5>
+                    <h5 className="fs-6"><span className="text-muted">Age limit:</span> {oneBook.book_age_limit}+</h5>
+                    <h5 className="fs-6"><span className="text-muted">Bestsellers:</span> {oneBook.book_bestseller
                             ? 'Yes'
                             : 'No'}</h5>
-                    <h5 id={"Tooltip--"+book[0]._id} className="fs-6" style={{width: "150px"}}><span className="text-muted">Rating: </span>
+                    <h5 id={"Tooltip--"+oneBook._id} className="fs-6" style={{width: "150px"}}><span className="text-muted">Rating: </span>
                       <i id="star-one" className={"star-one "+firstStarFill} onClick={fixRating} onMouseOver={(e) => onMouseOverRating(e)} onMouseOut={(e) => omMouseOutRating(e)}></i>
                       <i id="star-two" className={"star-two "+twoStarFill} onClick={fixRating} onMouseOver={(e) => onMouseOverRating(e)} onMouseOut={(e) => omMouseOutRating(e)}></i>
                       <i id="star-three" className={"star-three "+threeStarFill} onClick={fixRating} onMouseOver={(e) => onMouseOverRating(e)} onMouseOut={(e) => omMouseOutRating(e)}></i>
                       <i id="star-four" className={"star-four "+fourStarFill} onClick={fixRating} onMouseOver={(e) => onMouseOverRating(e)} onMouseOut={(e) => omMouseOutRating(e)}></i>
                       <i id="star-five" className={"star-five "+fiveStarFill} onClick={fixRating} onMouseOver={(e) => onMouseOverRating(e)} onMouseOut={(e) => omMouseOutRating(e)}></i>
                     </h5>
-                    <Tooltip arrowClassName={"tooltip-arrow"}  placement="bottom" isOpen={tooltipRatingOpen} target={"Tooltip--"+book[0]._id}  toggle={tooltipRatingToggle}>
+                    <Tooltip arrowClassName={"tooltip-arrow"}  placement="bottom" isOpen={tooltipRatingOpen} target={"Tooltip--"+oneBook._id}  toggle={tooltipRatingToggle}>
                       <div>
                         <p className="mb-0">LitRes: 44.5</p>
                         <p className="mb-0">OZON: 65/100</p>
@@ -374,7 +318,7 @@ const BookProfile = ({
                       </div>
                     </Tooltip>
                     <h5 className="fs-6"><span className="text-muted">Price: </span>
-                        <span className="text-primary">{book[0].book_price}$</span>
+                        <span className="text-primary">{oneBook.book_price}$</span>
                     </h5>
                     <h5 className="w-100" style={{borderBottom: '1px solid #ced4da'}}>Share book</h5>
                     <div className="">
@@ -394,20 +338,20 @@ const BookProfile = ({
             <WrapperColor>
               <div  className="col-md-12 col-sm-12 col-lg-12 p-5 mt-4">
                 <h5>Description:</h5>
-                <p>{book[0].book_description}</p>
+                <p>{oneBook.book_description}</p>
               </div>
             </WrapperColor>
             <WrapperColor>
                 <div className="col-md-12 col-sm-12 col-lg-12 p-5 mt-4">
                     <h5>Similar Books:</h5>
                     <div className="col-md-12 col-sm-12 col-lg-12" style={{columnCount: '6', columnGap: '10px'}}>
-                      {dataSimilarBook.length !== 0 ? 
-                        dataSimilarBook.map(item => (
+                      {/* {dataSimilaroneBook.length !== 0 ? 
+                        dataSimilaroneBook.map(item => (
                           <SimilarBook key={item._id} /> 
                         ))
                         : 
                         <Loader />
-                      }
+                      } */}
                     </div>
                     
                 </div>
@@ -420,7 +364,7 @@ const BookProfile = ({
               {/* menu */}
               <div className="col-md-12 col-sm-12 col-lg-12 under__menu">
                 <div className="col-md-12 col-sm-12 col-lg-12 d-flex under__menu__active mb-3">
-                  <p onClick={(e,number) => swapSelected(e,0)} style={{fontSize: "14px"}} className="comments__" id="selected">Comments <span className="text-muted">{book[0].book_comments.length}</span></p>
+                  <p onClick={(e,number) => swapSelected(e,0)} style={{fontSize: "14px"}} className="comments__" id="selected">Comments <span className="text-muted">{oneBook.book_comments.length}</span></p>
                   <p onClick={(e,number) => swapSelected(e,1)} style={{fontSize: "14px"}} className="reviews__ ms-3">Reviews <span className="text-muted">0</span></p>
                 </div>
               </div>
@@ -443,9 +387,9 @@ const BookProfile = ({
                     <button onClick={sendComment} className="btn btn-sm btn-primary d-flex mt-2 ms-2">Send</button>
                   </div>
                   <div className="col-md-12 col-lg-12">
-                    <p className="fs-6"><i className="bi bi-chat me-1 comments_leng" style={{fontSize: "20px"}}><span>{book[0].book_comments.length}</span></i>Comments:</p>
-                    {book[0].book_comments.length !== 0
-                      ? book[0].book_comments.map(item => (<CommentItem key={item._id} data={item}/>))
+                    <p className="fs-6"><i className="bi bi-chat me-1 comments_leng" style={{fontSize: "20px"}}><span>{oneBook.book_comments.length}</span></i>Comments:</p>
+                    {oneBook.book_comments.length !== 0
+                      ? oneBook.book_comments.map(item => (<CommentItem key={item._id} data={item}/>))
                       : <h5 className="text-muted">There are no comments. Be the first!</h5>
                     }
                   </div>
@@ -464,7 +408,10 @@ const BookProfile = ({
         </div>
       );
   } else {
-      return (<Loader/>)
+      return (
+        <WrapperColor >
+          <Loader height={'100vh'} />
+        </WrapperColor>)
   }
 }
 export default BookProfile;

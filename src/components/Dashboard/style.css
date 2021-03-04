@@ -77,10 +77,10 @@
 .dashboard .menu__left a:hover {
     color:#0d6efd;
     transition: width 0.15s;
-    -webkit-transition: width  0.15s;
-    -moz-transition:width 0.15s;
-    -ms-transition:width 0.15s;
-    -o-transition:width 0.15s;
+    -webkit-transition: width 0.15s;
+    -moz-transition: width 0.15s;
+    -ms-transition: width 0.15s;
+    -o-transition: width 0.15s;
 }
 .dashboard_line {
     display: block;

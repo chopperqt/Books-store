@@ -2,6 +2,14 @@ import React, {useEffect, useState} from 'react';
 import MenuAction from '../../redux/Menu/actions';
 import {NavLink, Route} from 'react-router-dom'
 
+//api
+import {
+    getTotalBooks
+} from '../../api/fetchBooks'
+import {
+    getTotalAuthors
+} from '../../api/fetchAuthors'
+
 import './style.css';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -27,6 +35,8 @@ const Dashboard = ({
     const booksStore = useSelector(state => state.books.booksItems);
     const authors = useSelector(state => state.authors.authors.length);
     const menuBtnVision = useSelector(state => state.menu.historyType);
+    const totalBooks = useSelector(state => state.books.totalBooks);
+    const totalAuthors = useSelector(state => state.authors.totalAuthors)
 
     //advanced menu
     const [booksGear, setBooksGear] = useState(0);
@@ -83,7 +93,9 @@ const Dashboard = ({
 
     useEffect(() => {
         dispath(actionInitialMenu())
-    }, [dispath])
+        getTotalBooks('http://localhost:8181/books/total', dispath)
+        getTotalAuthors('http://localhost:8181/authors/total', dispath)
+    }, [])
 
     const clickMenuBtn = () => {
         if (menuWidth === 0) {
@@ -112,13 +124,13 @@ const Dashboard = ({
                     <NavLink to="/books" id="Tooltip-books" className="d-grid justify-content-center linking">
                         <i className="bi bi-book pb-2" style={{fontSize: '30px'}}></i>
                         <Tooltip arrowClassName={"tooltip-arrow"}  placement="right" isOpen={tooltipOpen} target={"Tooltip-books"}  toggle={tooltipToggle}>
-                            <p className="mb-0" style={{fontSize: '14px'}}>Total number of books: {books ? books : "Loading..."}</p>
+                            <p className="mb-0" style={{fontSize: '14px'}}>Total number of books: {totalBooks}</p>
                         </Tooltip>
                     </NavLink>
                     <NavLink to="/authors" id="Tooltip-authors" className="d-grid justify-content-center linking">
                         <i className="bi bi-people" style={{fontSize: '30px'}}></i>
                         <Tooltip arrowClassName={"tooltip-arrow"}  placement="left" isOpen={tooltipTwoOpen} target={"Tooltip-authors"}  toggle={tooltipTwoToggle}>
-                        <p className="mb-0" style={{fontSize: '14px'}}>Total number of authors: {authors ? authors : "Loading..."}</p>
+                        <p className="mb-0" style={{fontSize: '14px'}}>Total number of authors: {totalAuthors}</p>
                         </Tooltip>
                     </NavLink>
                 </div>

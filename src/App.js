@@ -8,6 +8,14 @@ import actionsUsers from './redux/Users/actions';
 import actionsAuthors from './redux/Authors/actions';
 import actionsCart from './redux/Cart/actions';
 
+//api
+import {
+  getAllAuthors
+} from './api/fetchAuthors';
+import {
+  getAllBooks
+} from './api/fetchBooks';
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -40,15 +48,9 @@ import {
 
 
 const App = () => {
-  const [inputText, setInputText] = useState('');
-  const posts = useSelector(state => state.posts.posts);
   const books = useSelector(state => state.books.booksItems)
   const priceStore = useSelector(state => state.cart.price);
-  const booksStore = useSelector(state => state.books.booksItems);
   const authorsStore = useSelector(state => state.authors.authors)
-  const limit = useSelector(state => state.books.limit);
-  const searching = useSelector(state => state.books.searching);
-  const isLoadBook = useSelector(state => state.books.isLoad);
   const cart = useSelector(state => state.cart.cart);
   const [booksVault, setBooksVault] = useState([]);
 
@@ -63,27 +65,10 @@ const App = () => {
     actionAddSelected,
     actionRemoveSelected
   } = actionsCart;
-  const {
-    loadFromDataPosts,
-    addItemToData,
-  } = LoadDataActions;
-  const {
-    actionMoreBooksData,
-    actionGetBooks
-  } = actions
-  const {
-    actionsGetUsers,
-    actionsGetUsersError
-  } = actionsUsers;
-  const {
-    actionsGetAuthors
-  } = actionsAuthors;
 
   useEffect(() => {
-    dispatch(loadFromDataPosts())
-    fetchUsers()
-    fetchBooks()
-    fetchAuthors()
+    getAllBooks('http://localhost:8181/books', dispatch)
+    getAllAuthors('http://localhost:8181/authors', dispatch)
   }, [])
 
   useEffect(() => {
@@ -95,51 +80,6 @@ const App = () => {
     setBooksVault(books)
   }, [cart])
 
-  function fetchBooks() {
-    axios.get('https://api.allorigins.win/raw?url=http://test.zrkcompany.ru/books.json')
-    .then(response => {
-      dispatch(actionGetBooks(response.data))
-    })
-    .catch(function (error) {
-      console.log(error)
-    })
-  }
-  function fetchUsers() {
-    axios.get('https://api.allorigins.win/raw?url=http://test.zrkcompany.ru/users.json')
-    .then(response => {
-      dispatch(actionsGetUsers(response.data))
-    })
-    .catch(function (error) {
-      dispatch(actionsGetUsersError(error))
-    })
-  };
-  function fetchAuthors() {
-    axios.get("https://api.allorigins.win/raw?url=http://test.zrkcompany.ru/authors.json")
-    .then(response => {
-      dispatch(actionsGetAuthors(response.data))
-    })
-    .catch(function(error) {
-      console.log(error)
-    })
-  }
-
-
-  function handleInput(e) {
-    setInputText(prev => prev = e.target.value)
-  }
-  function addDataItem() {
-    dispatch(addItemToData({
-      name: inputText,
-      surname: 'test',
-      age: '212',
-      bDate: Date.now()
-    }))
-  }
-
-  function loadMoreBooks() {
-    dispatch(actionMoreBooksData())
-  }
-  //console.log(books.filter(item => item.book_genres))
   return (
     <div className="App">
       <Router>

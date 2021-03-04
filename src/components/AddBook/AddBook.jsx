@@ -48,6 +48,8 @@ const AddBook = () => {
     const [valueBestseller, setValueBestseller] = useState('');
     const [valueAuthors, setValueAuthors] = useState([]);
     const [valueAuthorsText, setValueAuthorsText] = useState('');
+    const [valueGenres, setValueGenres] = useState([]);
+    const [valueGenresText, setValueGenresText] = useState('');
 
     const validationProcess = () => {
         let age = false;
@@ -125,17 +127,25 @@ const AddBook = () => {
     }, [valueAuthorsText])
 
     //popover
-    const [popup, setPopup] = useState(false);
-
-    const popupToggle = e => {
+    const [popupAuthors, setPopupAuthors] = useState(false);
+    const [popupGenres, setPopupGenres] = useState(false);
+    const popupAuthorsToggle = e => {
         if (e.target.value.length !== 0) {
-            setPopup(true)
+            setPopupAuthors(true)
         }else {
-            setPopup(false)
+            setPopupAuthors(false)
         }
     } 
+    const popupGenresToggle = e => {
+        if (e.target.value.length !== 0) {
+            setPopupGenres(true)
+        }else {
+            setPopupGenres(false)
+        }
+    }
 
-    //add/remove author to local state
+
+    //add/remove author/genres to local state
     const clickAuthor = (data) => {
         let filterValueAuthor = valueAuthors.filter(item => item.author_firstname === data);
 
@@ -144,16 +154,30 @@ const AddBook = () => {
             let filterData = authorsStore.filter(author => author.author_firstname === data);
             setValueAuthors(prev => [...prev, filterData[0]]);
         }
-        setPopup(false);
+        setPopupAuthors(false);
         setValueAuthorsText('')
     }
 
     const clickRemoveAuthor = (data) => {
         let filterAuthor = valueAuthors.filter(item => item.author_firstname !== data);
         setValueAuthors(filterAuthor);
-        setPopup(false)
+        setPopupAuthors(false)
+    }
+    
+    const changeGenres = (e) => {
+        let filterGenres = valueGenres.filter(item => item === e.target.value);
+
+        if (filterGenres.length === 0) {
+            setValueGenres(prev => [...prev, e.target.value])
+        }
+        
     }
 
+    const clickRemoveGenres = (data) => {
+        let  filterGenres = valueGenres.filter(item => item !== data)
+
+        setValueGenres(filterGenres)
+    }
     //fetch data
     function fetchAuthors() {
         axios.get("https://api.allorigins.win/raw?url=http://test.zrkcompany.ru/authors.json")
@@ -213,10 +237,21 @@ const AddBook = () => {
                         </FormGroup>
                         <FormGroup>
                             <Label>Genres</Label>
-                            <Input onChange={e => {
-                                
-                            }} />
+                            <Input type="select" onChange={e => {
+                                changeGenres(e)
+                            }}>
+                                <option value="" selected disabled>Please select</option>
+                                <option >Gear</option>
+                                <option >Sport</option>
+                                <option >Travel</option>
+                                <option >Cooking</option>
+                                <option >Game</option>
+                                <option >Love Story</option>
+                            </Input>
                             <FormFeedback>You haven't entered anything!</FormFeedback>
+                            <div className="authors__tags">
+                                {valueGenres.length !== 0 ? valueGenres.map((item, index) => <Tag key={index} firstname={item} remove={clickRemoveGenres} />) : null}
+                            </div>
                         </FormGroup>
                     </Form>
                     <Form className="col-md-6 col-sm-12 col-lg-6 p-3">
@@ -243,10 +278,10 @@ const AddBook = () => {
                         <FormGroup className="author__add__book">
                             <Label>Authors</Label>
                             <Input onChange={e => {
-                                popupToggle(e);
+                                popupAuthorsToggle(e);
                                 setValueAuthorsText(e.target.value)
                             }} placeholder="Please add author" value={valueAuthorsText} />
-                            <div className="popup-authors" id="popup-" style={popup ? {display: "block"} : {display: 'none'}}>
+                            <div className="popup-authors" id="popup-authors" style={popupAuthors ? {display: "block"} : {display: 'none'}}>
                                 <PopoverHeader>
                                     <p className="text-muted mb-0">Authors</p>
                                 </PopoverHeader>

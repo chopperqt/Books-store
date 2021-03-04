@@ -6,6 +6,18 @@
     align-items: start;
     font-family: 'AdventProRegular';
 }
-.smallWrapMenu p {
-    
+
+.smallWrapMenu a:hover {
+    transition:  .3s !important;
+    -webkit-transition:  .3s !important;
+    -moz-transition:  .3s !important;
+    -ms-transition:  .3s !important;
+    -o-transition:  .3s !important;
+}
+.smallWrapMenu a:hover {
+    transition:  .3s  !important;
+    -webkit-transition:  .3s  !important;
+    -moz-transition:  .3s  !important;
+    -ms-transition:  .3s  !important;
+    -o-transition:  .3s  !important;
 }

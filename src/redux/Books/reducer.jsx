@@ -7,10 +7,13 @@ import actions from './actions';
 const initialState = {
     limit: 20,
     booksItems: [],
+    bookItem: [],
+    bookGenres: [],
     searchBook: [],
     searching: false,
     isLoad: false,
-    similarBooks: []
+    similarBooks: [],
+    totalBooks: 0,
 };
 
 const {
@@ -18,7 +21,10 @@ const {
     MORE_BOOKS_DATA,
     SEARCH_BOOK_DATA,
     SEND_BOOK_COMMENT,
-    GET_SIMILAR_BOOKS
+    GET_SIMILAR_BOOKS,
+    GET_ONE_BOOK,
+    GET_BOOK_GENRES,
+    GET_TOTAL_BOOKS,
 } = actions;
 
 //JSON.parse(books)
@@ -112,7 +118,16 @@ export const booksStore = (
                     searching: false
                 }
             }
-
+        case GET_ONE_BOOK:
+            return {
+                ...state,
+                bookItem: payload
+            }
+        case GET_TOTAL_BOOKS:
+            return {
+                ...state,
+                totalBooks: payload
+            }
             // if (payload) {
             //     return {
             //         ...state,
