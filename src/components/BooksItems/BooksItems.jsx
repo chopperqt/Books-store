@@ -18,7 +18,7 @@ const {
   actionSetHistoryType
 } = actionsMenu
 
-const BooksItems = ({data}) => {
+const BooksItems = ({data,clickPagination}) => {
   const [updateData, setUpdateData] = useState([]);
   const booksStore = useSelector(state => state.books.booksItems);
   const cartStore = useSelector(state => state.cart.cart);
@@ -35,15 +35,7 @@ const BooksItems = ({data}) => {
   
   useEffect(() => {
     setUpdateData(data);
-
-    // setTimeout(() => {
-    //   setFakeLoadin(!fakeLoading)
-    // }, 20000)
   }, [data,cartStore])
-  // Если поиск = фолсе тогда мы выводим то что ничего не найдено Иначе мы
-  // проверяем массив на то есть ли в нём элементы если они есть тогда мы их
-  // выводим Иначе мы отображем все книги
-  //updateDataa.length
 
   return (
     <div
@@ -51,7 +43,7 @@ const BooksItems = ({data}) => {
       <Suspense fallback={<LoaderBooks />}>
         {updateData.length ? data.map(item => (<BookItem key={item._id} data={item} />)): <LoaderBooks />}
       </Suspense>
-      <Paginator />
+      <Paginator clickPagination={clickPagination} />
     </div>
 
   );

@@ -45,6 +45,7 @@ import {
   Home,
   AddBook
 } from './components/'
+import { get } from 'lodash';
 
 
 const App = () => {
@@ -68,7 +69,7 @@ const App = () => {
   } = actionsCart;
 
   useEffect(() => {
-    getAllBooks('http://localhost:8181/books', dispatch, booksLimit)
+    getAllBooks(dispatch, booksLimit)
     getAllAuthors('http://localhost:8181/authors', dispatch)
   }, [])
 
@@ -80,6 +81,11 @@ const App = () => {
   useEffect(() => {
     setBooksVault(books)
   }, [cart])
+
+
+  const clickPagination = (page) => {
+    getAllBooks(dispatch,booksLimit,2)
+  }
 
   return (
     <div className="App">
@@ -192,7 +198,7 @@ const App = () => {
                         <li className="breadcrumb-item active" aria-current="page">Books</li>
                     </ol>
                 </nav>
-                <BooksItems data={booksVault} />
+                <BooksItems clickPagination={clickPagination} data={booksVault} />
                 {/* {searching ? null : <div className="col-md-12 d-flex justify-content-md-center mt-4">
                   {(limit >= booksStore.length) ? null : <button onClick={loadMoreBooks} className="btn btn-sm btn-primary mb-4">Load more</button>}
                 </div>} */}

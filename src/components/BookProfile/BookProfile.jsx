@@ -387,7 +387,7 @@ const BookProfile = ({
                     <button onClick={sendComment} className="btn btn-sm btn-primary d-flex mt-2 ms-2">Send</button>
                   </div>
                   <div className="col-md-12 col-lg-12">
-                    <p className="fs-6"><i className="bi bi-chat me-1 comments_leng" style={{fontSize: "20px"}}><span>{oneBook.book_comments.length}</span></i>Comments:</p>
+                    <p className="fs-6"><i className="bi bi-chat me-1 comments_leng" style={{fontSize: "20px"}}><span>{}</span></i>Comments:</p>
                     {oneBook.book_comments.length !== 0
                       ? oneBook.book_comments.map(item => (<CommentItem key={item._id} data={item}/>))
                       : <h5 className="text-muted">There are no comments. Be the first!</h5>

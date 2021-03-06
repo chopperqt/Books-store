@@ -13,21 +13,21 @@ const CommentItem = ({data}) => {
     const [user, setUser] = useState([]);
 
     useEffect(() => {
-      setUser(usersStore.filter(item => item._id === data.user_id))
+      setUser(usersStore.filter(item => item._id === data._id))
     },[usersStore])
 
     return (
         <div className="col-lg-8 col-md-8 col-sm-12 col-xs-12 mt-1 d-flex">
             <div className="comment_profile">
-                {data.user_id === true ? <i className="bi bi-person-circle"></i>
+                {data._id === true ? <i className="bi bi-person-circle"></i>
                 : <img src="http://placehold.it/400x300" />}
             </div>
             <div className="col-lg-11 col-md-11 comment ms-2">
 
                 {data.user_id === true ? <h5 className="fs-6 text mb-0">Anonym</h5> : 
                 
-                <NavLink to={'/user/'+data.user_id}>
-                    {user.length !== 0 ? <h5 className="fs-6 text mb-0">{user[0].user_firstname} {user[0].user_lastname}</h5> : <Loader />}
+                <NavLink to={'/user/'+data._id}>
+                    {data.lenght !== 0 ? <h5 className="fs-6 text mb-0">{data.fullname}</h5> : <Loader />}
                     
                 </NavLink>
 

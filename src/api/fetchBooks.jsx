@@ -1,14 +1,18 @@
 import axios from 'axios';
 import actionBooks from '../redux/Books/actions';
 
+import {
+    ALL_BOOKS_URL
+} from './urls';
+
 const {
     actionGetBooks,
     actionGetBook,
     actionGetTotalBooks
 } = actionBooks
 
-export const getAllBooks = (url,disaptch,limit) => {
-    axios.get(url, {headers: {'limit': limit}})
+export const getAllBooks = (disaptch,limit,skip) => {
+    axios.get(ALL_BOOKS_URL, {headers: {'limit': limit,'skip': skip}})
     .then(response => {
         disaptch(actionGetBooks(response.data))
     })
