@@ -2,8 +2,10 @@ import {Books} from '../models/Books.model.js';
 
 export const getBooks = async (req,res) => {
     try {
-        const all_books = await Books.find({})
-        
+        let booksLimit = Number(req.headers.limit) || 3;
+        let booksSkip = Number(req.headers.skip) || 0;
+        const all_books = await Books.find({}).limit(booksLimit).skip(booksSkip)
+        console.log('itemsPerPage: ',req.headers.limit)
         res.status(200).json(all_books);
 
     } catch (error) {
