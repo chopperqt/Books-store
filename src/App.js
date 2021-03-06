@@ -49,6 +49,7 @@ import {
 
 const App = () => {
   const books = useSelector(state => state.books.booksItems)
+  const booksLimit = useSelector(state => state.books.limit);
   const priceStore = useSelector(state => state.cart.price);
   const authorsStore = useSelector(state => state.authors.authors)
   const cart = useSelector(state => state.cart.cart);
@@ -67,7 +68,7 @@ const App = () => {
   } = actionsCart;
 
   useEffect(() => {
-    getAllBooks('http://localhost:8181/books', dispatch)
+    getAllBooks('http://localhost:8181/books', dispatch, booksLimit)
     getAllAuthors('http://localhost:8181/authors', dispatch)
   }, [])
 

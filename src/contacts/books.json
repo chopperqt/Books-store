@@ -150,164 +150,150 @@
     "book_discount": 3,
     "book_bestseller": false,
     "book_pages": 479,
-    "book_genres": {
-      "gear": true,
-      "sport": false,
-      "travel": true,
-      "cooking": true,
-      "game": true,
-      "loveStory": true
-    },
+    "book_genres": [
+      {
+        "_id": "600ecb7c13a740b6d9eeb345",
+        "fullname": "Joanne Rowling"
+      }
+    ],
     "book_age_limit": 12
   },
   {
     "_id": "600d76bbef3e79be1e0350a8",
-    "book_name": "Orbaxter",
+    "book_name": "Harry Potter: Prisoner of Azkabana",
     "book_data": "2015-12-15T04:43:03 -03:00",
-    "book_authors": [],
+    "book_authors": [
+      {
+        "_id": "600ecb7c13a740b6d9eeb345",
+        "fullname": "Joanne Rowling"
+      }
+    ],
     "book_price": 2384,
     "book_rating": 2,
     "book_comments": [],
     "book_sells": 375,
     "book_books": 744,
     "book_description": "Sint quis ullamco consectetur ad eiusmod eiusmod laboris pariatur exercitation excepteur. Ad aliquip magna dolor fugiat. Sunt culpa sunt culpa veniam quis. Officia ullamco sunt dolore ipsum consequat nostrud. Minim ut laboris pariatur pariatur.\r\n",
-    "book_picture": "http://placehold.it/400x300",
+    "book_picture": "https://s1.knigavuhe.org/1/covers/5246/2-2.jpg?2",
     "book_discount": 20,
     "book_bestseller": false,
     "book_pages": 218,
-    "book_genres": {
-      "gear": true,
-      "sport": false,
-      "travel": true,
-      "cooking": false,
-      "game": false,
-      "loveStory": false
-    },
+    "book_genres": [
+      
+    ],
     "book_age_limit": 6
   },
   {
     "_id": "600d76bbe7fa620cdf8297f0",
-    "book_name": "Atomica",
+    "book_name": "Harry Potter: Gablet of Fire",
     "book_data": "2017-02-11T06:38:16 -03:00",
-    "book_authors": [],
+    "book_authors": [
+      {
+        "_id": "600ecb7c13a740b6d9eeb345",
+        "fullname": "Joanne Rowling"
+      }
+    ],
     "book_price": 2520,
     "book_rating": 1,
     "book_comments": [],
     "book_sells": 142,
     "book_books": 476,
     "book_description": "Sunt Lorem est cillum nostrud occaecat ipsum proident ad sunt cupidatat irure ipsum. Quis tempor veniam aute sunt. Aute duis veniam velit culpa cillum aute ut consectetur esse ipsum magna aute sint cillum. Est deserunt ea id dolor occaecat esse esse Lorem. Ut proident sunt nisi est fugiat proident. Culpa voluptate minim nisi enim deserunt nulla minim minim nisi quis exercitation id nisi veniam. Aute consectetur anim reprehenderit laboris.\r\n",
-    "book_picture": "http://placehold.it/400x300",
+    "book_picture": "https://img-gorod.ru/24/412/2441276_detail.jpg",
     "book_discount": 2,
     "book_bestseller": true,
     "book_pages": 84,
-    "book_genres": {
-      "gear": true,
-      "sport": false,
-      "travel": true,
-      "cooking": false,
-      "game": false,
-      "loveStory": false
-    },
+    "book_genres": [],
     "book_age_limit": 12
   },
   {
     "_id": "600d76bb41dc936dbbfadc51",
-    "book_name": "Electonic",
+    "book_name": "Harry Potter: Order of the Phoenix",
     "book_data": "2019-08-26T02:46:42 -03:00",
-    "book_authors": [],
+    "book_authors": [
+      {
+        "_id": "600ecb7c13a740b6d9eeb345",
+        "fullname": "Joanne Rowling"
+      }
+    ],
     "book_price": 1495,
     "book_rating": 1,
     "book_comments": [],
     "book_sells": 926,
     "book_books": 582,
     "book_description": "Pariatur velit pariatur ipsum sit et magna laboris aliquip amet. Laboris velit voluptate non in consequat ex do ullamco velit cillum magna ipsum. Consequat cupidatat in laboris adipisicing duis nostrud ex exercitation nisi dolore ad.\r\n",
-    "book_picture": "http://placehold.it/400x300",
+    "book_picture": "https://img-gorod.ru/24/511/2451179_detail.jpg",
     "book_discount": 8,
     "book_bestseller": true,
     "book_pages": 734,
-    "book_genres": {
-      "gear": true,
-      "sport": false,
-      "travel": true,
-      "cooking": false,
-      "game": false,
-      "loveStory": false
-    },
+    "book_genres": [],
     "book_age_limit": 12
   },
   {
     "_id": "600d76bbf8ec3b5e668a9aec",
-    "book_name": "Splinx",
+    "book_name": "Harry Potter: Deathly Hallows",
     "book_data": "2020-06-22T09:00:16 -03:00",
-    "book_authors": [],
+    "book_authors": [
+      {
+        "_id": "600ecb7c13a740b6d9eeb345",
+        "fullname": "Joanne Rowling"
+      }
+    ],
     "book_price": 1515,
     "book_rating": 1,
     "book_comments": [],
     "book_sells": 501,
     "book_books": 895,
     "book_description": "Officia exercitation do laborum velit ea consequat incididunt. Incididunt quis Lorem exercitation fugiat consectetur sit exercitation. Do do nisi excepteur mollit aliqua velit dolor id magna amet laborum velit elit excepteur. Anim nulla ut ex veniam. Aute consequat aliqua ipsum exercitation esse veniam irure cillum do minim dolore incididunt fugiat. Officia ipsum culpa dolor et ea dolore tempor voluptate dolor nisi laboris exercitation nulla dolore. Do pariatur ipsum commodo minim deserunt sit irure do qui quis labore laborum sunt eu.\r\n",
-    "book_picture": "http://placehold.it/400x300",
+    "book_picture": "https://img-gorod.ru/24/650/2465085_detail.jpg",
     "book_discount": 19,
     "book_bestseller": true,
     "book_pages": 887,
-    "book_genres": {
-      "gear": true,
-      "sport": false,
-      "travel": true,
-      "cooking": false,
-      "game": false,
-      "loveStory": false
-    },
+    "book_genres": [],
     "book_age_limit": 12
   },
   {
     "_id": "600d76bb3e2d7b076ba9ac23",
-    "book_name": "Senmao",
+    "book_name": "Metro 2033",
     "book_data": "2019-12-15T02:32:03 -03:00",
-    "book_authors": [],
+    "book_authors": {
+      "_id": "600ecb7cd35cfd6666a520a3",
+      "fullname": "Dmitry Glukhovsky"
+    },
     "book_price": 743,
     "book_rating": 1,
     "book_comments": [],
     "book_sells": 316,
     "book_books": 492,
     "book_description": "Commodo aliqua eu esse laborum do occaecat laborum aliqua sit. Mollit cupidatat nisi est dolor pariatur excepteur elit. Occaecat amet consequat cupidatat enim laboris adipisicing sint proident anim cupidatat non proident. Aliqua consectetur eiusmod labore dolor nisi amet aliqua tempor non excepteur velit labore occaecat.\r\n",
-    "book_picture": "http://placehold.it/400x300",
+    "book_picture": "https://cdn1.ozone.ru/s3/multimedia-r/6008240715.jpg",
     "book_discount": 7,
     "book_bestseller": false,
     "book_pages": 675,
-    "book_genres": {
-      "gear": true,
-      "sport": false,
-      "travel": true,
-      "cooking": false,
-      "game": false,
-      "loveStory": false
-    },
+    "book_genres": [],
     "book_age_limit": 6
   },
   {
     "_id": "600d76bbc1ba8be80f4e62a6",
-    "book_name": "Liquicom",
+    "book_name": "Metro 2034",
     "book_data": "2017-02-07T06:28:59 -03:00",
-    "book_authors": [],
+    "book_authors": [
+      {
+        "_id": "600ecb7cd35cfd6666a520a3",
+        "fullname": "Dmitry Glukhovsky"
+      }
+    ],
     "book_price": 2643,
     "book_rating": 1,
     "book_comments": [],
     "book_sells": 108,
     "book_books": 545,
     "book_description": "Lorem esse non nulla dolor. Mollit amet sunt deserunt culpa voluptate laboris voluptate pariatur ex anim ex adipisicing sunt est. Consectetur eu reprehenderit eu cillum qui. Fugiat sit velit cupidatat ea enim cupidatat. Amet ea occaecat laborum consectetur culpa enim id tempor voluptate qui. Esse mollit cillum aliquip est.\r\n",
-    "book_picture": "http://placehold.it/400x300",
+    "book_picture": "https://exodus-metro.ru/wp-content/uploads/2018/07/33117454._UY2480_SS2480_-1.jpg",
     "book_discount": 17,
     "book_bestseller": false,
     "book_pages": 579,
-    "book_genres": {
-      "gear": true,
-      "sport": false,
-      "travel": true,
-      "cooking": false,
-      "game": false,
-      "loveStory": false
-    },
+    "book_genres": [],
     "book_age_limit": 16
   },
   {

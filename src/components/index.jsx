@@ -20,6 +20,8 @@ import AddBook from './AddBook';
 import Toast from './Toast';
 import LoaderCart from './Loader/LoaderCart/';
 import LoaderBooks from './Loader/LoaderBooks';
+import Paginator from './Paginator/Paginator';
+
 
 export {
     Wrapper,
@@ -43,5 +45,6 @@ export {
     AddBook,
     Toast,
     LoaderCart,
-    LoaderBooks
+    LoaderBooks,
+    Paginator
 }

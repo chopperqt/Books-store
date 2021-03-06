@@ -297,7 +297,7 @@ const BookProfile = ({
                     <h5 className="w-100" style={{borderBottom: '1px solid #ced4da'}}>Detailed information:</h5>
                     <h5 className="fs-6"><span className="text-muted">Name:</span> {oneBook.book_name}</h5>
                     <h5 className="fs-6"><span className="text-muted">Pages:</span> {oneBook.book_pages}</h5>
-                    <h5 className="fs-6"><span className="text-muted">Author(s): </span> {authrosArray.length !== 0 ? authrosArray.map(item => <NavLink to={"/author/"+item._id}><span key={item._id}>{item.author_firstname} {item.author_lastname}</span></NavLink>) : "Not specified"}</h5>
+                    <h5 className="fs-6"><span className="text-muted">Author(s): </span> <NavLink to={"/author/"+oneBook.book_authors[0]._id}><span key={oneBook.book_authors[0]._id}>{oneBook.book_authors[0].fullname}</span></NavLink></h5>
                     <h5 className="fs-6"><span className="text-muted">Genres: </span>{oneBook.book_genres.map((item,index) => <NavLink style={{textDecoration: 'none'}} key={index} to={"/books/"+item.name}>{item.name}{(oneBook.book_genres.length <= index + 1) ? null : ", "} </NavLink>)}</h5>
                     <h5 className="fs-6"><span className="text-muted">Age limit:</span> {oneBook.book_age_limit}+</h5>
                     <h5 className="fs-6"><span className="text-muted">Bestsellers:</span> {oneBook.book_bestseller

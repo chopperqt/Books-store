@@ -7,8 +7,8 @@ const {
     actionGetTotalBooks
 } = actionBooks
 
-export const getAllBooks = (url,disaptch) => {
-    axios.get(url)
+export const getAllBooks = (url,disaptch,limit) => {
+    axios.get(url, {headers: {'limit': limit}})
     .then(response => {
         disaptch(actionGetBooks(response.data))
     })

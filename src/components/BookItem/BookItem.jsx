@@ -14,7 +14,6 @@ const BookItem = ({data}) => {
   const dispath = useDispatch();
   const cart = useSelector(state => state.cart.cart);
   const cartSelected = useSelector(state => state.cart.cartSelected);
-  const short = data.book_description.slice(0, 120);
   const [text,setText] = useState(true)
   const [color,setColor] = useState(true);
   const [view, setView] = useState(false);
@@ -81,7 +80,9 @@ const BookItem = ({data}) => {
         <div className="card-body card__item__info d-flex flex-column justify-content-between  p-1">
           <div>
             <h4 className="mb-0  fs-6 mb-1">{data.book_name} {data.book_bestseller ? <i className="bi bi-award text-warning"></i> : null}</h4>
-            <h4 className="mb-0 text-muted fs-6">There Author</h4>
+            <NavLink className="text-muted fs-6 justify-content-start" to="/author/2312312313">
+              {data.book_authors.length !== 0 ? data.book_authors[0].fullname : null}
+            </NavLink>
           </div>
           <div className="d-flex align-items-center justify-content-between">
             <p className='text-muted mb-0'>{data.book_price} $</p>

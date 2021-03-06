@@ -5,7 +5,8 @@ import actionsMenu from '../../redux/Menu/actions';
 import {
   Loader,
   Toast,
-  LoaderBooks
+  LoaderBooks,
+  Paginator
 } from '../../components';
 
 const BookItem = React.lazy(() => import ('../../components/BookItem'));
@@ -50,6 +51,7 @@ const BooksItems = ({data}) => {
       <Suspense fallback={<LoaderBooks />}>
         {updateData.length ? data.map(item => (<BookItem key={item._id} data={item} />)): <LoaderBooks />}
       </Suspense>
+      <Paginator />
     </div>
 
   );

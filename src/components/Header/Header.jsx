@@ -108,11 +108,30 @@ const Header = ({
 
     return (
         <header>
-            <div className="col-md-12 h-100 d-flex align-items-md-center d-flex justify-content-around">
-                <div className="col-md-6">
+            <div className="col-md-12 ps-5 pe-5 h-100 d-flex align-items-md-center d-flex justify-content-around">
+                <div className="col-md-4 col-sm-4 col-lg-4 d-flex alig-items-center">
                     {/* <button onClick={actionMenu} className="splitMenuBtn">
                         <AnimateButton menuWidth={menuWidth} />
                     </button> */}
+                    <h1 className="fs-5 mt-0 mb-0">Here is the logo</h1>
+                </div>
+                <div className="col-md-4 col-sm-4 col-lg-4">
+                    <div className="input-group col-md-7 col-sm-12 col-lg-7">
+                        <input style={{borderRadius: '0.25rem'}} onChange={e => setSearchValue(e.target.value)} type="text" placeholder="Write search text" value={searchValue} className="form-control" />
+                        <div className="popup-div" id="popup-div" style={popup ? {display: "block"} : {display: 'none'}}>
+                            <PopoverHeader>
+                                <p className="text-muted mb-0">Search</p>
+                            </PopoverHeader>
+                            <PopoverBody>
+                                {
+                                    searchValue.length !== 0 ?
+                                        searchBook !== false ? searchBook.map(item => <SearchItem clearValue={() => clearSearchValue()} cartStore={cart} key={item._id} data={item} />)
+                                        : <p className="text mb-0">Nothing found!</p>
+                                    : <p>Nothing found!</p>
+                                }
+                            </PopoverBody>
+                        </div>
+                    </div>
                 </div>
                 <div className="col-md-4 d-flex justify-content-end align-items-baseline">
                     <span className="popup-item">
@@ -149,22 +168,7 @@ const Header = ({
                     <button  onClick={actionFullScreen} data-toggle-fullscreen="false"  className="fillSizeBtn">
                         <i className="bi bi-arrows-fullscreen"></i>
                     </button>
-                    <div className="input-group col-md-7 col-sm-12 col-lg-7">
-                        <input onChange={e => setSearchValue(e.target.value)} type="text" placeholder="Write search text" value={searchValue} className="form-control search-input" aria-label="Recipient's username" aria-describedby="button-addon2" />
-                        <div className="popup-div" id="popup-div" style={popup ? {display: "block"} : {display: 'none'}}>
-                            <PopoverHeader>
-                                <p className="text-muted mb-0">Search</p>
-                            </PopoverHeader>
-                            <PopoverBody>
-                                {
-                                    searchValue.length !== 0 ?
-                                        searchBook !== false ? searchBook.map(item => <SearchItem clearValue={() => clearSearchValue()} cartStore={cart} key={item._id} data={item} />)
-                                        : <p className="text mb-0">Nothing found!</p>
-                                    : <p>Nothing found!</p>
-                                }
-                            </PopoverBody>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </header>
