@@ -183,7 +183,7 @@ const App = () => {
                 <BooksItems data={books.filter(item => item.book_genres.loveStory === true)} />
               </WrapperColor>
             </Route>
-            <Route path="/books" component={() =>
+            <Route path="/books">
               <WrapperColor>
                 <nav aria-label="breadcrumb" className="p-4 pb-0">
                     <ol className="breadcrumb mb-0">
@@ -196,7 +196,6 @@ const App = () => {
                   {(limit >= booksStore.length) ? null : <button onClick={loadMoreBooks} className="btn btn-sm btn-primary mb-4">Load more</button>}
                 </div>} */}
               </WrapperColor>
-            }>
             </Route>           
             <Route path="/book/add">
               <AddBook />

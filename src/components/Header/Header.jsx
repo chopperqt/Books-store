@@ -116,11 +116,11 @@ const Header = ({
                 </div>
                 <div className="col-md-4 d-flex justify-content-end align-items-baseline">
                     <span className="popup-item">
-                        <button className="fillSizeBtn" id="PopoverFocus">
+                        {/* <button className="fillSizeBtn" id="PopoverFocus">
                             {cartLength ? <span className="cartLength badge bg-danger cartL">{cartLength}</span> : null}
                             <i className="bi bi-cart"></i>
-                        </button>
-                        <UncontrolledPopover trigger="legacy" placement="bottom" target="PopoverFocus">
+                        </button> */}
+                        {/* <UncontrolledPopover trigger="legacy" placement="bottom" target="PopoverFocus">
                             <PopoverHeader className="d-flex" style={{justifyContent: 'space-between',width: '274px'}}>Cart</PopoverHeader>
                             <PopoverBody style={{width: '275px', maxHeight: "300px",overflow: "auto"}}>{cartStore.length ? cartStore.map(item => (
                                 <div key={item._id} className="col-md-12 d-flex miniCart">
@@ -144,7 +144,7 @@ const Header = ({
                                     </NavLink>
                                 </div>
                             </PopoverHeader>
-                        </UncontrolledPopover>
+                        </UncontrolledPopover> */}
                     </span>
                     <button  onClick={actionFullScreen} data-toggle-fullscreen="false"  className="fillSizeBtn">
                         <i className="bi bi-arrows-fullscreen"></i>

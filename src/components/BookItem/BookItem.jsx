@@ -3,6 +3,12 @@ import actionsCart from '../../redux/Cart/actions';
 import {NavLink} from 'react-router-dom';
 import {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
+import {
+  Toast as ToastComponent
+} from 'reactstrap'
+import {
+  Toast
+} from '../../components'
 
 const BookItem = ({data}) => {
   const dispath = useDispatch();
@@ -11,6 +17,8 @@ const BookItem = ({data}) => {
   const short = data.book_description.slice(0, 120);
   const [text,setText] = useState(true)
   const [color,setColor] = useState(true);
+  const [view, setView] = useState(false);
+  const [textInfo, setTextInfo] = useState(false);
 
  
 
@@ -21,21 +29,28 @@ const BookItem = ({data}) => {
     actionRemoveSelected
   } = actionsCart;
 
+  const toggleToast = () => {setView(!view)}
+
   function actionBtn() {
     if (cart.filter(item => item._id === data._id).length === 0) {
       dispath(actionAddBookToCart(data))
       dispath(actionAddSelected(data._id, data.book_price))
+      setTextInfo(true)
     } else {
       if (cartSelected.filter(item => item === data._id).length !== 0) {
+        setTextInfo(false)
         dispath(actionRemoveSelected(data._id, data.book_price))
       }
       dispath(actionRemoveBookFromCart(data._id))
     }
+    toggleToast()
+
 
     setColor(prev => !prev);
     setText(prev => !prev);
-  }
 
+    setTimeout(() => setView(false),2000)
+  }
   useEffect(() => {
     const filterCart = cart.filter(item => item._id === data._id);
 
@@ -75,23 +90,20 @@ const BookItem = ({data}) => {
             </button>
           </div>
         </div>
-        {/* <div className="card-body">
-          <div className="d-flex">
-            <h5 className="text-muted mt-1 mb-1 fs-6">{data.book_price}$</h5>
-            <h5 className="text-danger mt-1 mb-1 fs-6 ms-2" >{data.book_bestseller ? "Bestseller" : null}</h5>
-          </div>
-          <h5 className="card-title mt-1 mb-1 fs-5">{data.book_name}</h5>
-          <div className="itemButtons ms-0 ps-0">
-            <button
-              onClick={actionBtn}
-              className={color
-              ? 'btn btn-success btn-sm ms-0'
-              : 'btn btn-danger btn-sm ms-0'}>{text
-                ? 'Add to cart'
-                : 'Remove cart'}</button>
-          </div>
-        </div> */}
       </div>
+      {/* <Toast view={view} viewButton={toggleToast} /> */}
+      <div className="position-fixed bottom-0 end-0 p-3" style={{zIndex: "5"}}>
+            <ToastComponent isOpen={view}>
+            <div class="toast-header">
+                <i className="bi bi-info-circle fs-6"></i>
+                <strong class="me-auto ms-2">Info helper</strong>
+                <button type="button" onClick={toggleToast} class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+              {textInfo ? <p>You have successfully <span className="text text-success">added</span> the book to your cart.</p> : <p>You have successfully <span className="text text-danger">removed</span> the book to your cart.</p>}
+            </div>
+            </ToastComponent>
+        </div>
     </div>
 
   );

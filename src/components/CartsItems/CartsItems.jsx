@@ -3,7 +3,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import {NavLink} from 'react-router-dom';
 import actionsMenu from '../../redux/Menu/actions';
 import {
-  Loader
+  LoaderCart
 } from '../../components';
 
 const BookItem = React.lazy(() => import ('../../components/BookItem'));
@@ -34,7 +34,7 @@ const CartsItems = ({selected, unSelected}) => {
   return (
     <div
       className="col-md-12 col-sm-12-col-lg-12 ml-auto mr-3" style={{padding: '20px'}}>
-      <Suspense fallback={<Loader />}>
+      <Suspense fallback={<LoaderCart />}>
         <div className="col-md-12 col-lg-12 col-sm-12 d-flex align-items-center" style={{borderBottom: '1px solid #ced4da', padding: '5px'}}>
           <p className="text-center text-muted" style={{width: '10%'}}></p>
           <p className="text-center text-muted" style={{width: '10%'}}></p>

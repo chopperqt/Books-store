@@ -17,6 +17,9 @@ import PriceItem from './PriceItem';
 import Home from './Home';
 import SimilarBook from './SimilarBook';
 import AddBook from './AddBook';
+import Toast from './Toast';
+import LoaderCart from './Loader/LoaderCart/';
+import LoaderBooks from './Loader/LoaderBooks';
 
 export {
     Wrapper,
@@ -37,5 +40,8 @@ export {
     PriceItem,
     Home,
     SimilarBook,
-    AddBook
+    AddBook,
+    Toast,
+    LoaderCart,
+    LoaderBooks
 }
