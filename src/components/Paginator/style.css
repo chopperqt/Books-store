@@ -1,0 +1,25 @@
+.active_page {
+    color: #0d6efd !important;
+}
+.active_page a, .active_page p {
+    color: #fff;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    padding: .375rem .75rem;
+    width: 100%;
+}
+.active_page a:hover , .active_page p:hover  {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    color: #fff;
+}
+.active_page a:active , .active_page p:active  {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    color: #fff;
+}
+.active_page a:focus , .active_page p:focus  {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    color: #fff;
+}

@@ -323,77 +323,71 @@
   },
   {
     "_id": "600d76bbbe9453e19af2287a",
-    "book_name": "Datagen",
+    "book_name": "Сonfrontation",
     "book_data": "2015-04-02T05:47:03 -03:00",
-    "book_authors": [],
+    "book_authors": [
+      {
+        "_id": "600ecb7c8ede5357a96c113d",
+        "fullname": "Stephen King"
+      }
+    ],
     "book_price": 1563,
     "book_rating": 4,
     "book_comments": [],
     "book_sells": 506,
     "book_books": 726,
     "book_description": "Nostrud in commodo nisi duis veniam ex aute sunt mollit. Sunt sunt deserunt proident qui nisi velit et reprehenderit mollit nulla et consequat cillum ipsum. Duis occaecat occaecat ullamco proident nulla esse anim in irure do incididunt id veniam. Consectetur dolor nulla ipsum consequat. Dolor velit tempor voluptate excepteur amet dolore laborum esse ad laborum exercitation. Adipisicing ea deserunt eu nostrud mollit eiusmod labore amet non ullamco eiusmod aute nulla.\r\n",
-    "book_picture": "http://placehold.it/400x300",
+    "book_picture": "https://cdn.book24.ru/v2/ASE000000000850541/COVER/cover3d1__w337.jpg",
     "book_discount": 20,
     "book_bestseller": true,
     "book_pages": 982,
-    "book_genres": {
-      "gear": true,
-      "sport": false,
-      "travel": true,
-      "cooking": false,
-      "game": false,
-      "loveStory": false
-    },
+    "book_genres": [],
     "book_age_limit": 6
   },
   {
     "_id": "600d76bbaa4449a85f58c867",
-    "book_name": "Cubix",
+    "book_name": "Shine",
     "book_data": "2016-09-13T11:59:57 -03:00",
-    "book_authors": [],
+    "book_authors": [
+      {
+        "_id": "600ecb7c8ede5357a96c113d",
+        "fullname": "Stephen King"
+      }
+    ],
     "book_price": 655,
     "book_rating": 2,
     "book_comments": [],
     "book_sells": 800,
     "book_books": 95,
     "book_description": "Pariatur voluptate aute sit qui cillum ut nostrud do cupidatat. Eiusmod qui duis ea officia nulla minim cillum ipsum laboris labore. In et irure reprehenderit deserunt fugiat laboris sint officia. Eiusmod anim mollit dolore duis esse laborum nostrud sunt qui occaecat quis amet amet. Dolore dolore aliqua tempor mollit sunt culpa ea adipisicing ut id. Exercitation consectetur dolore do nostrud in sint minim est quis eu eiusmod do consequat aliquip.\r\n",
-    "book_picture": "http://placehold.it/400x300",
+    "book_picture": "https://img-gorod.ru/24/098/2409822_detail.jpg",
     "book_discount": 14,
     "book_bestseller": true,
     "book_pages": 838,
-    "book_genres": {
-      "gear": true,
-      "sport": false,
-      "travel": true,
-      "cooking": false,
-      "game": false,
-      "loveStory": false
-    },
+    "book_genres": [],
     "book_age_limit": 18
   },
   {
     "_id": "600d76bbfa42f1701711d497",
-    "book_name": "Zentia",
+    "book_name": "Carrie",
     "book_data": "2017-06-26T06:57:57 -03:00",
-    "book_authors": [],
+    "book_authors": [
+      {
+        "_id": "600ecb7c8ede5357a96c113d",
+        "fullname": "Stephen King"
+      }
+    ],
     "book_price": 3136,
     "book_rating": 3,
     "book_comments": [],
     "book_sells": 863,
     "book_books": 772,
     "book_description": "Esse aute esse ea pariatur magna ut aliquip minim magna irure est. Eu anim dolor labore sint laborum ipsum irure labore eiusmod culpa ea. Pariatur cupidatat dolor aliquip est ullamco anim veniam. Reprehenderit ad officia non ullamco sint aute aliquip officia nostrud consequat velit. Veniam ullamco mollit ad proident velit sit eiusmod do aute elit mollit reprehenderit ex proident.\r\n",
-    "book_picture": "http://placehold.it/400x300",
+    "book_picture": "https://img-gorod.ru/23/930/2393096_detail.jpg",
     "book_discount": 3,
     "book_bestseller": false,
     "book_pages": 945,
-    "book_genres": {
-      "gear": true,
-      "sport": false,
-      "travel": true,
-      "cooking": false,
-      "game": false,
-      "loveStory": false
-    },
+    "book_genres": [],
     "book_age_limit": 12
   },
   {

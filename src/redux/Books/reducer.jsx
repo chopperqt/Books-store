@@ -5,7 +5,7 @@ import actions from './actions';
 
 
 const initialState = {
-    limit: 2,
+    limit: 12,
     booksItems: [],
     bookItem: [],
     bookGenres: [],

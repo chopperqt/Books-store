@@ -84,7 +84,7 @@ const App = () => {
 
 
   const clickPagination = (page) => {
-    getAllBooks(dispatch,booksLimit,2)
+    getAllBooks(dispatch,booksLimit,page)
   }
 
   return (
