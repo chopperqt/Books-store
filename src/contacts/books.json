@@ -392,227 +392,209 @@
   },
   {
     "_id": "600d76bb98ed34e5c189dbcc",
-    "book_name": "Orboid",
+    "book_name": "Misery",
     "book_data": "2017-10-29T10:43:32 -03:00",
-    "book_authors": [],
+    "book_authors": [
+      {
+        "_id": "600ecb7c8ede5357a96c113d",
+        "fullname": "Stephen King"
+      }
+    ],
     "book_price": 3059,
     "book_rating": 5,
     "book_comments": [],
     "book_sells": 296,
     "book_books": 113,
     "book_description": "Ad amet consectetur aute aute laborum mollit. Occaecat laboris elit aliquip mollit quis officia voluptate tempor deserunt. Irure eu eiusmod eu adipisicing do duis proident aute tempor Lorem aliquip veniam qui.\r\n",
-    "book_picture": "http://placehold.it/400x300",
+    "book_picture": "https://cv4.litres.ru/pub/c/elektronnaya-kniga/cover_max1500/4387345-stiven-king-mizeri.jpg",
     "book_discount": 13,
     "book_bestseller": true,
     "book_pages": 412,
-    "book_genres": {
-      "gear": true,
-      "sport": false,
-      "travel": true,
-      "cooking": false,
-      "game": false,
-      "loveStory": false
-    },
+    "book_genres": [],
     "book_age_limit": 12
   },
   {
     "_id": "600d76bb678598c065d1b4c8",
-    "book_name": "Quilm",
+    "book_name": "Stranger",
     "book_data": "2015-10-23T04:56:13 -03:00",
-    "book_authors": [],
+    "book_authors": [
+      {
+        "_id": "600ecb7c8ede5357a96c113d",
+        "fullname": "Stephen King"
+      }
+    ],
     "book_price": 1593,
     "book_rating": 4,
     "book_comments": [],
     "book_sells": 135,
     "book_books": 924,
     "book_description": "Ex elit qui amet do officia ullamco minim aliquip. Culpa elit esse cillum consectetur. Culpa et ex ipsum aliqua laboris reprehenderit velit culpa id. Consequat voluptate laboris incididunt elit in magna aliquip reprehenderit quis veniam irure sunt cillum. Do nulla duis id pariatur culpa commodo non excepteur sint aute enim proident.\r\n",
-    "book_picture": "http://placehold.it/400x300",
+    "book_picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIlxoNnTihUnGB6aPyeaiETGsKdZWMCerGgQ&usqp=CAU",
     "book_discount": 14,
     "book_bestseller": false,
     "book_pages": 500,
-    "book_genres": {
-      "gear": true,
-      "sport": false,
-      "travel": true,
-      "cooking": false,
-      "game": false,
-      "loveStory": false
-    },
+    "book_genres": [],
     "book_age_limit": 12
   },
   {
     "_id": "600d76bb70ffa33e8b2f0a52",
-    "book_name": "Netplode",
+    "book_name": "The Institute",
     "book_data": "2016-03-30T09:07:26 -03:00",
-    "book_authors": [],
+    "book_authors": [
+      {
+        "_id": "600ecb7c8ede5357a96c113d",
+        "fullname": "Stephen King"
+      }
+    ],
     "book_price": 4402,
     "book_rating": 2,
     "book_comments": [],
     "book_sells": 568,
     "book_books": 437,
     "book_description": "Irure consectetur cupidatat velit sint laboris anim nostrud. Excepteur amet pariatur proident Lorem eiusmod pariatur. Amet ad est dolor et nulla minim ut.\r\n",
-    "book_picture": "http://placehold.it/400x300",
+    "book_picture": "https://s1.livelib.ru/boocover/1003009939/o/180b/Stephen_King__The_Institute.jpeg",
     "book_discount": 7,
     "book_bestseller": true,
     "book_pages": 581,
-    "book_genres": {
-      "gear": true,
-      "sport": false,
-      "travel": true,
-      "cooking": false,
-      "game": false,
-      "loveStory": false
-    },
+    "book_genres": [],
     "book_age_limit": 18
   },
   {
     "_id": "600d76bb73035894f0882a2a",
     "book_name": "Imperium",
     "book_data": "2018-05-12T06:43:12 -03:00",
-    "book_authors": [],
+    "book_authors": [
+      {
+        "_id": "600ecb7c8ede5357a96c113d",
+        "fullname": "Stephen King"
+      }
+    ],
     "book_price": 758,
     "book_rating": 3,
     "book_comments": [],
     "book_sells": 937,
     "book_books": 356,
     "book_description": "Id dolor amet pariatur esse ut exercitation excepteur voluptate. In occaecat et cupidatat pariatur occaecat enim aliquip nostrud nulla exercitation. Anim duis reprehenderit ullamco incididunt sunt aute magna enim incididunt enim do id do. Deserunt ipsum ex cillum occaecat aute deserunt id occaecat qui dolore id ipsum Lorem.\r\n",
-    "book_picture": "http://placehold.it/400x300",
+    "book_picture": "https://2books.su/assets/img/covers/pet-sematary-stephen-king.jpg",
     "book_discount": 11,
     "book_bestseller": false,
     "book_pages": 503,
-    "book_genres": {
-      "gear": true,
-      "sport": false,
-      "travel": true,
-      "cooking": false,
-      "game": false,
-      "loveStory": false
-    },
+    "book_genres": [],
     "book_age_limit": 16
   },
   {
     "_id": "600d76bb1d5bd606197616ab",
-    "book_name": "Spherix",
+    "book_name": "Pet cemetery",
     "book_data": "2016-09-29T10:14:14 -03:00",
-    "book_authors": [],
+    "book_authors": [
+      {
+        "_id": "600ecb7c8ede5357a96c113d",
+        "fullname": "Stephen King"
+      }
+    ],
     "book_price": 3041,
     "book_rating": 1,
     "book_comments": [],
     "book_sells": 581,
     "book_books": 310,
     "book_description": "Proident minim ex sunt nostrud exercitation labore est consequat ullamco exercitation consectetur ullamco nulla. Ipsum culpa consectetur eiusmod reprehenderit aliquip mollit Lorem labore laborum in id cupidatat Lorem aliquip. Nostrud pariatur esse cupidatat id dolore anim Lorem magna aliquip ut id dolor ipsum. Pariatur ex voluptate pariatur incididunt veniam sit eu et et proident ex anim nulla.\r\n",
-    "book_picture": "http://placehold.it/400x300",
+    "book_picture": "https://cv0.litres.ru/pub/c/elektronnaya-kniga/cover_415/27442307-stephen-king-klatbische-domashnih-zhyvotnyh.jpg",
     "book_discount": 12,
     "book_bestseller": true,
     "book_pages": 210,
-    "book_genres": {
-      "gear": true,
-      "sport": false,
-      "travel": true,
-      "cooking": false,
-      "game": false,
-      "loveStory": false
-    },
+    "book_genres": [],
     "book_age_limit": 16
   },
   {
     "_id": "600d76bba25171cb7a001ebf",
-    "book_name": "Tourmania",
+    "book_name": "Lot",
     "book_data": "2016-11-09T05:56:59 -03:00",
-    "book_authors": [],
+    "book_authors": [
+      {
+        "_id": "600ecb7c8ede5357a96c113d",
+        "fullname": "Stephen King"
+      }
+    ],
     "book_price": 591,
     "book_rating": 5,
     "book_comments": [],
     "book_sells": 174,
     "book_books": 576,
     "book_description": "Est proident Lorem adipisicing exercitation proident tempor incididunt occaecat deserunt officia ad minim consectetur. Anim magna ad amet commodo ad exercitation. Nisi eiusmod dolore minim nostrud Lorem non exercitation reprehenderit ipsum dolore ex quis reprehenderit. Laborum culpa in adipisicing sunt ad Lorem aliquip nisi velit cupidatat minim in occaecat. Officia fugiat proident commodo culpa culpa velit. Proident sit aliqua do nisi consectetur amet minim.\r\n",
-    "book_picture": "http://placehold.it/400x300",
+    "book_picture": "https://s1.livelib.ru/boocover/1002139146/o/b306/Stiven_King__Zhrebij_Salema.jpeg",
     "book_discount": 1,
     "book_bestseller": false,
     "book_pages": 894,
-    "book_genres": {
-      "gear": true,
-      "sport": false,
-      "travel": true,
-      "cooking": false,
-      "game": false,
-      "loveStory": false
-    },
+    "book_genres": [],
     "book_age_limit": 6
   },
   {
     "_id": "600d76bbd09f666aa68129b4",
     "book_name": "Isbol",
     "book_data": "2015-09-27T04:12:33 -03:00",
-    "book_authors": [],
+    "book_authors": [
+      {
+        "_id": "600ecb7c8ede5357a96c113d",
+        "fullname": "Stephen King"
+      }
+    ],
     "book_price": 993,
     "book_rating": 3,
     "book_comments": [],
     "book_sells": 859,
     "book_books": 322,
     "book_description": "Labore veniam Lorem ipsum commodo cillum et eiusmod in eu adipisicing nisi sint eiusmod. Est in mollit elit non sunt ad qui cupidatat amet velit est anim. Reprehenderit Lorem labore esse laboris culpa laborum excepteur culpa excepteur deserunt enim.\r\n",
-    "book_picture": "http://placehold.it/400x300",
+    "book_picture": "https://cv8.litres.ru/pub/c/elektronnaya-kniga/cover_max1500/6707289-stiven-king-doktor-son.jpg",
     "book_discount": 16,
     "book_bestseller": true,
     "book_pages": 974,
-    "book_genres": {
-      "gear": true,
-      "sport": false,
-      "travel": true,
-      "cooking": false,
-      "game": false,
-      "loveStory": false
-    },
+    "book_genres": [],
     "book_age_limit": 14
   },
   {
     "_id": "600d76bb3c75d138a9939a31",
-    "book_name": "Oatfarm",
+    "book_name": "11/12/64",
     "book_data": "2019-03-15T04:13:45 -03:00",
-    "book_authors": [],
+    "book_authors": [
+      {
+        "_id": "600ecb7c8ede5357a96c113d",
+        "fullname": "Stephen King"
+      }
+    ],
     "book_price": 1622,
     "book_rating": 1,
     "book_comments": [],
     "book_sells": 426,
     "book_books": 787,
     "book_description": "Incididunt cillum ut est incididunt voluptate ut laborum in adipisicing commodo. Cillum nostrud cillum anim in. Eiusmod consectetur esse est ut enim sint nostrud sunt laborum. Nulla ex incididunt est enim tempor laboris nostrud id culpa.\r\n",
-    "book_picture": "http://placehold.it/400x300",
+    "book_picture": "https://cdn1.ozone.ru/s3/multimedia-f/c1200/6034476819.jpg",
     "book_discount": 11,
     "book_bestseller": true,
     "book_pages": 921,
-    "book_genres": {
-      "gear": true,
-      "sport": false,
-      "travel": true,
-      "cooking": false,
-      "game": false,
-      "loveStory": false
-    },
+    "book_genres": [],
     "book_age_limit": 18
   },
   {
     "_id": "600d76bba1cd89ec1ba432a9",
-    "book_name": "Savvy",
+    "book_name": "Green Mile",
     "book_data": "2017-08-30T04:25:35 -03:00",
-    "book_authors": [],
+    "book_authors": [
+      {
+        "_id": "600ecb7c8ede5357a96c113d",
+        "fullname": "Stephen King"
+      }
+    ],
     "book_price": 4683,
     "book_rating": 2,
     "book_comments": [],
     "book_sells": 101,
     "book_books": 202,
     "book_description": "Excepteur duis ut fugiat incididunt reprehenderit pariatur deserunt laboris. Non duis enim aute consectetur veniam duis ullamco ad reprehenderit ipsum eu ullamco aute. Qui irure laboris reprehenderit velit. Proident commodo cupidatat exercitation voluptate culpa proident occaecat laboris fugiat. Quis laboris mollit consectetur nostrud officia. Laborum aliquip fugiat pariatur occaecat. Lorem culpa deserunt proident fugiat cillum.\r\n",
-    "book_picture": "http://placehold.it/400x300",
+    "book_picture": "https://img-gorod.ru/23/440/2344014_detail.jpg",
     "book_discount": 13,
     "book_bestseller": true,
     "book_pages": 11,
-    "book_genres": {
-      "gear": true,
-      "sport": false,
-      "travel": true,
-      "cooking": false,
-      "game": false,
-      "loveStory": false
-    },
+    "book_genres": [],
     "book_age_limit": 6
   },
   {

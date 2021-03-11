@@ -8,13 +8,23 @@ import {
 const {
     actionGetBooks,
     actionGetBook,
-    actionGetTotalBooks
+    actionGetTotalBooks,
+    actionMoreBooksData
 } = actionBooks
 
 export const getAllBooks = (disaptch,limit,skip) => {
     axios.get(ALL_BOOKS_URL, {headers: {'limit': limit,'skip': skip}})
     .then(response => {
         disaptch(actionGetBooks(response.data))
+    })
+    .catch(error => {
+        console.log(error);
+    })
+}
+export const getMoreBook = (dispatch, limit,skip) => {
+    axios.get(ALL_BOOKS_URL, {headers: {'limit': limit, 'skip': skip}})
+    .then(response => {
+        dispatch(actionMoreBooksData(response.data))
     })
     .catch(error => {
         console.log(error);

@@ -18,7 +18,7 @@ const Wrapper = ({children}) => {
     }
 
     return (
-        <div className='wrapper' style={styless}>
+        <div id={'custom-padding'} className='wrapper' style={styless}>
             {children}
         </div>
     );

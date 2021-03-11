@@ -1,7 +1,6 @@
 import books from '../../contacts/books.json';
-import _, { filter } from 'lodash';
+import _ ,{ filter } from 'lodash';
 import actions from './actions';
-
 
 
 const initialState = {
@@ -14,6 +13,7 @@ const initialState = {
     isLoad: false,
     similarBooks: [],
     totalBooks: 0,
+    skipBooks: 0,
 };
 
 const {
@@ -25,6 +25,8 @@ const {
     GET_ONE_BOOK,
     GET_BOOK_GENRES,
     GET_TOTAL_BOOKS,
+    LOADING_BOOKS,
+    ADD_SKIP_BOOKS
 } = actions;
 
 //JSON.parse(books)
@@ -43,7 +45,8 @@ export const booksStore = (
         case MORE_BOOKS_DATA:
             return {
                 ...state,
-                limit: state.limit + payload
+                booksItems: state.booksItems.concat(payload),
+                isLoad: true
             }
         case SEND_BOOK_COMMENT:
             let book_id = payload.book_id;
@@ -127,6 +130,16 @@ export const booksStore = (
             return {
                 ...state,
                 totalBooks: payload
+            }
+        case LOADING_BOOKS:
+            return {
+                ...state,
+                isLoad: false
+            }
+        case ADD_SKIP_BOOKS:
+            return {
+                ...state,
+                skipBooks: state.skipBooks + 1
             }
             // if (payload) {
             //     return {

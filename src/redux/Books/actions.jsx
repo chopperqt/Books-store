@@ -6,12 +6,14 @@ const actions = {
     GET_SIMILAR_BOOKS: 'GET_SIMILAR_BOOKS', 
     GET_ONE_BOOK: "GET_ONE_BOOK",
     GET_TOTAL_BOOKS: "GET_TOTAL_BOOKS",
+    LOADING_BOOKS: "LOADING_BOOKS",
+    ADD_SKIP_BOOKS: "ADD_SKIP_BOOKS",
 
     actionGetBooks(data) {
         return {type: actions.GET_BOOKS,payload: data}
     },
-    actionMoreBooksData() {
-        return {type: actions.MORE_BOOKS_DATA, payload: 20}
+    actionMoreBooksData(data) {
+        return {type: actions.MORE_BOOKS_DATA, payload: data}
     },
     actionGetBook(data) {
         return {type: actions.GET_ONE_BOOK, payload: data}
@@ -27,6 +29,12 @@ const actions = {
     },
     actionGetTotalBooks(number) {
         return {type: actions.GET_TOTAL_BOOKS, payload: number}
+    },
+    actionLoadingBooks() {
+        return {type: actions.LOADING_BOOKS}
+    },
+    actionAddSkipBooks() {
+        return {type: actions.ADD_SKIP_BOOKS}
     }
 }
 
